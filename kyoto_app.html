@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>京都漫游 App</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="京都漫游">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23C0392B'><circle cx='50' cy='50' r='50'/><circle cx='50' cy='50' r='35' fill='%23FFF'/><circle cx='50' cy='50' r='25' fill='%23C0392B'/></svg>">
+    
+    <link rel="manifest" href="data:application/manifest+json;utf8,{%22name%22:%22京都奈良古都漫游%22,%22short_name%22:%22京都漫游%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23FDFBF7%22,%22theme_color%22:%22%23C0392B%22}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 基礎設定與 App 滿版架構 --- */
+        :root {
+            --primary: #C0392B;     /* 日式鳥居朱紅 */
+            --secondary: #27AE60;   /* 嵐山竹林深綠 */
+            --bg: #FDFBF7;          /* 傳統和風米白 */
+            --text: #2C3E50;
+            --light-text: #7F8C8D;
+            --nav-bg: #FFFFFF;
+            --border: #F2F4F4;
+            --active-scale: scale(0.96);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent; /* 移除手機點擊藍色高亮 */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow: hidden; /* 防止整個網頁大滾動 */
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-top: env(safe-area-inset-top); /* 留出 iPhone 劉海與狀態列空間 */
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* --- 固定頭部 --- */
+        header {
+            height: 56px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 10;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* --- App 主內容量容器 (各分頁切換) --- */
+        .app-content {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg);
+        }
+
+        /* 單個分頁樣式 */
+        .tab-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; /* 允許內部各自上下捲動 */
+            padding: 16px;
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-overflow-scrolling: touch; /* 讓 iOS 滾動更滑順 */
+        }
+
+        /* 當前激活的分頁 */
+        .tab-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* --- 底部導覽列 (Tab Bar) --- */
+        nav.tab-bar {
+            height: 64px;
+            background-color: var(--nav-bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 10;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+        }
+
+        .tab-item {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            cursor: pointer;
+            transition: color 0.2s, transform 0.1s;
+        }
+
+        .tab-item:active {
+            transform: var(--active-scale);
+        }
+
+        .tab-item .icon {
+            font-size: 1.3rem;
+            margin-bottom: 2px;
+        }
+
+        .tab-item .label {
+            font-size: 0.72rem;
+            font-weight: 500;
+        }
+
+        /* 激活狀態的 Tab */
+        .tab-item.active {
+            color: var(--primary);
+        }
+        
+        .tab-item.active .icon {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+        }
+
+        /* --- 卡片與通用元件 --- */
+        .card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.01);
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary);
+            padding-left: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title .subtitle {
+            font-size: 0.75rem;
+            color: var(--light-text);
+            font-weight: 400;
+        }
+
+        /* --- 頁面 1：總覽頁專屬樣式 --- */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .meta-box {
+            background-color: #F8F9F9;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .meta-box .val { font-size: 0.95rem; font-weight: 700; color: var(--primary); }
+        .meta-box .lbl { font-size: 0.7rem; color: var(--light-text); }
+
+        .highlight-list { list-style: none; }
+        .highlight-list li {
+            font-size: 0.88rem;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .highlight-list li::before { content: "⛩️"; position: absolute; left: 0; top: 0; }
+
+        .fee-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .fee-table td { padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .fee-table tr:last-child td { border: none; font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+        .fee-table td:last-child { text-align: right; }
+
+        /* --- 頁面 2-4：時間軸行程專屬樣式 --- */
+        .timeline { position: relative; padding-left: 20px; list-style: none; }
+        .timeline::before {
+            content: ''; position: absolute; left: 4px; top: 8px; bottom: 8px; width: 2px; background-color: var(--border);
+        }
+        .timeline-item { position: relative; margin-bottom: 20px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -20px; top: 6px; width: 8px; height: 8px; border-radius: 50%;
+            background-color: white; border: 2px solid var(--secondary); z-index: 1;
+        }
+        .timeline-item.spot::before { border-color: var(--primary); background-color: var(--primary); }
+
+        .time-badge { font-size: 0.75rem; font-weight: 700; color: var(--light-text); background: #EEF2F3; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
+        
+        .node-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+        .node-title { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+        
+        .map-action {
+            background-color: #EBF5FB; color: #2980B9; font-size: 0.72rem; padding: 4px 10px; border-radius: 12px;
+            text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; transition: background 0.2s;
+        }
+        .map-action:active { transform: var(--active-scale); background-color: #D4E6F1; }
+        .map-action::before { content: "📍"; margin-right: 2px; }
+
+        .node-desc { font-size: 0.85rem; color: #566573; margin-top: 4px; text-align: justify; }
+        
+        .badge-group { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px; }
+        .badge { font-size: 0.7rem; padding: 1px 6px; border-radius: 4px; font-weight: 500; }
+        .b-cost { background: #FDEDEC; color: #C0392B; }
+        .b-traffic { background: #EAF2F8; color: #2980B9; }
+        .b-tip { background: #FEF9E7; color: #B7950B; }
+
+        /* --- 頁面 5：打包清單專屬樣式 --- */
+        .todo-item {
+            display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer;
+        }
+        .todo-item:last-child { border: none; }
+        .todo-item input[type="checkbox"] {
+            width: 20px; height: 20px; margin-right: 12px; cursor: pointer; accent-color: var(--primary);
+        }
+        .todo-text { font-size: 0.92rem; color: var(--text); transition: all 0.2s; }
+        .todo-item input:checked + .todo-text {
+            color: var(--light-text); text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="app-header-title">行程總覽</h1>
+    </header>
+
+    <div class="app-content">
+
+        <div class="tab-panel active" id="panel-overview">
+            <div class="meta-grid">
+                <div class="meta-box"><div class="val">3 天 2 夜</div><div class="lbl">時間跨度</div></div>
+                <div class="meta-box"><div class="val">京都・奈良</div><div class="lbl">旅遊目的地</div></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">行程亮點</div>
+                <ul class="highlight-list">
+                    <li><strong>經典古都漫步：</strong>清水舞台俯瞰、祇園藝伎尋蹤與二年坂夜色。</li>
+                    <li><strong>絕美自然禪意：</strong>嵐山竹林清晨避人潮、金閣寺耀眼金芒與龍安寺枯山水。</li>
+                    <li><strong>雙城經典連線：</strong>稻荷大社千本鳥居、奈良公園親親神鹿與東大寺大佛。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">預算與花費估計 <span class="subtitle">單位：日圓/人</span></div>
+                <table class="fee-table">
+                    <tr><td>🎫 景點門票固定開銷 (清水/天龍/金閣/龍安/東大)</td><td>2,800 円</td></tr>
+                    <tr><td>🚌 交通費用預估 (每日約 3,500円 × 3天)</td><td>10,500 円</td></tr>
+                    <tr><td>🍱 餐費預算參考 (湯豆腐、拉麵、稻荷壽司等)</td><td>12,000 円</td></tr>
+                    <tr><td>🏨 住宿費用 (京都車站附近飯店一晚 8,000円)</td><td>8,000 円</td></tr>
+                    <tr><td><strong>💰 總計預算 (不含購物與大交通)</strong></td><td><strong>約 33,300 円</strong></td></tr>
+                </table>
+                <div style="font-size: 0.72rem; color: var(--light-text); margin-top: 10px; background: #F9F9F9; padding: 8px; border-radius: 8px;">
+                    💡 <strong>交通小建議：</strong>京都巴士一日券（700円）非常划算！第一天市區跑多點時買一張直接回本。
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="panel-day1">
+            <div class="card">
+                <div class="card-title">8月7日 (五) <span class="subtitle">經典京都與清水寺暮色</span></div>
+                <ul class="timeline">
+                    <li class="timeline-item">
+                        <span class="time-badge">10:00</span>
+                        <div class="node-header">
+                            <span class="node-title">京都車站（寄行李）</span>
+                            <a href="https://maps.google.com?q=地名?q=京都車站" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">抵達京都車站，先到飯店或車站置物櫃輕裝寄存行李。</p>
+                        <div class="badge-group"><span class="badge b-traffic">交通：JR / 近鐵</span></div>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">11:00</span>
+                        <div class="node-header">
+                            <span class="node-title">錦市場</span>
+                            <a href="https://maps.google.com?q=地名?q=錦市場" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">京都的廚房！必試鰻魚飯串、日式醃菜。中午直接在附近尋覓午餐。</p>
+                        <div class="badge-group"><span class="badge b-cost">午餐：1000-1500円</span></div>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">13:30</span>
+                        <div class="node-header">
+                            <span class="node-title">祇園 · 八坂神社 · 花見小路</span>
+                            <a href="https://maps.google.com?q=地名?q=花見小路" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">感受老京都町家風情，幸運的話能在花見小路看見藝伎的身影。</p>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">16:00</span>
+                        <div class="node-header">
+                            <span class="node-title">清水寺</span>
+                            <a href="https://maps.google.com?q=地名?q=清水寺" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">朝聖著名的清水舞台，鳥瞰京都市景，黃昏暮色非常壯麗。</p>
+                        <div class="badge-group"><span class="badge b-cost">門票：400円</span><span class="badge b-traffic">交通：搭市公車</span></div>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="time-badge">17:30</span>
+                        <div class="node-header">
+                            <span class="node-title">二年坂 · 三年坂</span>
+                            <a href="https://maps.google.com?q=地名?q=二年坂" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">沿石階散步拍照，保存極佳的古街氛圍。這裡的七味粉非常出名。</p>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="time-badge">19:00</span>
+                        <div class="node-header">
+                            <span class="node-title">晚餐：祇園汤豆腐</span>
+                            <a href="https://maps.google.com?q=地名?q=祇園 湯豆腐" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">享用京都特色的精緻豆腐料理。吃完回京都車站附近入住。</p>
+                        <div class="badge-group"><span class="badge b-cost">住宿：8000円/晚</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="panel-day2">
+            <div class="card">
+                <div class="card-title">8月8日 (六) <span class="subtitle">嵐山清晨竹林與金閣禪意</span></div>
+                <ul class="timeline">
+                    <li class="timeline-item spot">
+                        <span class="time-badge">08:00</span>
+                        <div class="node-header">
+                            <span class="node-title">嵐山 竹林之道</span>
+                            <a href="https://maps.google.com?q=地名?q=嵐山竹林" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">務必提早出發！9點前人煙稀少，最能拍出竹林清幽幽邃的高質感大片。</p>
+                        <div class="badge-group"><span class="badge b-tip">強烈建議 9:00 前抵達</span></div>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">09:30</span>
+                        <div class="node-header">
+                            <span class="node-title">渡月橋 & 天龍寺庭園</span>
+                            <a href="https://maps.google.com?q=地名?q=天龍寺" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">欣賞渡月橋美景，隨後前往天龍寺。曹源池庭園借景自然，倒影極美。</p>
+                        <div class="badge-group"><span class="badge b-cost">天龍寺門票：500円</span></div>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="time-badge">12:00</span>
+                        <div class="node-header">
+                            <span class="node-title">午餐：嵐山豆腐料理</span>
+                            <a href="https://maps.google.com?q=地名?q=嵐山 豆腐料理" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">在嵐山大街周邊享用清爽道地的日式豆腐定食。</p>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">14:00</span>
+                        <div class="node-header">
+                            <span class="node-title">金閣寺 (鹿苑寺)</span>
+                            <a href="https://maps.google.com?q=地名?q=金閣寺" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">雖遊客如織但非去不可。閃閃發光的金色舍利殿必拍。出口處有極棒的抹茶霜淇淋！</p>
+                        <div class="badge-group"><span class="badge b-cost">門票：500円</span><span class="badge b-traffic">交通：嵐電轉公車</span></div>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">15:40</span>
+                        <div class="node-header">
+                            <span class="node-title">龍安寺 枯山水</span>
+                            <a href="https://maps.google.com?q=地名?q=龍安寺" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">在著名的石庭前席地而坐，靜心數一數院內的 15 顆奇石，參悟禪意。</p>
+                        <div class="badge-group"><span class="badge b-cost">門票：600円</span></div>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="time-badge">18:30</span>
+                        <div class="node-header">
+                            <span class="node-title">晚餐：京都白味噌拉麵</span>
+                            <a href="https://maps.google.com?q=地名?q=京都車站 拉麵" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">品嚐京都特有的白味噌底拉麵，湯頭溫潤甘甜，舒緩整日疲勞。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="panel-day3">
+            <div class="card">
+                <div class="card-title">8月9日 (日) <span class="subtitle">千本鳥居與奈良神鹿</span></div>
+                <ul class="timeline">
+                    <li class="timeline-item spot">
+                        <span class="time-badge">08:30</span>
+                        <div class="node-header">
+                            <span class="node-title">伏見稻荷大社</span>
+                            <a href="https://maps.google.com?q=地名?q=伏見稻荷大社" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">造訪代表性的千本鳥居。建議沿著步道往上多走一段路，人潮較少且更好拍。</p>
+                        <div class="badge-group"><span class="badge b-cost">門票：免費</span><span class="badge b-traffic">交通：JR稻荷站</span></div>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="time-badge">10:30</span>
+                        <div class="node-header">
+                            <span class="node-title">早午餐：稻荷壽司</span>
+                            <a href="https://maps.google.com?q=地名?q=伏見稻荷 豆皮壽司" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">這裡是豆皮壽司的發源地！下山途中到參道老店品嚐飽滿美味的稻荷壽司。</p>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">13:00</span>
+                        <div class="node-header">
+                            <span class="node-title">奈良公園（餵鹿）</span>
+                            <a href="https://maps.google.com?q=地名?q=奈良公園" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">搭乘近鐵前進奈良！購買小鹿仙貝與公園裡親人的神鹿展開有趣互動。</p>
+                        <div class="badge-group"><span class="badge b-traffic">交通：從京都搭近鐵/JR</span><span class="badge b-tip">注意：仙貝收好，小心鹿群包圍</span></div>
+                    </li>
+                    <li class="timeline-item spot">
+                        <span class="time-badge">14:30</span>
+                        <div class="node-header">
+                            <span class="node-title">東大寺</span>
+                            <a href="https://maps.google.com?q=地名?q=東大寺" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">參拜宏偉的世界最大木造大佛殿，親身體會奈良大佛帶來的震撼視覺與莊嚴氣氛。</p>
+                        <div class="badge-group"><span class="badge b-cost">門票：800円</span></div>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="time-badge">16:00</span>
+                        <div class="node-header">
+                            <span class="node-title">回程 · 京都車站</span>
+                            <a href="https://maps.google.com?q=地名?q=京都車站" target="_blank" class="map-action">地圖</a>
+                        </div>
+                        <p class="node-desc">搭車返回京都車站，提取早上寄存的行李，準備搭車返家或返國。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="panel-packing">
+            <div class="card">
+                <div class="card-title">行前必備證件與財物</div>
+                <div class="todo-item"><input type="checkbox" id="item-p1"><span class="todo-text">護照 (檢查效期是否大於6個月)</span></div>
+                <div class="todo-item"><input type="checkbox" id="item-p2"><span class="todo-text">日圓現金（多準備小面額吃錦市場）</span></div>
+                <div class="todo-item"><input type="checkbox" id="item-p3"><span class="todo-text">信用卡 / 簽帳卡 (建議多帶兩張備用)</span></div>
+                <div class="todo-item"><input type="checkbox" id="item-p4"><span class="todo-text">手機與日本網卡/eSIM 設定確認</span></div>
+            </div>
+            <div class="card">
+                <div class="card-title">隨身與生活用品</div>
+                <div class="todo-item"><input type="checkbox" id="item-l1"><span class="todo-text">行動電源與充電線組</span></div>
+                <div class="todo-item"><input type="checkbox" id="item-l2"><span class="todo-text">好走的健走鞋（清水寺與稻荷山超耗腳力）</span></div>
+                <div class="todo-item"><input type="checkbox" id="item-l3"><span class="todo-text">雨傘/折疊傘（防範午後雷陣雨）</span></div>
+                <div class="todo-item"><input type="checkbox" id="item-l4"><span class="todo-text">個人隨身藥品、防蚊液</span></div>
+            </div>
+            <div class="card">
+                <div class="card-title">旅行優惠票券</div>
+                <div class="todo-item"><input type="checkbox" id="item-t1"><span class="todo-text">ICOCA / Suica 卡儲值</span></div>
+                <div class="todo-item"><input type="checkbox" id="item-t2"><span class="todo-text">規劃好購買京都巴士一日券 (700円)</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="tab-bar">
+        <div class="tab-item active" onclick="switchTab('overview', '行程總覽', this)">
+            <span class="icon">🗺️</span><span class="label">總覽</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('day1', '第一天 · 8/7', this)">
+            <span class="icon">❶</span><span class="label">Day 1</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('day2', '第二天 · 8/8', this)">
+            <span class="icon">❷</span><span class="label">Day 2</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('day3', '第三天 · 8/9', this)">
+            <span class="icon">❸</span><span class="label">Day 3</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('packing', '打包清單', this)">
+            <span class="icon">📋</span><span class="label">清單</span>
+        </div>
+    </nav>
+
+    <script>
+        // --- 1. 分頁切換功能 ---
+        function switchTab(panelId, headerTitle, clickedTab) {
+            // 切換頂部標題
+            document.getElementById('app-header-title').innerText = headerTitle;
+
+            // 移除舊的 Tab 激活樣式
+            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+            // 賦予點擊之 Tab 激活樣式
+            clickedTab.classList.add('active');
+
+            // 隱藏所有面板，並顯示點擊的面板
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            const targetPanel = document.getElementById('panel-' + panelId);
+            if(targetPanel) {
+                targetPanel.classList.add('active');
+                targetPanel.scrollTop = 0; // 切換分頁時回到最上面
+            }
+        }
+
+        // --- 2. 打包清單 localStorage 記憶功能 ---
+        const checkboxes = document.querySelectorAll('.todo-item input[type="checkbox"]');
+
+        // 初始化加載本機記憶狀態
+        window.addEventListener('DOMContentLoaded', () => {
+            checkboxes.forEach(cb => {
+                const savedState = localStorage.getItem(cb.id);
+                if (savedState === 'checked') {
+                    cb.checked = true;
+                }
+                
+                // 監聽每一次點擊，即時更新儲存
+                cb.addEventListener('change', () => {
+                    if (cb.checked) {
+                        localStorage.setItem(cb.id, 'checked');
+                    } else {
+                        localStorage.removeItem(cb.id);
+                    }
+                });
+            });
+        });
+
+        // 為整個整條 todo-item 綁定點擊事件（增大手機點擊回饋面積）
+        document.querySelectorAll('.todo-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // 如果點到的不是 checkbox 本身，則手動觸換 checkbox 的狀態
+                if(e.target.tagName !== 'INPUT') {
+                    const cb = item.querySelector('input[type="checkbox"]');
+                    cb.checked = !cb.checked;
+                    // 手動觸發 change 事件以執行儲存邏輯
+                    cb.dispatchEvent(new Event('change'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
