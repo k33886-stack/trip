@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星月傳奇｜土耳其經典大圓環 13 日夢幻之旅</title>
+    <title>星月公路紀行｜土耳其自駕 13 日夢幻之旅</title>
+    <!-- Google Fonts Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #C94A29; /* 土耳其紅/紅磚色 */
-            --primary-light: #FCEBE6;
-            --secondary: #1F4E5B; /* 鄂圖曼藍/深土耳其藍 */
-            --bg-color: #FAF6F0; /* 溫暖的棉堡白/沙灘乳白 */
-            --text-dark: #2B2B2B;
-            --text-light: #666666;
-            --white: #FFFFFF;
-            --border-color: #E5DDCF;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --radius: 12px;
+            --primary: #3A86C8; /* 自駕蔚藍：愛琴海與晴空 */
+            --primary-light: #EBF3FA;
+            --secondary: #E29A42; /* 陽光沙灘金：卡帕多奇亞大地與夕陽 */
+            --secondary-light: #FDF6ED;
+            --bg-color: #FAFAFA; /* 極致清爽白 */
+            --card-bg: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --border-color: #EAEDED;
+            --shadow: 0 6px 16px rgba(180, 190, 200, 0.15);
+            --radius: 16px;
         }
 
         * {
@@ -34,30 +36,29 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             line-height: 1.6;
-            padding-bottom: 60px; /* 為記帳懸浮鈕留空間 */
+            padding-bottom: 40px;
         }
 
-        /* 頂部橫幅 */
+        /* 頂部橫幅：清爽風 */
         .hero-banner {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: var(--white);
-            padding: 40px 20px;
+            background: linear-gradient(135deg, #F4F8FB 0%, #EBF3FA 100%);
+            padding: 40px 20px 30px 20px;
             text-align: center;
-            border-bottom-left-radius: 24px;
-            border-bottom-right-radius: 24px;
-            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hero-banner h1 {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px;
+            color: var(--primary);
+            margin-bottom: 6px;
             letter-spacing: 1px;
         }
 
         .hero-banner p {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         /* 主容器 */
@@ -69,27 +70,28 @@
 
         /* 行程總覽卡片 */
         .overview-card {
-            background-color: var(--white);
+            background: var(--card-bg);
             border-radius: var(--radius);
             padding: 20px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
 
         .overview-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 12px;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 4px;
+            color: var(--primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .overview-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 14px;
             font-size: 13px;
         }
 
@@ -97,56 +99,59 @@
             display: block;
             color: var(--text-light);
             font-size: 11px;
+            margin-bottom: 2px;
         }
 
         .overview-item strong {
             color: var(--text-dark);
-        }
-
-        .highlights-tags {
-            margin-top: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .tag {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
             font-weight: 500;
+        }
+
+        /* 插畫風 SVG 路線圖 */
+        .map-container {
+            background: #FDFDFD;
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .map-svg {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
         }
 
         /* 功能分頁導覽 */
         .nav-tabs {
             display: flex;
-            background-color: var(--white);
+            background: #EED;
+            background-color: #EAEFF4;
             border-radius: var(--radius);
             padding: 4px;
             margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
         }
 
         .tab-btn {
             flex: 1;
             text-align: center;
-            padding: 10px 0;
-            font-size: 14px;
+            padding: 12px 0;
+            font-size: 13px;
             font-weight: 500;
-            color: var(--text-light);
+            color: #566573;
             border: none;
             background: none;
             cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s;
+            border-radius: 12px;
+            transition: all 0.2s;
         }
 
         .tab-btn.active {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: var(--card-bg);
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         /* 內容區塊 */
@@ -158,9 +163,9 @@
             display: block;
         }
 
-        /* 行程天數摺疊卡片 */
+        /* 行程摺疊卡片 */
         .day-accordion {
-            background-color: var(--white);
+            background: var(--card-bg);
             border-radius: var(--radius);
             margin-bottom: 12px;
             box-shadow: var(--shadow);
@@ -174,43 +179,44 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            background-color: var(--white);
-            transition: background-color 0.2s;
-        }
-
-        .day-header:active {
-            background-color: #F9F9F9;
         }
 
         .day-title-box {
             display: flex;
             flex-direction: column;
+            flex: 1;
         }
 
         .day-number {
-            font-size: 12px;
-            color: var(--primary);
+            font-size: 11px;
+            color: var(--secondary);
             font-weight: 700;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .day-title {
             font-size: 15px;
             font-weight: 700;
-            color: var(--secondary);
-            margin-top: 2px;
+            color: var(--text-dark);
+            margin-top: 1px;
         }
 
-        .day-hotel-badge {
+        .day-drive-meta {
             font-size: 11px;
-            color: var(--text-light);
+            color: #27AE60;
+            background-color: #E8F8F5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            width: max-content;
             margin-top: 4px;
+            font-weight: 500;
         }
 
         .arrow-icon {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--text-light);
             transition: transform 0.3s;
+            margin-left: 10px;
         }
 
         .day-accordion.open .arrow-icon {
@@ -220,13 +226,12 @@
         .day-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            border-top: 0 solid var(--border-color);
-            background-color: #FCFDFD;
+            transition: max-height 0.3s ease-out;
+            background-color: #FAFCFD;
         }
 
         .day-accordion.open .day-content {
-            max-height: 2000px; /* 給予足夠高度容納內容 */
+            max-height: 1500px;
             border-top: 1px solid var(--border-color);
         }
 
@@ -234,67 +239,54 @@
             padding: 16px;
         }
 
-        /* 住宿資訊框 */
+        /* 住宿資訊 */
         .hotel-info-box {
-            background-color: #F4F7F8;
-            border-left: 4px solid var(--secondary);
-            padding: 10px 12px;
-            border-radius: 0 var(--radius) var(--radius) 0;
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 12px;
+            border-radius: 10px;
             margin-bottom: 16px;
             font-size: 13px;
         }
 
         .hotel-name {
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--text-dark);
             display: flex;
-            align-items: center;
             justify-content: space-between;
         }
 
         .hotel-rating {
-            color: #FFA800;
-            font-size: 12px;
-            font-weight: bold;
+            color: #F1C40F;
         }
 
-        /* 地圖按鈕 */
         .maps-btn {
             display: inline-flex;
-            align-items: center;
-            background-color: var(--white);
-            color: var(--secondary);
-            border: 1px solid var(--secondary);
-            padding: 4px 8px;
+            background-color: var(--card-bg);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 5px 10px;
             border-radius: 6px;
             font-size: 11px;
             font-weight: 500;
             text-decoration: none;
-            margin-top: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
+            margin-top: 8px;
         }
 
-        .maps-btn:active {
-            background-color: var(--secondary);
-            color: var(--white);
-        }
-
-        /* 時間軸樣式 */
+        /* 時間軸 */
         .timeline {
             position: relative;
-            padding-left: 20px;
-            margin-top: 10px;
+            padding-left: 16px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 4px;
+            left: 3px;
             top: 6px;
             bottom: 6px;
-            width: 2px;
-            background-color: var(--border-color);
+            width: 1.5px;
+            background-color: #E2E8F0;
         }
 
         .timeline-item {
@@ -308,13 +300,13 @@
 
         .timeline-dot {
             position: absolute;
-            left: -20px;
-            top: 4px;
-            width: 10px;
-            height: 10px;
+            left: -16px;
+            top: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background-color: var(--primary);
-            border: 2px solid var(--white);
+            border: 2px solid var(--card-bg);
             box-shadow: 0 0 0 2px var(--primary-light);
         }
 
@@ -322,670 +314,458 @@
             font-size: 11px;
             font-weight: 700;
             color: var(--primary);
-            background-color: var(--primary-light);
-            padding: 2px 6px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 4px;
+            margin-right: 6px;
         }
 
         .timeline-activity {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--text-dark);
+            display: inline-block;
         }
 
         .timeline-desc {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-light);
             margin-top: 2px;
         }
 
         .food-recommend {
-            color: #9E6212;
-            background-color: #FFF9E6;
-            padding: 4px 8px;
+            color: #D35400;
+            background-color: var(--secondary-light);
+            padding: 6px 10px;
             border-radius: 6px;
             margin-top: 6px;
             font-size: 12px;
-            border: 1px dashed #FFE0B2;
         }
 
         .notice-box {
-            font-size: 12px;
-            color: #C62828;
-            background-color: #FFEBEE;
-            padding: 4px 8px;
+            font-size: 11px;
+            color: #7B241C;
+            background-color: #FADBD8;
+            padding: 6px 10px;
             border-radius: 6px;
             margin-top: 6px;
         }
 
-        /* 記帳頁面樣式 */
-        .ledger-card {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
+        /* 行李清單樣式 */
+        .checklist-group {
+            margin-bottom: 18px;
         }
 
-        .stats-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-            background-color: var(--primary-light);
-            padding: 16px;
-            border-radius: var(--radius);
-            text-align: center;
-        }
-
-        .stat-val {
-            font-size: 18px;
+        .checklist-cat-title {
+            font-size: 13px;
             font-weight: 700;
             color: var(--primary);
+            margin-bottom: 8px;
+            padding-left: 4px;
+            border-left: 3px solid var(--primary);
         }
 
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .ledger-form h3 {
-            font-size: 14px;
-            margin-bottom: 10px;
-            color: var(--secondary);
-        }
-
-        .input-group {
+        .check-item {
             display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            font-size: 13px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
         }
 
+        .check-item input {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+        }
+
+        .check-item.checked {
+            background-color: #F4F9F5;
+            border-color: #D5F5E3;
+            color: #95A5A6;
+            text-decoration: line-through;
+        }
+
+        /* 記帳本樣式 */
+        .stats-box {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--primary-light);
+            padding: 14px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .stat-val { font-size: 16px; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 11px; color: var(--text-light); }
+        
         .input-group input, .input-group select {
+            width: 100%;
             padding: 10px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             font-size: 13px;
+            margin-bottom: 8px;
             outline: none;
         }
 
-        #expense-desc { flex: 2; }
-        #expense-amount { flex: 1.2; }
-        #expense-cat { flex: 1; }
-
         .add-btn {
-            background-color: var(--secondary);
+            background-color: var(--primary);
             color: var(--white);
+            color: white;
             border: none;
-            padding: 10px 16px;
+            padding: 10px;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
+            width: 100%;
             cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .add-btn:active {
-            opacity: 0.9;
-        }
-
-        .expense-list {
-            margin-top: 16px;
-            max-height: 300px;
-            overflow-y: auto;
         }
 
         .expense-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #F0EAE1;
-            font-size: 13px;
-        }
-
-        .expense-info-left {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .expense-cat-badge {
-            font-size: 10px;
-            background-color: #E0F2F1;
-            color: #004D40;
-            padding: 1px 4px;
-            border-radius: 4px;
-            width: max-content;
-            margin-bottom: 2px;
-        }
-
-        .expense-name {
-            font-weight: 500;
-        }
-
-        .expense-info-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .expense-cost {
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .del-btn {
-            background: none;
-            border: none;
-            color: #C62828;
-            cursor: pointer;
+            background: #FFF;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 6px;
             font-size: 12px;
-        }
-
-        /* 響應式微調 (平板與桌機) */
-        @media (min-width: 768px) {
-            body { padding-top: 20px; }
-            .hero-banner { max-width: 600px; margin: 0 auto; border-radius: var(--radius); }
+            border: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
 
+    <!-- 頂部清爽橫幅 -->
     <div class="hero-banner">
-        <h1>星月傳奇｜土耳其經典圓環之旅</h1>
-        <p>探索橫跨歐亞的千載歷史與壯麗奇景</p>
+        <h1>星月公路紀行</h1>
+        <p>土耳其經典圓環 · 13 日自駕壯遊</p>
     </div>
 
     <div class="container">
         
+        <!-- 行程總覽 -->
         <div class="overview-card">
-            <div class="overview-title">📋 行程總覽 Quick Overview</div>
+            <div class="overview-title">📍 旅程概覽</div>
             <div class="overview-grid">
-                <div class="overview-item"><span>旅遊天數</span><strong>13 天 12 夜</strong></div>
-                <div class="overview-item"><span>出發日期</span><strong>07/12 ~ 07/24</strong></div>
-                <div class="overview-item"><span>主要城市</span><strong>伊斯坦堡、番紅花城、卡帕多奇亞、棉堡、伊茲密爾、恰納卡萊</strong></div>
-                <div class="overview-item"><span>交通工具</span><strong>長途冷氣大巴 / 國內線班機 / 自駕租車</strong></div>
-            </div>
-            <div class="highlights-tags">
-                <span class="tag">🎈 卡帕熱氣球</span>
-                <span class="tag">🏛️ 世界文化遺產</span>
-                <span class="tag">♨️ 棉堡溫泉</span>
-                <span class="tag">☕ 土耳其咖啡</span>
-                <span class="tag">🕌 藍色清真寺</span>
+                <div class="overview-item"><span>天數預算</span><strong>13 天 12 夜 / 自駕旅行</strong></div>
+                <div class="overview-item"><span>路程規劃</span><strong>約 1,800 公里大圓環繞行</strong></div>
+                <div class="overview-item"><span>租車取還</span><strong>伊斯坦堡國際機場 (IST) 取還</strong></div>
+                <div class="overview-item"><span>過路系統</span><strong>車輛內建 HGS 自動感應貼紙</strong></div>
             </div>
         </div>
 
+        <!-- 插畫風 SVG 路線圖 -->
+        <div class="map-container">
+            <div class="overview-title" style="margin-bottom: 8px;">🗺️ 自駕大圓環路線圖</div>
+            <svg class="map-svg" viewBox="0 0 500 250">
+                <!-- 背景海域微裝飾 -->
+                <rect x="0" y="0" width="500" height="250" fill="#F7FAFC" rx="12"/>
+                <text x="40" y="50" fill="#E1EBF5" font-size="10" font-weight="700">MARMARA SEA</text>
+                <text x="15" y="150" fill="#E1EBF5" font-size="10" font-weight="700">AEGEAN SEA</text>
+                
+                <!-- 大圓環路線軌跡 -->
+                <path d="M 120 60 L 220 50 L 380 120 L 320 190 L 240 180 L 130 160 L 90 120 Z" 
+                      fill="none" stroke="#3A86C8" stroke-width="2" stroke-dasharray="4 4"/>
+                      
+                <!-- 插畫風景點標記與連線 -->
+                <!-- 伊斯坦堡 -->
+                <circle cx="120" cy="60" r="5" fill="#3A86C8" />
+                <text x="100" y="45" font-size="10" font-weight="700" fill="#2C3E50">伊斯坦堡 (起迄點)</text>
+                <path d="M115 35 Q120 25 125 35 Z" fill="#E29A42"/> <!-- 清真寺小意象 -->
+
+                <!-- 番紅花城 -->
+                <circle cx="220" cy="50" r="5" fill="#3A86C8" />
+                <text x="225" y="45" font-size="10" fill="#2C3E50">番紅花城</text>
+
+                <!-- 卡帕多奇亞 -->
+                <circle cx="380" cy="120" r="5" fill="#3A86C8" />
+                <text x="390" y="123" font-size="10" font-weight="700" fill="#2C3E50">卡帕多奇亞</text>
+                <!-- 熱氣球插畫 -->
+                <circle cx="410" cy="90" r="6" fill="#E29A42" opacity="0.8"/>
+                <rect x="409" y="97" width="2" height="3" fill="#7F8C8D"/>
+
+                <!-- 孔亞中轉 -->
+                <circle cx="320" cy="190" r="4" fill="#7F8C8D" />
+                <text x="325" y="200" font-size="9" fill="#7F8C8D">孔亞</text>
+
+                <!-- 棉堡 -->
+                <circle cx="240" cy="180" r="5" fill="#3A86C8" />
+                <text x="215" y="195" font-size="10" fill="#2C3E50">棉堡 (代尼茲利)</text>
+
+                <!-- 伊茲密爾 -->
+                <circle cx="130" cy="160" r="5" fill="#3A86C8" />
+                <text x="85" y="165" font-size="10" fill="#2C3E50">伊茲密爾</text>
+
+                <!-- 恰納卡萊 -->
+                <circle cx="90" cy="120" r="5" fill="#3A86C8" />
+                <text x="40" y="120" font-size="10" fill="#2C3E50">恰納卡萊</text>
+            </svg>
+        </div>
+
+        <!-- 導覽頁籤 -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('itinerary')">📅 每日行程</button>
-            <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳本</button>
+            <button class="tab-btn active" onclick="switchTab('itinerary')">📅 每日公路行程</button>
+            <button class="tab-btn" onclick="switchTab('checklist')">🧳 行李清單</button>
+            <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
 
+        <!-- 分頁一：每日自駕行程 -->
         <div id="itinerary-tab" class="tab-content active">
 
+            <!-- Day 1 -->
             <div class="day-accordion open">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/12 · Day 1</span>
-                        <span class="day-title">初抵歐亞門戶 · 機場休憩整備</span>
-                        <span class="day-hotel-badge">🏨 住宿：İsport İstanbul AirPort Hotel</span>
+                        <span class="day-number">Day 1 · 07/12</span>
+                        <span class="day-title">抵達與租車取車 · 機場整備</span>
+                        <span class="day-drive-meta">🚗 交通：機場航廈取車，車程約 10 分鐘</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 İsport İstanbul AirPort Hotel
-                                <span class="hotel-rating">⭐ 4.5 (853 則評論)</span>
-                            </div>
-                            <a href="https://maps.google.com?q=地名?q=Isport+Istanbul+AirPort+Hotel" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
+                            <div class="hotel-name">🏨 İsport İstanbul AirPort Hotel <span class="hotel-rating">★ 4.5</span></div>
+                            <a href="https://maps.google.com?q=Isport+Istanbul+AirPort+Hotel" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">下午/晚上</span>
-                                <div class="timeline-activity">飛抵伊斯坦堡國際機場 (IST)</div>
-                                <div class="timeline-desc">出關、申辦當地網卡（建議各大電信如 Turkcell）、換取少量里拉現鈔。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">夜間</span>
-                                <div class="timeline-activity">接駁至機場飯店入住</div>
-                                <div class="timeline-desc">搭乘飯店接駁車或計程車至 İsport 飯店，洗去長途飛行疲憊，調整時差。</div>
-                                <div class="notice-box">⚠️ 注意事項：土耳其計程車請務必跳錶(Taksimetre)或使用 BiTaksi App 叫車。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">傍晚</span><div class="timeline-activity">IST 機場租車櫃台取車</div><div class="timeline-desc">至 Car Rental 專區辦理取車。務必仔細錄影檢查車身外觀、確認油量，並詢問是否已配備 HGS 過路感應貼紙。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">夜間</span><div class="timeline-activity">入住機場周邊飯店</div><div class="timeline-desc">開車前往飯店熟悉右駕與土耳其路況，早點休息調整時差。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 2 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/13 · Day 2</span>
-                        <span class="day-title">啟程前往世界遺產 · 番紅花城</span>
-                        <span class="day-hotel-badge">🏨 住宿：Çeşmeli Konak Köşe Hotel</span>
+                        <span class="day-number">Day 2 · 07/13</span>
+                        <span class="day-title">橫跨歐亞長征 · 山城番紅花城</span>
+                        <span class="day-drive-meta">🚗 交通：自駕約 420 公里，車程約 4.5 小時</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Çeşmeli Konak Köşe Hotel
-                                <span class="hotel-rating">⭐ 4.4 (1030 則評論)</span>
-                            </div>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top:2px;">💡 特色：百年鄂圖曼風格改建精品木造客棧，體驗歷史風情。</p>
-                            <a href="https://maps.google.com?q=地名?q=Cesmeli+Konak+Kose+Hotel+Safranbolu" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
+                            <div class="hotel-name">🏨 Çeşmeli Konak Köşe Hotel <span class="hotel-rating">★ 4.4</span></div>
+                            <a href="https://maps.google.com?q=Cesmeli+Konak+Kose+Hotel+Safranbolu" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">08:00</span>
-                                <div class="timeline-activity">出發前往番紅花城 (Safranbolu)</div>
-                                <div class="timeline-desc">搭乘長途大巴（如 Metro 或 Kamil Koç 公司）或自駕，沿途欣賞安納托利亞高原風光（車程約 4.5-5 小時）。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">14:00</span>
-                                <div class="timeline-activity">漫步舊城區與希德爾立克山丘</div>
-                                <div class="timeline-desc">鳥瞰整座山谷紅瓦白牆的鄂圖曼老宅，漫步石板路鐵匠街。</div>
-                                <div class="food-recommend">😋 美食推薦：Safranbolu Lokumu（傳統土耳其番紅花軟糖）、土耳其咖啡。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:30</span><div class="timeline-activity">出發！行駛 E80 高速公路</div><div class="timeline-desc">路況極佳，沿途高山起伏。中途可在高速公路大型服務區（Dinlenme Tesisleri）休息用餐、加油。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:30</span><div class="timeline-activity">進駐舊城老街區</div><div class="timeline-desc">番紅花城山路與石板路狹窄且陡，建議慢速行駛，並將車輛停在旅館指定停車場。</div><div class="food-recommend">😋 點心：購買道地正宗的 Safranbolu Lokumu (番紅花軟糖)。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 3 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/14 · Day 3</span>
-                        <span class="day-title">深入地下與精靈煙囪 · 卡帕多奇亞</span>
-                        <span class="day-hotel-badge">🏨 住宿：Tulip Cave Suites (洞穴飯店連泊夜1)</span>
+                        <span class="day-number">Day 3 · 07/14</span>
+                        <span class="day-title">南下安納托利亞 · 圖茲鹽湖秘境</span>
+                        <span class="day-drive-meta">🚗 交通：自駕約 480 公里，車程約 5.5 小時</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Tulip Cave Suites
-                                <span class="hotel-rating">⭐ 4.8 (229 則評論)</span>
-                            </div>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top:2px;">💡 特色：正宗歷史岩石挖鑿洞穴房，坐擁哥樂美小鎮全景露台。</p>
-                            <a href="https://maps.google.com?q=地名?q=Tulip+Cave+Suites+Goreme" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
+                            <div class="hotel-name">🏨 Tulip Cave Suites (網紅洞穴旅館) <span class="hotel-rating">★ 4.8</span></div>
+                            <a href="https://maps.google.com?q=Tulip+Cave+Suites+Goreme" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">08:30</span>
-                                <div class="timeline-activity">跨越安卡拉，南下卡帕多奇亞</div>
-                                <div class="timeline-desc">長途移動（約 6 小時）。沿途可停靠圖茲湖（Tuz Gölü，土耳其巨大的鹽湖，極為壯觀）。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">17:00</span>
-                                <div class="timeline-activity">抵達哥樂美 (Göreme) 洞穴飯店</div>
-                                <div class="timeline-desc">辦理入住 Tulip Cave Suites，傍晚至夕陽觀景台拍攝魔幻時刻。</div>
-                                <div class="food-recommend">😋 美食推薦：Testi Kebabı（陶罐燉肉料理，上菜時會現場敲碎陶罐）。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:00</span><div class="timeline-activity">途經安卡拉，直奔圖茲鹽湖 (Tuz Gölü)</div><div class="timeline-desc">完美的自駕中途停靠點！這是土耳其第二大湖，盛夏時地表雪白如鏡，可在此下車步行拍照。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">16:30</span><div class="timeline-activity">駛入哥樂美 (Göreme) 魔幻奇岩區</div><div class="timeline-desc">抵達卡帕多奇亞。部分山區路段有無鋪裝路面，小心慢行。傍晚在飯店觀景露台看黃昏。</div><div class="food-recommend">😋 晚餐：哥樂美鎮上享用 Testi Kebabı（傳統陶罐燉羊肉/牛肉）。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 4 & 5 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/15 · Day 4</span>
-                        <span class="day-title">夢幻熱氣球升空 · 哥樂美露天博物館</span>
-                        <span class="day-hotel-badge">🏨 住宿：Tulip Cave Suites (洞穴飯店連泊夜2)</span>
+                        <span class="day-number">Day 4 & 5 · 07/15 ~ 07/16</span>
+                        <span class="day-title">卡帕多奇亞深度遊：熱氣球與地下迷宮</span>
+                        <span class="day-drive-meta">🚗 交通：區域自駕探索，單日約 30-50 公里</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Tulip Cave Suites (同前一夜)
-                                <span class="hotel-rating">⭐ 4.8</span>
-                            </div>
+                            <div class="hotel-name">🏨 Tulip Cave Suites (連泊期間)</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">04:30</span>
-                                <div class="timeline-activity">卡帕多奇亞熱氣球夢幻體驗</div>
-                                <div class="timeline-desc">清晨搭車前往起飛點，隨日出飛越精靈煙囪與峽谷。 (視天氣狀況可能調整至明日)</div>
-                                <div class="notice-box">⚠️ 注意事項：清晨高空溫度極低，即使是夏季亦需攜帶防風薄外套。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">10:00</span>
-                                <div class="timeline-activity">紅線一日遊 (Goreme 露天博物館、烏其沙城堡)</div>
-                                <div class="timeline-desc">參觀早期基督徒避難的岩石教堂與壁畫，下午造訪蘑菇谷與獵人谷。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">04:30</span><div class="timeline-activity">清晨追熱氣球 / 親自搭乘</div><div class="timeline-desc">若不搭乘，亦可自己開車前往觀景丘（Love Valley Viewpoint）捕捉百球齊飛的絕美插畫畫面。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">日間</span><div class="timeline-activity">自由駕車玩紅線與綠線</div><div class="timeline-desc">自駕最適合去避開團客的凱馬克利地下城 (Kaymaklı Underground City) 與哥樂美露天博物館。</div><div class="notice-box">⚠️ 提示：地下城外停車場常有熱心小販招攬，聽從官方指揮停車即可。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 6 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/16 · Day 5</span>
-                        <span class="day-title">地下城探秘與綠線健行</span>
-                        <span class="day-hotel-badge">🏨 住宿：Tulip Cave Suites (洞穴飯店連泊夜3)</span>
+                        <span class="day-number">Day 6 · 07/17</span>
+                        <span class="day-title">西進絲路古道 · 孔亞中轉驛站</span>
+                        <span class="day-drive-meta">🚗 交通：自駕約 260 公里，車程約 3 小時</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Tulip Cave Suites (同前一夜)
-                                <span class="hotel-rating">⭐ 4.8</span>
-                            </div>
+                            <div class="hotel-name">🏨 İstanbul Cd. No:133 地區便利旅館</div>
+                            <a href="https://maps.google.com?q=Istanbul+Cd.+No:133" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">09:00</span>
-                                <div class="timeline-activity">凱馬克利 (Kaymaklı) 或德林庫尤地下城</div>
-                                <div class="timeline-desc">深入地下 8 層的龐大迷宮系統，直擊古人的避難智慧、通風孔、釀酒室。</div>
-                                <div class="notice-box">⚠️ 注意事項：通道低矮狹窄，患有幽閉恐懼症或身高極高者請留意步伐。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">14:00</span>
-                                <div class="timeline-activity">厄赫拉熱峽谷 (Ihlara Valley) 健行</div>
-                                <div class="timeline-desc">溪流畔綠蔭漫步，享受大自然的愜意與岩壁上的古老隱修院。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00</span><div class="timeline-activity">行駛 D300 國道前往孔亞</div><div class="timeline-desc">此路段昔日為絲綢之路，筆直平坦。中途可停靠蘇丹哈尼古驛站（Sultanhani Karvanserai）參觀。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:00</span><div class="timeline-activity">孔亞市區觀光並入住</div><div class="timeline-desc">參觀梅夫拉那博物館（旋轉舞發源地），這裡宗教氣息較為保守，市區開車注意禮讓行人。</div><div class="food-recommend">😋 美食：Etli Ekmek (孔亞極長薄脆肉餅)。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 7 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/17 · Day 6</span>
-                        <span class="day-title">西行驛站 · 穿越孔亞、安納托利亞</span>
-                        <span class="day-hotel-badge">🏨 住宿：İstanbul Cd. No:133 飯店區</span>
+                        <span class="day-number">Day 7 · 07/18</span>
+                        <span class="day-title">白色夢境奇觀 · 棉堡溫泉與古城</span>
+                        <span class="day-drive-meta">🚗 交通：自駕約 400 公里，車程約 4.5 小時</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 İstanbul Cd. No:133 地區旅館
-                                <span class="hotel-rating">⭐ 地理位置優越</span>
-                            </div>
-                            <a href="https://maps.google.com?q=地名?q=Istanbul+Cd.+No:133" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
+                            <div class="hotel-name">🏨 Laodikya Oteli (代尼茲利) <span class="hotel-rating">★ 4.5</span></div>
+                            <a href="https://maps.google.com?q=Laodikya+Oteli+Denizli" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">08:00</span>
-                                <div class="timeline-activity">告別卡帕多奇亞 · 西進中途站</div>
-                                <div class="timeline-desc">行經旋轉舞發源地孔亞 (Konya)，參觀梅夫拉那博物館，感受極致的蘇菲主義宗教氛圍。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">16:00</span>
-                                <div class="timeline-activity">抵達西行交通樞紐商務型飯店</div>
-                                <div class="timeline-desc">沿著 İstanbul 大道（İstanbul Cd.）進駐中轉點飯店，為明日的棉堡大景保留體力。</div>
-                                <div class="food-recommend">😋 美食推薦：Etli Ekmek（孔亞式香脆肉餅，極長如槳）。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:30</span><div class="timeline-activity">抵達棉堡 (Pamukkale) 北門停車場</div><div class="timeline-desc">建議由北門（古城遺蹟端）開車進入，停車空間較大。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">下午</span><div class="timeline-activity">赤腳漫步石灰華階梯、看羅馬劇場</div><div class="timeline-desc">日落時分的棉堡白色池子會倒映粉藍紫色的天空，極美。</div><div class="notice-box">⚠️ 自駕提醒：夏季陽光刺眼，白色地表反射極強，務必攜帶太陽眼鏡。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 8 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/18 · Day 7</span>
-                        <span class="day-title">石灰華雪白奇蹟 · 棉堡與希拉波利斯</span>
-                        <span class="day-hotel-badge">🏨 住宿：Laodikya Oteli</span>
+                        <span class="day-number">Day 8 · 07/19</span>
+                        <span class="day-title">愛琴海的微風 · 濱海大城伊茲密爾</span>
+                        <span class="day-drive-meta">🚗 交通：自駕約 230 公里，車程約 3 小時</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Laodikya Oteli (代尼茲利)
-                                <span class="hotel-rating">⭐ 4.5 (1665 則評論)</span>
-                            </div>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top:2px;">💡 特色：鄰近交通總站，前進棉堡風景區與遺蹟極為便利。</p>
-                            <a href="https://maps.google.com?q=地名?q=Laodikya+Oteli+Denizli" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
+                            <div class="hotel-name">🏨 Myway Deluxe Hotel & Residence <span class="hotel-rating">★ 4.2</span></div>
+                            <a href="https://maps.google.com?q=Myway+Deluxe+Hotel+Izmir" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">09:00</span>
-                                <div class="timeline-activity">前往棉堡 (Pamukkale)</div>
-                                <div class="timeline-desc">碳酸鈣泉水沉積成的純白階梯式溫泉池。</div>
-                                <div class="notice-box">⚠️ 注意事項：為了保護石灰華，特定區域必須「赤腳」行走，岩石表面略為刺腳且滑，請慢行。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">14:00</span>
-                                <div class="timeline-activity">希拉波利斯古城 (Hierapolis) 古文明探秘</div>
-                                <div class="timeline-desc">參觀巨大的古羅馬劇場、阿波羅神廟古蹟，甚至能付費在充滿古羅馬大理石柱的古蹟溫泉池中游泳。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00</span><div class="timeline-activity">高速公路北上，順遊以弗所古城</div><div class="timeline-desc">中途切往 Ephesus 考古遺址，觀賞雄偉的圖書古館。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">16:00</span><div class="timeline-activity">進入伊茲密爾海濱大道</div><div class="timeline-desc">大城市車流多，小心變換車道。將車停入 Myway 寓所地下停車場，走路前往海邊散步。</div><div class="food-recommend">😋 晚餐：品嚐海邊特色小吃 Midye Dolma（香料飯淡菜）。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 9 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/19 · Day 8</span>
-                        <span class="day-title">愛琴海之珠 · 伊茲密爾海濱浪漫夜</span>
-                        <span class="day-hotel-badge">🏨 住宿：Myway Deluxe Hotel & Residence</span>
+                        <span class="day-number">Day 9 · 07/20</span>
+                        <span class="day-title">尋訪特洛伊木馬 · 恰納卡萊港埠</span>
+                        <span class="day-drive-meta">🚗 交通：自駕約 320 公里，車程約 4 小時</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Myway Deluxe Hotel & Residence
-                                <span class="hotel-rating">⭐ 4.2 (341 則評論)</span>
-                            </div>
-                            <a href="https://maps.google.com?q=地名?q=Myway+Deluxe+Hotel+Izmir" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
+                            <div class="hotel-name">🏨 TEMİZAY HOTEL <span class="hotel-rating">★ 4.2</span></div>
+                            <a href="https://maps.google.com?q=TEMIZAY+HOTEL+Canakkale" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">08:30</span>
-                                <div class="timeline-activity">順遊以弗所古城 (Ephesus)</div>
-                                <div class="timeline-desc">前往土耳其保存最完整的古典羅馬城市，近距離觀摩宏偉的塞爾蘇斯圖書館、庫里特斯大道。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">16:30</span>
-                                <div class="timeline-activity">抵達第三大城伊茲密爾 (İzmir)</div>
-                                <div class="timeline-desc">入住高質感 Myway 寓所式飯店，黃昏前往海濱長廊 (Kordon) 散步，感受悠閒的愛琴海歐式晚風。</div>
-                                <div class="food-recommend">😋 美食推薦：愛琴海鮮魚料理、Midye Dolma（香料米飯淡菜，淋上滿滿檸檬汁）。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">10:00</span><div class="timeline-activity">沿愛琴海公路北上，探訪特洛伊遺跡</div><div class="timeline-desc">沿路風景怡人，可在特洛伊(Troy)景區與巨型木馬雕像合影。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">16:30</span><div class="timeline-activity">抵達達達尼爾海峽畔飯店</div><div class="timeline-desc">Temizay 飯店位於碼頭核心區，先卸件行李，熟悉明日汽車上渡輪的排隊碼頭位置。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 10 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/20 · Day 9</span>
-                        <span class="day-title">前進達達尼爾海峽 · 恰納卡萊</span>
-                        <span class="day-hotel-badge">🏨 住宿：TEMİZAY HOTEL</span>
+                        <span class="day-number">Day 10 · 07/21</span>
+                        <span class="day-title">人車搭乘大渡輪 · 重返伊斯坦堡市區</span>
+                        <span class="day-drive-meta">🚗 交通：渡輪 30 分鐘 + 自駕 260 公里</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00</span><div class="timeline-activity">開車駛入大型汽車渡輪 (Feribot)</div><div class="timeline-desc">排隊買票，直接將整台租來的車開進船艙！航行時間可上甲板吹海風、餵海鷗，橫渡海峽至歐洲側。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:00</span><div class="timeline-activity">返抵伊斯坦堡舊城區</div><div class="timeline-desc">老城區路窄、輕軌穿梭且極難停車。**強烈建議**今日或明日提早還車，或尋找有提供代客停車(Vale)的住宿。</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 11 & 12 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 11 & 12 · 07/22 ~ 07/23</span>
+                        <span class="day-title">伊斯坦堡不開車：歷史古蹟與海峽遊船</span>
+                        <span class="day-drive-meta">🚶 交通：改採步行與老城電車 T1 線</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 TEMİZAY HOTEL (Çanakkale)
-                                <span class="hotel-rating">⭐ 4.2 (1083 則評論)</span>
-                            </div>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top:2px;">💡 特色：坐落於共和廣場港口旁，開窗或步行即能飽覽海峽風貌。</p>
-                            <a href="https://maps.google.com?q=地名?q=TEMIZAY+HOTEL+Canakkale" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
+                            <div class="hotel-name">🏨 Glamour Hotel Istanbul Sirkeci <span class="hotel-rating">★ 4.3</span></div>
+                            <a href="https://maps.google.com?q=Glamour+Hotel+Istanbul+Sirkeci" target="_blank" class="maps-btn">📍 地圖導航</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">09:00</span>
-                                <div class="timeline-activity">北上尋訪特洛伊木馬屠城記 (Troy)</div>
-                                <div class="timeline-desc">抵達特洛伊考古遺址，與傳奇的巨型木馬雕像合影，探訪九層堆疊的古城牆。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">16:00</span>
-                                <div class="timeline-activity">恰納卡萊海濱漫步</div>
-                                <div class="timeline-desc">入住港口旁的 Temizay 飯店，欣賞好萊塢電影《特洛伊》贈送給當地的特洛伊木馬原件。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">全天</span><div class="timeline-activity">聖索菲亞、藍色清真寺、地下水宮殿</div><div class="timeline-desc">徒步即可逛遍精華區。參觀清真寺女生記得帶絲巾覆蓋頭髮。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">午後</span><div class="timeline-activity">大市集血拼與博斯普魯斯海峽遊船</div><div class="timeline-desc">在大市集大膽殺價買伴手禮。傍晚去 Eminönü 碼頭搭遊船，欣賞歐亞海峽風光。</div><div class="food-recommend">😋 美食：碼頭邊必吃 Balık Ekmek (現烤魚三明治)。</div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Day 13 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">07/21 · Day 10</span>
-                        <span class="day-title">渡輪橫渡海峽 · 重返老城千百年華麗</span>
-                        <span class="day-hotel-badge">🏨 住宿：伊斯坦堡市區精品飯店</span>
+                        <span class="day-number">Day 13 · 07/24</span>
+                        <span class="day-title">歸還愛車 · 滿載星月回憶返航</span>
+                        <span class="day-drive-meta">🚗 交通：自駕前往 IST 機場歸還愛車</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">08:30</span>
-                                <div class="timeline-activity">搭乘大型渡輪橫渡達達尼爾海峽</div>
-                                <div class="timeline-desc">大巴或車輛直接開上大型渡輪，從亞洲橫跨至歐洲側加里波利半島，一路返回伊斯坦堡。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">15:00</span>
-                                <div class="timeline-activity">抵達伊斯坦堡老城區辦理入住</div>
-                                <div class="timeline-desc">傍晚可以前往獨立大道 (İstiklal Caddesi) 搭乘百年復古紅色路面電車，前往加拉達塔欣賞市區夜景。</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="day-accordion">
-                <div class="day-header" onclick="toggleDay(this)">
-                    <div class="day-title-box">
-                        <span class="day-number">07/22 · Day 11</span>
-                        <span class="day-title">伊斯坦堡經典：聖索菲亞與藍色清真寺</span>
-                        <span class="day-hotel-badge">🏨 住宿：Glamour Hotel Istanbul Sirkeci</span>
-                    </div>
-                    <div class="arrow-icon">▼</div>
-                </div>
-                <div class="day-content">
-                    <div class="day-inner-padding">
-                        <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Glamour Hotel
-                                <span class="hotel-rating">⭐ 4.3 (1467 則評論)</span>
-                            </div>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top:2px;">💡 特色：臨近 Sirkeci 車站與加拉達大橋，頂樓景觀餐廳可眺望博斯普魯斯海峽。</p>
-                            <a href="https://maps.google.com?q=地名?q=Glamour+Hotel+Istanbul+Sirkeci" target="_blank" class="maps-btn">📍 用 Google Maps 開啟</a>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">09:00</span>
-                                <div class="timeline-activity">蘇丹艾哈邁德老城核心區大朝聖</div>
-                                <div class="timeline-desc">步入聖索菲亞大教堂 (Hagia Sophia) 感受基督教與伊斯蘭教的融合，接著參觀擁有六根宣禮塔的蘇丹艾哈邁德清真寺（藍色清真寺）。</div>
-                                <div class="notice-box">⚠️ 注意事項：清真寺內鋪設地毯且神聖，男女皆不可穿短褲短裙，女性需自備絲巾包裹頭髮。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">14:30</span>
-                                <div class="timeline-activity">地下水宮殿 (Basilica Cistern)</div>
-                                <div class="timeline-desc">探訪充滿神祕燈光的古羅馬地下蓄水池，尋找倒立的梅杜莎石雕頭像。</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="day-accordion">
-                <div class="day-header" onclick="toggleDay(this)">
-                    <div class="day-title-box">
-                        <span class="day-number">07/23 · Day 12</span>
-                        <span class="day-title">大市集血拼與博斯普魯斯海峽遊船</span>
-                        <span class="day-hotel-badge">🏨 住宿：Glamour Hotel Istanbul Sirkeci</span>
-                    </div>
-                    <div class="arrow-icon">▼</div>
-                </div>
-                <div class="day-content">
-                    <div class="day-inner-padding">
-                        <div class="hotel-info-box">
-                            <div class="hotel-name">
-                                🏨 Glamour Hotel (同前一夜)
-                                <span class="hotel-rating">⭐ 4.3</span>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">10:00</span>
-                                <div class="timeline-activity">有頂大市集 (Grand Bazaar) 與香料市集</div>
-                                <div class="timeline-desc">在數千家店鋪的老市集裡大肆採購伴手禮：馬賽克燈、藍眼睛、土耳其紅茶杯、精緻地毯、優質無花果乾。</div>
-                                <div class="notice-box">⚠️ 注意事項：大市集購物務必從 5 折或 6 折開始殺價。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">16:00</span>
-                                <div class="timeline-activity">博斯普魯斯海峽遊船 (Bosphorus Cruise)</div>
-                                <div class="timeline-desc">包船或搭乘公營渡輪，在海峽中央欣賞左手歐洲、右手亞洲的壯麗宮殿與豪宅奇景。</div>
-                                <div class="food-recommend">😋 美食推薦：Eminönü 廣場碼頭旁的經典「烤魚三明治 (Balık Ekmek)」。</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="day-accordion">
-                <div class="day-header" onclick="toggleDay(this)">
-                    <div class="day-title-box">
-                        <span class="day-number">07/24 · Day 13</span>
-                        <span class="day-title">滿載星月回憶 · 珍重再見</span>
-                        <span class="day-hotel-badge">🏨 住宿：搭機返航</span>
-                    </div>
-                    <div class="arrow-icon">▼</div>
-                </div>
-                <div class="day-content">
-                    <div class="day-inner-padding">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">10:00</span>
-                                <div class="timeline-activity">托卡比皇宮 (Topkapı Sarayı) 最後巡禮</div>
-                                <div class="timeline-desc">參觀昔日蘇丹帝國豪奢的居所與絕美海峽視角，參觀後返回飯店提取行李。</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <span class="timeline-time">下午</span>
-                                <div class="timeline-activity">搭乘機場巴士 (Havaist) 前往機場</div>
-                                <div class="timeline-desc">建議提前 3.5 小時抵達伊斯坦堡國際機場，辦理退稅與登機手續，帶著滿滿的回憶飛返家園。</div>
-                            </div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">上午</span><div class="timeline-activity">開車前往 IST 機場還車點</div><div class="timeline-desc">記得把油箱加滿（土耳其租車多為滿取滿還）。櫃台會讀取 HGS 貼紙扣款，並確認車況無誤。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">下午</span><div class="timeline-activity">辦理登機與退稅</div><div class="timeline-desc">提前 3.5 小時到機場，回味這趟絕美震撼的 1800 公里大圓環自駕公路壯遊。</div></div>
                         </div>
                     </div>
                 </div>
@@ -993,159 +773,159 @@
 
         </div>
 
-        <div id="ledger-tab" class="tab-content">
-            <div class="ledger-card">
-                <div class="overview-title">💰 旅程記帳本 (自動保存)</div>
+        <!-- 分頁二：行李清單 -->
+        <div id="checklist-tab" class="tab-content">
+            <div class="overview-card">
+                <div class="overview-title">🧳 自駕出發前行李整理檢查</div>
                 
+                <div class="checklist-group">
+                    <div class="checklist-cat-title">🪪 核心重要證件</div>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c1"> 護照（效期 6 個月以上）</label>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c2"> 土耳其電子簽證 (E-visa) 紙本列印</label>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c3"> 台灣駕照正本 + 國際駕照 (必備)</label>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c4"> 租車預約確認單 + 主駕駛人信用卡</label>
+                </div>
+
+                <div class="checklist-group">
+                    <div class="checklist-cat-title">🚗 公路自駕專區</div>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c5"> 手機車用車充 / 磁吸支架 (自駕極重要)</label>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c6"> 太陽眼鏡 (棉堡與荒漠公路防眩光)</label>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c7"> 離線地圖下載 (Google Maps 離線包)</label>
+                </div>
+
+                <div class="checklist-group">
+                    <div class="checklist-cat-title">👕 衣物與個人用品</div>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c8"> 包頭長絲巾 (女生清真寺入場必備)</label>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c9"> 防風薄外套 (清真熱氣球高空非常冷)</label>
+                    <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="c10"> 高係數防曬乳 / 護唇膏 (氣候極乾燥)</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分頁三：隨身記帳 -->
+        <div id="ledger-tab" class="tab-content">
+            <div class="overview-card">
+                <div class="overview-title">💰 隨身自駕記帳</div>
                 <div class="stats-box">
-                    <div>
-                        <div class="stat-val" id="total-spent">0</div>
-                        <div class="stat-label">累積總花費 (TWD換算)</div>
-                    </div>
-                    <div>
-                        <div class="stat-val" id="item-count">0</div>
-                        <div class="stat-label">記帳筆數</div>
-                    </div>
+                    <div><div class="stat-val" id="total-spent">0</div><div class="stat-label">累積花費 (TWD)</div></div>
+                    <div><div class="stat-val" id="item-count">0</div><div class="stat-label">項目筆數</div></div>
                 </div>
-
-                <div class="ledger-form">
-                    <h3>➕ 新增消費支出</h3>
-                    <div class="input-group" style="flex-direction: column;">
-                        <input type="text" id="expense-desc" placeholder="例如：卡帕多奇亞熱氣球、烤魚三明治" required>
-                        <div style="display:flex; gap:8px; width:100%;">
-                            <input type="number" id="expense-amount" placeholder="金額" required>
-                            <select id="expense-cat">
-                                <option value="🍔 餐飲美食">🍔 餐飲</option>
-                                <option value="🏨 住宿飯店">🏨 住宿</option>
-                                <option value="🚌 交通車資">🚌 交通</option>
-                                <option value="🎟️ 門票活動">🎟️ 門票</option>
-                                <option value="🛍️ 購物紀念">🛍️ 購物</option>
-                            </select>
-                            <button class="add-btn" onclick="addExpense()">記帳</button>
-                        </div>
-                    </div>
+                <div class="input-group">
+                    <input type="text" id="expense-desc" placeholder="項目：如 租車尾款、加油、熱氣球">
+                    <input type="number" id="expense-amount" placeholder="金額">
+                    <select id="expense-cat">
+                        <option value="⛽ 自駕交通">⛽ 自駕交通</option>
+                        <option value="🍔 飲食饗宴">🍔 飲食饗宴</option>
+                        <option value="🏨 飯店住宿">🏨 飯店住宿</option>
+                        <option value="🎟️ 景點活動">🎟️ 景點活動</option>
+                    </select>
+                    <button class="add-btn" onclick="addExpense()">確認記帳</button>
                 </div>
-
-                <div class="overview-title" style="margin-top: 24px; font-size:14px;">📋 明細清單</div>
-                <div class="expense-list" id="expense-list-container">
-                    </div>
+                <div class="overview-title" style="margin-top: 20px; font-size:13px;">📋 花費明細</div>
+                <div id="expense-list-container"></div>
             </div>
         </div>
 
     </div>
 
     <script>
-        // 1. Tab 切換邏輯
+        // Tab 切換
         function switchTab(tabName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             
             if(tabName === 'itinerary') {
                 document.querySelectorAll('.tab-btn')[0].classList.add('active');
                 document.getElementById('itinerary-tab').classList.add('active');
-            } else {
+            } else if(tabName === 'checklist') {
                 document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('ledger-tab').classList.add('active');
-                renderExpenses(); // 切換到記帳本時刷新列表
-            }
-        }
-
-        // 2. 行程手風琴展開／收合邏輯
-        function toggleDay(header) {
-            const currentAccordion = header.parentElement;
-            const isOpen = currentAccordion.classList.contains('open');
-            
-            // 如果希望一次只展開一天，可取消下方註解程式碼
-            /*
-            document.querySelectorAll('.day-accordion').forEach(acc => {
-                acc.classList.remove('open');
-            });
-            */
-            
-            if (isOpen) {
-                currentAccordion.classList.remove('open');
+                document.getElementById('checklist-tab').classList.add('active');
             } else {
-                currentAccordion.classList.add('open');
+                document.querySelectorAll('.tab-btn')[2].classList.add('active');
+                document.getElementById('ledger-tab').classList.add('active');
+                renderExpenses();
             }
         }
 
-        // 3. 獨立記帳本邏輯 (支援本地 LocalStorage 儲存)
-        let expenses = JSON.parse(localStorage.getItem('turkey_trip_expenses')) || [];
+        // 行程摺疊
+        function toggleDay(header) {
+            header.parentElement.classList.toggle('open');
+        }
+
+        // 行李清單持久化與互動
+        let checkData = JSON.parse(localStorage.getItem('tr_chk_data')) || {};
+        
+        function initChecklist() {
+            document.querySelectorAll('.check-item input').forEach(chk => {
+                const id = chk.getAttribute('data-id');
+                if(checkData[id]) {
+                    chk.checked = true;
+                    chk.parentElement.classList.add('checked');
+                }
+            });
+        }
+
+        function chkClick(chk) {
+            const id = chk.getAttribute('data-id');
+            if(chk.checked) {
+                chk.parentElement.classList.add('checked');
+                checkData[id] = true;
+            } else {
+                chk.parentElement.classList.remove('checked');
+                delete checkData[id];
+            }
+            localStorage.setItem('tr_chk_data', JSON.stringify(checkData));
+        }
+
+        // 記帳本
+        let expenses = JSON.parse(localStorage.getItem('tr_exp_data')) || [];
 
         function addExpense() {
-            const descInput = document.getElementById('expense-desc');
-            const amountInput = document.getElementById('expense-amount');
-            const catSelect = document.getElementById('expense-cat');
+            const desc = document.getElementById('expense-desc');
+            const amt = document.getElementById('expense-amount');
+            const cat = document.getElementById('expense-cat');
 
-            if (!descInput.value.trim() || !amountInput.value) {
-                alert('請填寫完整的花費項目與金額！');
-                return;
-            }
+            if(!desc.value.trim() || !amt.value) return alert('請填寫完整資訊');
 
-            const newExpense = {
-                id: Date.now(),
-                desc: descInput.value.trim(),
-                amount: parseFloat(amountInput.value),
-                category: catSelect.value
-            };
-
-            expenses.push(newExpense);
-            localStorage.setItem('turkey_trip_expenses', JSON.stringify(expenses));
-            
-            // 重設輸入框
-            descInput.value = '';
-            amountInput.value = '';
-            
+            expenses.push({ id: Date.now(), desc: desc.value.trim(), amount: parseFloat(amt.value), category: cat.value });
+            localStorage.setItem('tr_exp_data', JSON.stringify(expenses));
+            desc.value = ''; amt.value = '';
             renderExpenses();
         }
 
         function deleteExpense(id) {
-            expenses = expenses.filter(item => item.id !== id);
-            localStorage.setItem('turkey_trip_expenses', JSON.stringify(expenses));
+            expenses = expenses.filter(i => i.id !== id);
+            localStorage.setItem('tr_exp_data', JSON.stringify(expenses));
             renderExpenses();
         }
 
         function renderExpenses() {
             const container = document.getElementById('expense-list-container');
-            const totalSpentEl = document.getElementById('total-spent');
-            const itemCountEl = document.getElementById('item-count');
-            
             container.innerHTML = '';
             let total = 0;
-
-            if (expenses.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:var(--text-light); font-size:13px; padding:20px 0;">目前尚無記帳紀錄，快去新增吧！</p>';
-                totalSpentEl.innerText = '0';
-                itemCountEl.innerText = '0';
+            
+            if(!expenses.length) {
+                container.innerHTML = '<p style="text-align:center;color:var(--text-light);font-size:12px;padding:10px;">暫無花費紀錄</p>';
+                document.getElementById('total-spent').innerText = '0';
+                document.getElementById('item-count').innerText = '0';
                 return;
             }
 
-            expenses.forEach(item => {
-                total += item.amount;
-                
+            expenses.forEach(i => {
+                total += i.amount;
                 const div = document.createElement('div');
                 div.className = 'expense-item';
-                div.innerHTML = `
-                    <div class="expense-info-left">
-                        <span class="expense-cat-badge">${item.category}</span>
-                        <span class="expense-name">${item.desc}</span>
-                    </div>
-                    <div class="expense-info-right">
-                        <span class="expense-cost">$ ${item.amount.toLocaleString()}</span>
-                        <button class="del-btn" onclick="deleteExpense(${item.id})">❌</button>
-                    </div>
-                `;
+                div.innerHTML = `<div><strong>[${i.category}]</strong> ${i.desc}</div><div>$${i.amount.toLocaleString()} <span style="cursor:pointer;" onclick="deleteExpense(${i.id})">❌</span></div>`;
                 container.appendChild(div);
             });
-
-            totalSpentEl.innerText = total.toLocaleString();
-            itemCountEl.innerText = expenses.length.toString();
+            document.getElementById('total-spent').innerText = total.toLocaleString();
+            document.getElementById('item-count').innerText = expenses.length;
         }
 
-        // 初始載入渲染
         window.onload = function() {
+            initChecklist();
             renderExpenses();
-        };
+        }
     </script>
 </body>
 </html>
