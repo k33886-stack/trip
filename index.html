@@ -39,7 +39,7 @@
             padding-bottom: 40px;
         }
 
-        /* 頂部清爽橫幅 */
+        /* 頂部橫幅 */
         .hero-banner {
             background: linear-gradient(135deg, #E8F1F5 0%, #F7F0E8 100%);
             padding: 40px 20px 30px 20px;
@@ -107,7 +107,7 @@
             font-weight: 500;
         }
 
-        /* 精緻插畫風 SVG 路線圖容器 */
+        /* 插畫風 SVG 路線圖 */
         .map-container {
             background: var(--card-bg);
             border-radius: var(--radius);
@@ -153,7 +153,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* 內容區塊 */
         .tab-content {
             display: none;
         }
@@ -227,7 +226,7 @@
             padding: 18px;
         }
 
-        /* 住宿資訊 */
+        /* 住宿區塊 */
         .hotel-info-box {
             background-color: #F8FAFC;
             border: 1px solid #E2E8F0;
@@ -273,7 +272,7 @@
 
         .timeline-item {
             position: relative;
-            padding-bottom: 16px;
+            padding-bottom: 14px;
         }
 
         .timeline-item:last-child {
@@ -297,14 +296,20 @@
             box-shadow: 0 0 0 2px #E8F8F5;
         }
 
+        .timeline-dot.walk {
+            background-color: #E67E22;
+            box-shadow: 0 0 0 2px #FDF2E9;
+        }
+
         .timeline-time {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--text-dark);
             margin-right: 6px;
             background-color: #F0F4F6;
             padding: 2px 6px;
             border-radius: 4px;
+            white-space: nowrap;
         }
 
         .timeline-activity {
@@ -317,124 +322,24 @@
         .timeline-desc {
             font-size: 12px;
             color: var(--text-light);
-            margin-top: 4px;
+            margin-top: 2px;
             padding-left: 2px;
         }
 
-        .food-recommend {
-            color: #D35400;
-            background-color: var(--secondary-light);
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-top: 6px;
-            font-size: 12px;
-        }
-
-        .notice-box {
-            font-size: 11px;
-            color: #7B241C;
-            background-color: #FADBD8;
-            padding: 6px 10px;
-            border-radius: 6px;
-            margin-top: 6px;
-        }
-
-        /* 行李清單 */
-        .checklist-group {
-            margin-bottom: 22px;
-        }
-
-        .checklist-cat-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-            padding-left: 8px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .check-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-
-        @media(min-width: 480px) {
-            .check-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        .check-item {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 12.5px;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .check-item input {
-            margin-right: 10px;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--primary);
-        }
-
-        .check-item.checked {
-            background-color: #F4F9F5;
-            border-color: #D5F5E3;
-            color: #95A5A6;
-            text-decoration: line-through;
-        }
-
-        /* 隨身記帳 */
-        .stats-box {
-            display: flex;
-            justify-content: space-around;
-            background-color: var(--primary-light);
-            padding: 16px;
-            border-radius: var(--radius);
-            text-align: center;
-            margin-bottom: 18px;
-        }
-
+        /* 行李與記帳樣式 */
+        .checklist-group { margin-bottom: 22px; }
+        .checklist-cat-title { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 12px; padding-left: 8px; border-left: 4px solid var(--primary); }
+        .check-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+        @media(min-width: 480px) { .check-grid { grid-template-columns: 1fr 1fr; } }
+        .check-item { display: flex; align-items: center; background: var(--card-bg); padding: 12px; border-radius: 10px; font-size: 12.5px; border: 1px solid var(--border-color); cursor: pointer; }
+        .check-item input { margin-right: 10px; width: 16px; height: 16px; accent-color: var(--primary); }
+        .check-item.checked { background-color: #F4F9F5; border-color: #D5F5E3; color: #95A5A6; text-decoration: line-through; }
+        .stats-box { display: flex; justify-content: space-around; background-color: var(--primary-light); padding: 16px; border-radius: var(--radius); text-align: center; margin-bottom: 18px; }
         .stat-val { font-size: 18px; font-weight: 700; color: var(--primary); }
         .stat-label { font-size: 11px; color: var(--text-light); }
-        
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            font-size: 13px;
-            margin-bottom: 10px;
-            outline: none;
-        }
-
-        .add-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 500;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .expense-item {
-            display: flex;
-            justify-content: space-between;
-            background: #FFF;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            font-size: 12px;
-            border: 1px solid var(--border-color);
-        }
+        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 13px; margin-bottom: 10px; outline: none; }
+        .add-btn { background-color: var(--primary); color: white; border: none; padding: 12px; border-radius: 10px; font-size: 13px; font-weight: 500; width: 100%; cursor: pointer; }
+        .expense-item { display: flex; justify-content: space-between; background: #FFF; padding: 12px; border-radius: 10px; margin-bottom: 8px; font-size: 12px; border: 1px solid var(--border-color); }
     </style>
 </head>
 <body>
@@ -446,71 +351,35 @@
 
     <div class="container">
         
-        <!-- 插畫風自駕大地圖 -->
+        <!-- 插畫風自駕地圖 -->
         <div class="map-container">
             <div class="overview-title" style="margin-bottom: 12px;">🗺️ 插畫風自駕壯遊全圖</div>
-            
             <svg class="map-svg" viewBox="0 0 540 380" xmlns="http://www.w3.org/2000/svg">
                 <path d="M 30 50 Q 60 45 90 52" fill="none" stroke="#D4E6F1" stroke-width="1.5"/>
-                <path d="M 420 40 Q 450 35 480 42" fill="none" stroke="#D4E6F1" stroke-width="1.5"/>
                 <text x="230" y="35" fill="#B9CDE3" font-size="11" font-weight="bold" letter-spacing="2">BLACK SEA (黑海)</text>
-                <text x="15" y="240" fill="#B9CDE3" font-size="10" font-weight="bold" transform="rotate(-90 15 240)">AEGEAN SEA (愛琴海)</text>
-
-                <polygon points="270,160 290,190 250,190" fill="#E5DEC9" />
-                <polygon points="285,155 310,190 260,190" fill="#DDD5BD" />
-                <polygon points="430,220 455,260 405,260" fill="#E5DEC9" />
-                
-                <g transform="translate(430, 140)">
-                    <ellipse cx="15" cy="15" rx="10" ry="13" fill="#D68C45" />
-                    <rect x="12" y="28" width="6" height="5" fill="#7F8C8D" />
-                    <line x1="8" y1="23" x2="12" y2="28" stroke="#333" stroke-width="0.5"/>
-                    <line x1="22" y1="23" x2="18" y2="28" stroke="#333" stroke-width="0.5"/>
-                </g>
-                
-                <ellipse cx="330" cy="195" rx="22" ry="10" fill="#EAF2F8" stroke="#BDC3C7" stroke-dasharray="2 2"/>
-                <text x="315" y="198" fill="#95A5A6" font-size="8">Tuz Gölü</text>
-
-                <!-- 核心自駕軌跡線 -->
                 <path d="M 90 115 L 245 55 L 310 85 L 360 145 L 415 210 L 345 265 L 245 280 L 125 240 L 115 175 L 155 135 Z" fill="none" stroke="#2C699A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M 20 160 Q 50 130 85 115" fill="none" stroke="#95A5A6" stroke-width="1.5" stroke-dasharray="4 4"/>
-
-                <!-- 站點 -->
                 <circle cx="85" cy="115" r="6" fill="#E74C3C" stroke="#FFF" stroke-width="2"/>
-                <text x="50" y="103" font-size="10" font-weight="bold" fill="#E74C3C">🚩 起點：機場取車</text>
                 <circle cx="245" cy="55" r="5" fill="#27AE60" stroke="#FFF" stroke-width="1.5"/>
-                <text x="215" y="46" font-size="10" font-weight="bold" fill="#27AE60">🐟 阿瑪斯拉</text>
-                <circle cx="310" cy="85" r="5" fill="#2C699A" stroke="#FFF" stroke-width="1.5"/>
-                <text x="320" y="88" font-size="10" fill="#2C3E50">番紅花城</text>
                 <circle cx="415" cy="210" r="7" fill="#D68C45" stroke="#FFF" stroke-width="2"/>
-                <text x="426" y="214" font-size="11" font-weight="bold" fill="#D68C45">🎈 卡帕多奇亞</text>
-                <circle cx="245" cy="280" r="5" fill="#2C699A" stroke="#FFF" stroke-width="1.5"/>
-                <text x="225" y="298" font-size="10" font-weight="bold" fill="#2C699A">♨️ 棉堡</text>
-                <circle cx="125" cy="240" r="5" fill="#2C699A" stroke="#FFF" stroke-width="1.5"/>
-                <text x="75" y="244" font-size="10" fill="#2C3E50">以弗所</text>
-                <circle cx="110" cy="168" r="6" fill="#2C699A" stroke="#FFF" stroke-width="2"/>
-                <text x="118" y="172" font-size="10" font-weight="bold" fill="#2C699A">🏁 終點：老城區</text>
             </svg>
         </div>
 
-        <!-- 旅程概覽數據 -->
         <div class="overview-card">
             <div class="overview-title">📍 旅程核心數據</div>
             <div class="overview-grid">
-                <div class="overview-item"><span>自駕總線</span><strong>逆時針經典大圓環</strong></div>
+                <div class="overview-item"><span>自駕總線</span><strong>經典逆時針大圓環</strong></div>
                 <div class="overview-item"><span>總天數</span><strong>13 日公路壯遊</strong></div>
-                <div class="overview-item"><span>取車地點</span><strong>伊斯坦堡國際機場 (IST)</strong></div>
-                <div class="overview-item"><span>還車地點</span><strong>伊斯坦堡國際機場 (IST)</strong></div>
             </div>
         </div>
 
-        <!-- 導覽頁籤 -->
+        <!-- 分頁標籤 -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('itinerary')">📅 每日詳細行程</button>
             <button class="tab-btn" onclick="switchTab('checklist')">🧳 行李清單</button>
             <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
 
-        <!-- 分頁一：每日詳細行程 -->
+        <!-- 內容：詳細行程 -->
         <div id="itinerary-tab" class="tab-content active">
 
             <!-- Day 1 -->
@@ -518,20 +387,22 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 1 · 07/12</span>
-                        <span class="day-title">深夜抵達伊斯坦堡 · 機場取車入住</span>
+                        <span class="day-title">啟程抵達伊斯坦堡 · 取車入住休息</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：İsport İstanbul AirPort Hotel</div>
-                            <a href="https://maps.google.com?q=Isport+Istanbul+AirPort+Hotel" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第一天住宿：İsport İstanbul AirPort Hotel</div>
+                            <a href="https://maps.google.com?q=Isport+Istanbul+AirPort+Hotel" target="_blank" class="maps-btn">📍 Google Maps</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:35~22:10</span><div class="timeline-activity">台灣長途飛航抵達伊斯坦堡 (IST)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">22:10~22:40</span><div class="timeline-activity">出關並於租車櫃台取車辦理手續</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">22:40~23:10</span><div class="timeline-activity">自駕開車前往機場附近飯店休息 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00~09:35</span><div class="timeline-activity">臺灣桃園國際機場 (35分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:35~22:10</span><div class="timeline-activity">飛機 (12時35分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">22:10~22:40</span><div class="timeline-activity">Istanbul Airport 伊斯坦堡機場 (30分)</div><div class="timeline-desc">抵達伊斯坦堡機場後先去取車</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">22:40~23:10</span><div class="timeline-activity">開車 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">23:10~23:40</span><div class="timeline-activity">İsport İstanbul AirPort Hotel (30分)</div><div class="timeline-desc">機場附近住一晚</div></div>
                         </div>
                     </div>
                 </div>
@@ -542,23 +413,24 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 2 · 07/13</span>
-                        <span class="day-title">長途自駕北進 · 黑海阿瑪斯拉海鮮饗宴</span>
+                        <span class="day-title">長途征戰黑海 · 阿瑪斯拉海鮮與番紅花城</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Çeşmeli Konak Köşe Hotel</div>
-                            <a href="https://maps.google.com?q=Cesmeli+Konak+Kose+Hotel+Safranbolu" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第二天住宿：Çeşmeli Konak Köşe Hotel</div>
+                            <a href="https://maps.google.com?q=Cesmeli+Konak+Kose+Hotel+Safranbolu" target="_blank" class="maps-btn">📍 Google Maps</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:00~13:45</span><div class="timeline-activity">長途黑海公路駕駛 (5小時45分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:45~15:45</span><div class="timeline-activity">黑海小鎮阿瑪斯拉享用海鮮午餐</div>
-                                <div class="food-recommend">😋 餐廳：Mustafa Amca'nın Yeri - Canlı Balık</div>
-                            </div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:45~17:15</span><div class="timeline-activity">開車前往世界遺產番紅花城 (1小時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:15~</span><div class="timeline-activity">入住鄂圖曼古宅老街散策</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">07:30~08:00</span><div class="timeline-activity">İsport İstanbul AirPort Hotel 出發 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:00~13:45</span><div class="timeline-activity">開車 (5時45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:45~15:45</span><div class="timeline-activity">Mustafa Amca'nın Yeri - Canlı Balık Restaurant (2時)</div><div class="timeline-desc">黑海阿瑪斯拉停留吃午餐</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:45~17:15</span><div class="timeline-activity">開車 (1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:15~17:45</span><div class="timeline-activity">番紅花城 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">17:45~17:55</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:55~18:25</span><div class="timeline-activity">Çeşmeli Konak Köşe Hotel 入住 (30分)</div><div class="timeline-desc">晚餐吃土耳其料理</div></div>
                         </div>
                     </div>
                 </div>
@@ -569,22 +441,34 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 3 · 07/14</span>
-                        <span class="day-title">國父紀念館 · 粉紅鹽湖 · 卡帕多奇亞日落</span>
+                        <span class="day-title">南下國父館 · 夢幻粉紅鹽湖 · 卡帕多奇亞日落</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Tulip Cave Suites (第一晚)</div>
-                            <a href="https://maps.google.com?q=Tulip+Cave+Suites+Goreme" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第三、四天住宿：Tulip Cave Suites</div>
+                            <a href="https://maps.google.com?q=Tulip+Cave+Suites+Goreme" target="_blank" class="maps-btn">📍 Google Maps</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:30~12:15</span><div class="timeline-activity">出發南下安卡拉 (2小時45分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:15~13:25</span><div class="timeline-activity">參觀凱末爾紀念館 (Anıtkabir)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:25~14:55</span><div class="timeline-activity">前往夢幻粉紅鹽湖 Tuz Gölü (1小時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:25~17:25</span><div class="timeline-activity">驅車開往卡帕多奇亞 (2小時)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:25~20:15</span><div class="timeline-activity">攻頂烏奇沙城堡與獵人谷追日落</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00~09:30</span><div class="timeline-activity">Çeşmeli Konak Köşe Hotel 出發 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:30~12:15</span><div class="timeline-activity">開車 (2時45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:15~12:45</span><div class="timeline-activity">安卡拉 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">12:45~12:55</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:55~13:25</span><div class="timeline-activity">凱末爾紀念館 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:25~14:55</span><div class="timeline-activity">開車 (1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:55~15:25</span><div class="timeline-activity">Tuz Gölü 粉紅鹽湖景區 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:25~17:25</span><div class="timeline-activity">開車 (2時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:25~17:45</span><div class="timeline-activity">惡魔眼樹 拍烏奇薩爾城鎮大景 (20分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">17:45~17:55</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:55~18:55</span><div class="timeline-activity">烏奇沙城堡 (1時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">18:55~19:05</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:05~19:35</span><div class="timeline-activity">Hunter Valley 獵人谷 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">19:35~19:45</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:45~20:15</span><div class="timeline-activity">Sunset and Sunrise / Balloon Viewpoint 看日落 (30分)</div><div class="timeline-desc">日落時間約20點</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">20:15~20:25</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">20:25~20:55</span><div class="timeline-activity">Tulip Cave Suites 入住 (30分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -595,20 +479,29 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 4 · 07/15</span>
-                        <span class="day-title">夢幻熱氣球 · 地下城與奇岩世界深度遊</span>
+                        <span class="day-title">地下城古蹟冒險 · 奇岩異石精華巡禮</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Tulip Cave Suites (第二晚)</div>
+                            <div class="hotel-name">🏨 第三、四天住宿：Tulip Cave Suites</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">04:30~07:30</span><div class="timeline-activity">清晨熱氣球飛行體驗（視天氣極力推薦）</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:30~10:10</span><div class="timeline-activity">開車前往凱馬克利地下城 (40分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">10:10~11:40</span><div class="timeline-activity">深入探索 Kaymakli Underground City</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:30~17:30</span><div class="timeline-activity">自駕遊覽格雷梅露天博物館、精靈煙囪、駱駝岩</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:00~08:30</span><div class="timeline-activity">Tulip Cave Suites 出發 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~09:15</span><div class="timeline-activity">開車 (45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:15~10:15</span><div class="timeline-activity">凱馬克勒地下城 (1時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">10:15~10:45</span><div class="timeline-activity">開車 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">10:45~12:15</span><div class="timeline-activity">格雷梅露天博物館 (1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">12:15~12:25</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:25~13:55</span><div class="timeline-activity">精靈煙囪和磨菇岩 (1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:55~14:05</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:05~14:35</span><div class="timeline-activity">Devrent Vadisi 駱駝岩 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">14:35~14:45</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:45~15:15</span><div class="timeline-activity">阿瓦諾斯 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:15~16:30</span><div class="timeline-activity">開車 (15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:30~16:00</span><div class="timeline-activity">返回 Tulip Cave Suites 休息 (30分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -619,21 +512,27 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 5 · 07/16</span>
-                        <span class="day-title">古驛站西行 · 孔亞朝聖與正宗烤羊肉</span>
+                        <span class="day-title">西行宗教聖城孔亞 · 購物、古蹟與正宗烤羊肉</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Bayır Diamond Hotel Konya</div>
-                            <a href="https://maps.google.com?q=Bayir+Diamond+Hotel+Konya" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第五天住宿：İstanbul Cd. No:133</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~10:00</span><div class="timeline-activity">開車前往蘇丹哈尼古絲路驛站 (1小時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">11:00~12:30</span><div class="timeline-activity">繼續驅車前往宗教聖城孔亞 (1小時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:30~14:30</span><div class="timeline-activity">老字號餐廳享用孔亞必吃經典烤羊肉 (Fırın Kebabı)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:30~16:30</span><div class="timeline-activity">參觀梅夫拉那博物館（旋轉舞發源地）</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:30~09:40</span><div class="timeline-activity">Tulip Cave Suites 出發 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:40~12:55</span><div class="timeline-activity">開車 (3時15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:55~13:25</span><div class="timeline-activity">M1 Konya Alışveriş Merkezi M1購物中心 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:25~13:55</span><div class="timeline-activity">開車 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:55~15:25</span><div class="timeline-activity">梅夫拉那博物館（日間參觀）(1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:25~15:35</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:35~18:05</span><div class="timeline-activity">抵達第五天住宿辦理入住 (2時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">18:05~18:15</span><div class="timeline-activity">走路 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">18:15~19:45</span><div class="timeline-activity">Kebapçı Dedeler 1929 享用經典烤羊肉 (1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">19:45~20:00</span><div class="timeline-activity">走路 (15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">20:00~21:30</span><div class="timeline-activity">梅夫拉那博物館 夜間散策 (1時30分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -644,19 +543,23 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 6 · 07/17</span>
-                        <span class="day-title">直奔棉堡 · 赤腳漫步雪白溫泉梯田</span>
+                        <span class="day-title">穿越地中海與安塔利亞 · 中繼抵達代尼茲利</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Bellamaritimo Hotel (Pamukkale)</div>
-                            <a href="https://maps.google.com?q=Bellamaritimo+Hotel+Pamukkale" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第六天住宿：Laodikya Oteli (代尼茲利)</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:00~13:30</span><div class="timeline-activity">孔亞至代尼茲利/棉堡長途駕駛 (5小時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:00~18:30</span><div class="timeline-activity">進入棉堡景區與希拉波利斯古城</div><div class="timeline-desc">脫鞋赤腳踩在石灰岩梯田上，享受溫泉水流。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:00~08:10</span><div class="timeline-activity">住宿點出發 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:10~11:55</span><div class="timeline-activity">開車大縱走 (3時45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">11:55~13:25</span><div class="timeline-activity">安塔利亞 (1時30分) </div><div class="timeline-desc">在此中繼休息、吃午餐</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:25~16:25</span><div class="timeline-activity">開車翻山前往代尼茲利 (3時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">16:25~16:55</span><div class="timeline-activity">代尼茲利市區 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">16:55~17:05</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:05~17:35</span><div class="timeline-activity">Laodikya Oteli 入住 (30分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -667,21 +570,27 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 7 · 07/18</span>
-                        <span class="day-title">以弗所古城震撼 · 愛琴海濱小鎮庫薩達西</span>
+                        <span class="day-title">雪白棉堡景致 · 席林傑與古城艾菲索斯驚艷</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Ilayda Avantgarde Hotel</div>
-                            <a href="https://maps.google.com?q=Ilayda+Avantgarde+Hotel+Kusadasi" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第七天住宿：Myway Deluxe Hotel & Residence</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~11:00</span><div class="timeline-activity">開車前往塞爾丘克/以弗所 (2小時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">11:00~14:30</span><div class="timeline-activity">參觀以弗所古城 (Ephesus) 塞爾蘇斯圖書館</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">14:30~15:00</span><div class="timeline-activity">前往愛琴海度假港口庫薩達西 (30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">16:00~</span><div class="timeline-activity">海濱大道漫步，欣賞愛琴海絕美夕陽</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:00~08:30</span><div class="timeline-activity">Laodikya Oteli 出發 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~09:15</span><div class="timeline-activity">開車 (45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:15~11:45</span><div class="timeline-activity">希拉波里斯古城 · 棉堡 (2時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">11:45~14:15</span><div class="timeline-activity">開車 (2時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:15~15:15</span><div class="timeline-activity">席林傑山城小鎮 (1時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:15~15:45</span><div class="timeline-activity">開車 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:45~17:15</span><div class="timeline-activity">Ephesus Archaeological Site 艾菲索斯古城 (1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">17:15~18:30</span><div class="timeline-activity">開車 (1時15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">18:30~19:00</span><div class="timeline-activity">阿珊索爾塔 (30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">19:00~19:10</span><div class="timeline-activity">開車 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:10~19:40</span><div class="timeline-activity">Myway Deluxe Hotel 入住 (30分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -692,19 +601,27 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 8 · 07/19</span>
-                        <span class="day-title">切斯美浪漫希臘風小鎮 · 漫步阿拉恰特</span>
+                        <span class="day-title">伊茲密爾地標巡禮 · 遠征特洛伊遺址</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Kairaba Alaçatı Beach Resort</div>
-                            <a href="https://maps.google.com?q=Kairaba+Alacati+Beach+Resort" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第八天住宿：TEMİZAY HOTEL</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:00~10:45</span><div class="timeline-activity">開車沿愛琴海北上切斯美群區 (1小時45分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">11:00~16:00</span><div class="timeline-activity">精靈小鎮阿拉恰特 (Alaçatı) 拍照、午餐</div><div class="timeline-desc">這裡充滿藍白色的希臘風情建築與石板路。</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00~09:10</span><div class="timeline-activity">Myway Deluxe Hotel 出發 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">09:10~09:25</span><div class="timeline-activity">走路 (15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:25~09:45</span><div class="timeline-activity">Clock Tower of İzmir 伊茲密爾鐘樓 (20分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">09:45~09:55</span><div class="timeline-activity">走路 (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:55~10:55</span><div class="timeline-activity">Kemeraltı Bazaar 肯梅拉爾市集 (1時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">10:55~11:10</span><div class="timeline-activity">走路 (15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">11:10~11:20</span><div class="timeline-activity">回到 Myway Deluxe Hotel (10分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">11:20~15:35</span><div class="timeline-activity">開車北上 (4時15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:35~17:05</span><div class="timeline-activity">特洛伊遺址 (1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">17:05~17:50</span><div class="timeline-activity">開車 (45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:50~18:20</span><div class="timeline-activity">TEMİZAY HOTEL 入住 (30分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -715,19 +632,21 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 9 · 07/20</span>
-                        <span class="day-title">土耳其第三大城伊茲密爾 · 傳統市集探索</span>
+                        <span class="day-title">綠色絲路之城布爾薩 · 大清真寺震撼</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Swissôtel Büyük Efes İzmir</div>
-                            <a href="https://maps.google.com?q=Swissotel+Buyuk+Efes+Izmir" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第九、十天住宿：Seres Hotel</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">10:00~11:15</span><div class="timeline-activity">驅車前往伊茲密爾市中心 (1小時15分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:00~17:00</span><div class="timeline-activity">漫步 Kemeraltı 傳統大市集與鐘塔廣場</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:00~08:20</span><div class="timeline-activity">TEMİZAY HOTEL 出發 (20分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:20~12:05</span><div class="timeline-activity">開車 (3時45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:05~13:05</span><div class="timeline-activity">布爾薩大清真寺 (1時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:05~15:20</span><div class="timeline-activity">開車返回伊斯坦堡區域 (2時15分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:20~15:50</span><div class="timeline-activity">Seres Hotel 入住 (30分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -738,19 +657,17 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 10 · 07/21</span>
-                        <span class="day-title">絲路綠色之城布爾薩 · 大清真寺與絲綢市場</span>
+                        <span class="day-title">伊斯坦堡不開車老城深入探訪</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Almira Hotel Thermal Spa bursa</div>
-                            <a href="https://maps.google.com?q=Almira+Hotel+Thermal+Spa+Bursa" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第九、十天住宿：Seres Hotel</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~12:45</span><div class="timeline-activity">由伊茲密爾一路北上布爾薩 (4小時15分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:30~16:30</span><div class="timeline-activity">參觀布爾薩大清真寺 (Ulu Cami) 與 Koza Han 絲綢市場</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">全天行程</span><div class="timeline-activity">老城區古蹟、清真寺與市集散策</div></div>
                         </div>
                     </div>
                 </div>
@@ -761,20 +678,17 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 11 · 07/22</span>
-                        <span class="day-title">跨越大橋回歸伊斯坦堡 · 機場還車無憂</span>
+                        <span class="day-title">更換入住老城精選景觀旅店</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Amira Hotel Istanbul (老城區)</div>
-                            <a href="https://maps.google.com?q=Hotel+Amira+Istanbul" target="_blank" class="maps-btn">📍 開啟 Google Maps</a>
+                            <div class="hotel-name">🏨 第十一天住宿：Glamour Hotel</div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:00~11:30</span><div class="timeline-activity">跨越奧斯曼加齊大橋返回伊斯坦堡機場 (2小時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">11:30~12:30</span><div class="timeline-activity">租車櫃台還車、檢查車況（自駕完美終點）</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:00~14:00</span><div class="timeline-activity">搭乘機場接駁巴士/計程車前往老城區飯店</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:00~08:30</span><div class="timeline-activity">Glamour Hotel (30分)</div><div class="timeline-desc">處理行李與飯店移動</div></div>
                         </div>
                     </div>
                 </div>
@@ -785,18 +699,18 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 12 · 07/23</span>
-                        <span class="day-title">伊斯坦堡不開車老城放空 · 歷史古蹟巡禮</span>
+                        <span class="day-title">告別星月之國 · 前往機場辦理登機</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
-                        <div class="hotel-info-box">
-                            <div class="hotel-name">🏨 住宿：Amira Hotel Istanbul (老城區第二晚)</div>
-                        </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00~17:00</span><div class="timeline-activity">不開車步行遊覽：聖索菲亞大教堂、藍色清真寺、地下水宮殿</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:30~19:30</span><div class="timeline-activity">搭乘博斯普魯斯海峽遊船，飽覽兩岸風光</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">11:30~11:35</span><div class="timeline-activity">Glamour Hotel 退房辦理 (5分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">11:35~12:35</span><div class="timeline-activity">開車前往機場還車與移動 (1時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:35~15:00</span><div class="timeline-activity">Istanbul Airport 伊斯坦堡機場登機手續 (2時25分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:00~07:15</span><div class="timeline-activity">飛機返航 (11時15分，時差+5小時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">07:15~07:50</span><div class="timeline-activity">(+1D) 抵達臺灣桃園國際機場 (35分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -807,16 +721,14 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 13 · 07/24</span>
-                        <span class="day-title">大市集最後血拼 · 滿載回憶搭機返台</span>
+                        <span class="day-title">平安抵台 · 滿載公路自駕回憶</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:30~13:30</span><div class="timeline-activity">有頂大市集 (Grand Bazaar) 採購伴手禮</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:30~15:30</span><div class="timeline-activity">返回機場準備辦理登機</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">18:10~</span><div class="timeline-activity">搭乘長途班機返航台灣，結束精彩土耳其自駕遊</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:05~08:40</span><div class="timeline-activity">臺灣桃園國際機場入境 (35分)</div><div class="timeline-desc">圓滿結束精彩的土耳其逆時針大圓環自駕之旅！</div></div>
                         </div>
                     </div>
                 </div>
@@ -824,10 +736,10 @@
 
         </div>
 
-        <!-- 分頁二：行李清單 -->
+        <!-- 行李清單分頁 -->
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
-                <div class="overview-title">🧳 智慧防忘打包清單 (自動保存)</div>
+                <div class="overview-title">🧳 智慧防忘打包清單</div>
                 <div class="checklist-group">
                     <div class="checklist-cat-title">🪪 重要證件與財物</div>
                     <div class="check-grid">
@@ -837,34 +749,24 @@
                         <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="bg4"> 租車預約單 + 主駕駛信用卡</label>
                     </div>
                 </div>
-                <div class="checklist-group">
-                    <div class="checklist-cat-title">🚗 車用與保濕必備</div>
-                    <div class="check-grid">
-                        <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="bg7"> 車用手機出風口架</label>
-                        <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="bg8"> 點煙器車充轉換頭</label>
-                        <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="bg16"> SPF 50+ 高效防曬乳</label>
-                        <label class="check-item"><input type="checkbox" onchange="chkClick(this)" data-id="bg17"> 高保濕面霜（安納托利亞極乾燥）</label>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <!-- 分頁三：隨身記帳 -->
+        <!-- 隨身記帳分頁 -->
         <div id="ledger-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">💰 隨身自駕記帳本</div>
                 <div class="stats-box">
-                    <div><div class="stat-val" id="total-spent">0</div><div class="stat-label">累積花費 (折算計)</div></div>
-                    <div><div class="stat-val" id="item-count">0</div><div class="stat-label">項目筆數</div></div>
+                    <div><div class="stat-val" id="total-spent">0</div><div class="stat-label">累積花費</div></div>
+                    <div><div class="stat-val" id="item-count">0</div><div class="stat-label">筆數</div></div>
                 </div>
                 <div class="input-group">
-                    <input type="text" id="expense-desc" placeholder="項目：如 加油、過路費、午餐">
+                    <input type="text" id="expense-desc" placeholder="項目：如 加油、午餐">
                     <input type="number" id="expense-amount" placeholder="金額">
                     <select id="expense-cat">
                         <option value="⛽ 自駕燃油路費">⛽ 燃油路費</option>
                         <option value="🍔 餐飲美食">🍔 餐飲美食</option>
                         <option value="🏨 飯店住宿">🏨 飯店住宿</option>
-                        <option value="🛍️ 伴手購物">🛍️ 伴手購物</option>
                     </select>
                     <button class="add-btn" onclick="addExpense()">確認登記</button>
                 </div>
@@ -878,7 +780,6 @@
         function switchTab(tabName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
             if(tabName === 'itinerary') {
                 document.querySelectorAll('.tab-btn')[0].classList.add('active');
                 document.getElementById('itinerary-tab').classList.add('active');
@@ -925,7 +826,6 @@
             const amt = document.getElementById('expense-amount');
             const cat = document.getElementById('expense-cat');
             if(!desc.value.trim() || !amt.value) return;
-
             expenses.push({ id: Date.now(), desc: desc.value.trim(), amount: parseFloat(amt.value), category: cat.value });
             localStorage.setItem('tr_perf_exp2', JSON.stringify(expenses));
             desc.value = ''; amt.value = '';
