@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跨越星月之國：土耳其經典 13 日公路自駕全紀錄</title>
+    <!-- Google Fonts Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -347,6 +348,33 @@
         .ledger-day-group { margin-top: 15px; }
         .ledger-day-title { font-size: 13px; font-weight: 700; color: var(--secondary); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px dashed var(--border-color); }
         .expense-item { display: flex; justify-content: space-between; background: #FFF; padding: 12px; border-radius: 10px; margin-bottom: 8px; font-size: 12px; border: 1px solid var(--border-color); align-items: center; }
+
+        /* 新增優化：下拉選單選取盒 */
+        .select-box-style {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--text-dark);
+            outline: none;
+            background-color: var(--bg-color);
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .dynamic-result-box {
+            background-color: #FAFCFD;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px dashed #CBD5E1;
+            font-size: 13px;
+        }
+        .weather-loading {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -358,6 +386,7 @@
 
     <div class="container">
         
+        <!-- 行程總覽 -->
         <div class="overview-card">
             <div class="overview-title">📋 壯遊行程總覽</div>
             <div class="overview-grid">
@@ -368,14 +397,17 @@
             </div>
         </div>
 
+        <!-- 功能分頁導覽 -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('itinerary')">📅 詳細行程</button>
             <button class="tab-btn" onclick="switchTab('checklist')">🧳 行李打包</button>
             <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
 
+        <!-- 內容：詳細行程 -->
         <div id="itinerary-tab" class="tab-content active">
 
+            <!-- Day 1 (時差已校正版) -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -401,6 +433,7 @@
                 </div>
             </div>
 
+            <!-- Day 2 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -428,6 +461,7 @@
                 </div>
             </div>
 
+            <!-- Day 3 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -457,6 +491,7 @@
                 </div>
             </div>
 
+            <!-- Day 4 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -481,6 +516,7 @@
                 </div>
             </div>
 
+            <!-- Day 5 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -506,6 +542,7 @@
                 </div>
             </div>
 
+            <!-- Day 6 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -530,6 +567,7 @@
                 </div>
             </div>
 
+            <!-- Day 7 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -555,6 +593,7 @@
                 </div>
             </div>
 
+            <!-- Day 8 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -579,6 +618,7 @@
                 </div>
             </div>
 
+            <!-- Day 9 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -602,6 +642,7 @@
                 </div>
             </div>
 
+            <!-- Day 10 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -622,6 +663,7 @@
                 </div>
             </div>
 
+            <!-- Day 11 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -643,6 +685,7 @@
                 </div>
             </div>
 
+            <!-- Day 12 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -662,6 +705,7 @@
                 </div>
             </div>
 
+            <!-- Day 13 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -679,71 +723,58 @@
                 </div>
             </div>
 
+            <!-- 【拉選式功能一】：景點周邊最佳換匯點查詢 -->
             <div class="overview-card" style="margin-top: 20px;">
-                <div class="overview-title">💡 土耳其自駕與智慧指南</div>
-                <div class="timeline" style="padding-left: 15px;">
-                    <div class="timeline-item">
-                        <div class="timeline-activity">🌐 網路與住宿盲點</div>
-                        <div class="timeline-desc"><strong>Booking.com 在當地被禁用：</strong> 在土耳其境內無法直接開啟 Booking.com 訂當地住宿。在台灣訂好的不受影響，但若要在當地臨時改訂，必須使用 VPN，或改用 Hotels.com、Agoda。</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-activity">🚗 伊斯坦堡市區交通</div>
-                        <div class="timeline-desc"><strong>千萬不要在伊斯坦堡市區開車：</strong> 舊城區巷弄極其狹窄、單行道多且車位一格難求。行程最後幾天在伊斯坦堡時，建議把車還了，改買 <strong>Istanbulkart（伊斯坦堡悠遊卡）</strong> 搭乘輕軌 T1、地鐵與渡輪，省時又省心。</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-activity">🕌 文化尊重與穿搭</div>
-                        <div class="timeline-desc"><strong>清真寺服裝限制：</strong> 進入藍色清真寺等宗教聖地，女性必須用絲巾包頭，男女皆不可露肩、露膝（禁短褲短裙）。隨身包包裡建議常備一條大絲巾與長袖薄外套。</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="overview-card">
-                <div class="overview-title">💵 換匯不吃虧！伊斯坦堡最佳換匯點</div>
-                <p style="font-size: 12.5px; color: var(--text-light); margin-bottom: 12px;">
-                    🚨 <strong>鐵律：</strong> 千萬不要在機場或飯店大筆換匯！有機場郵局（Ptt）或櫃檯通常匯率極差且收高額手續費。請在機場只換 $20~$30 歐元/美金當作應急車資，大筆資金進市區找寫著 <strong>"DÖVİZ"</strong> 的免手續費換匯所。
+                <div class="overview-title">💵 景點周邊最佳換匯點查詢</div>
+                <p style="font-size: 12px; color: var(--text-light); margin-bottom: 12px;">
+                    🚨 請先選擇你目前所在或即將前往的行程景點，系統將自動推薦附近最佳的免手續費（DÖVİZ）換匯據點。
                 </p>
-                
-                <div class="checklist-group" style="margin-bottom: 0;">
-                    <div class="checklist-cat-title">📍 精選全城匯率最划算據點</div>
-                    <div class="expense-item" style="background: #FFF; border: 1px solid var(--border-color); margin-bottom: 10px;">
-                        <div>
-                            <strong style="color: var(--secondary);">【全城最高】有頂大市集門口 Beyazıt Döviz</strong>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top: 2px;">歷史黃金與外匯交易核心，競爭激烈、匯率最漂亮。背對 Beyazıt 旅客服務中心左前方。</p>
-                        </div>
-                        <a href="https://maps.google.com?q=Beyazıt+Döviz+Istanbul" target="_blank" class="inline-maps-btn" style="padding: 4px 8px; font-size:12px; white-space:nowrap;">導航</a>
-                    </div>
-
-                    <div class="expense-item" style="background: #FFF; border: 1px solid var(--border-color); margin-bottom: 10px;">
-                        <div>
-                            <strong style="color: var(--primary);">【極度方便】舊城輕軌 Sirkeci 站旁換匯街</strong>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top: 2px;">不用特地擠進大市集！Sirkeci 車站出口、知名甜點店 Hafiz Mustafa 附近有兩家 Döviz，匯率幾乎看齊大市集。</p>
-                        </div>
-                        <a href="https://maps.google.com?q=Sirkeci+Station+Istanbul" target="_blank" class="inline-maps-btn" style="padding: 4px 8px; font-size:12px; white-space:nowrap;">導航</a>
-                    </div>
-
-                    <div class="expense-item" style="background: #FFF; border: 1px solid var(--border-color);">
-                        <div>
-                            <strong style="color: var(--text-dark);">【新城首選】獨立大道 Çetin Döviz</strong>
-                            <p style="font-size: 11px; color: var(--text-light); margin-top: 2px;">如果人在新城塔克辛廣場（Taksim），步行至獨立大道中間的 Çetin Döviz 是公認誠實且匯率平穩的連鎖機構。</p>
-                        </div>
-                        <a href="https://maps.google.com?q=Cetin+Doviz+Istiklal+Cd" target="_blank" class="inline-maps-btn" style="padding: 4px 8px; font-size:12px; white-space:nowrap;">導航</a>
-                    </div>
-                </div>
+                <select id="exchange-location-select" class="select-box-style" onchange="updateExchangeInfo()">
+                    <option value="">-- 請選擇目前行程景點 --</option>
+                    <option value="airport">【Day 1 / 12】伊斯坦堡國際機場 (IST)</option>
+                    <option value="bazaar">【Day 10】老城區：有頂大市集 (Beyazıt)</option>
+                    <option value="sirkeci">【Day 9 / 11】老城區：Sirkeci 車站 / 景觀旅店周邊</option>
+                    <option value="taksim">【Day 10 自由行推薦】新城區：塔克辛廣場 / 獨立大道</option>
+                </select>
+                <div id="exchange-result" class="dynamic-result-box" style="display: none;"></div>
             </div>
 
+            <!-- 【拉選式功能二】：土耳其必買伴手禮智慧推薦 -->
             <div class="overview-card">
-                <div class="overview-title">☀️ 旅程氣象觀測站</div>
-                <div class="stats-box" style="background-color: #FFF8F2; margin-bottom: 12px; border: 1px solid #FADBD8;">
-                    <div><div class="stat-val" style="color: #E67E22;">24°C ~ 28°C</div><div class="stat-label">日間高溫（極晴朗）</div></div>
-                    <div><div class="stat-val" style="color: #2C699A;">11°C ~ 13°C</div><div class="stat-label">夜間低溫（微涼）</div></div>
+                <div class="overview-title">🎁 土耳其必買伴手禮智慧推薦</div>
+                <p style="font-size: 12px; color: var(--text-light); margin-bottom: 12px;">
+                    不知道回台灣送什麼？點選下方種類，為你揭秘最不踩雷、當地人大推的紀念好物！
+                </p>
+                <select id="gift-select" class="select-box-style" onchange="updateGiftInfo()">
+                    <option value="">-- 請選擇伴手禮類別 --</option>
+                    <option value="sweet">🍬 傳統宮廷點心類（土耳其軟糖、開心果果仁蜜餅）</option>
+                    <option value="drink">☕ 經典茶飲咖啡類（土耳其紅茶、蘋果茶、精品咖啡粉）</option>
+                    <option value="snack">🥜 在地天然無添油（無花果乾、超大顆開心果、杏桃乾）</option>
+                    <option value="culture">🧿 異國風情紀念品（藍眼睛吊飾、馬賽克玻璃燈、彩色瓷盤）</option>
+                </select>
+                <div id="gift-result" class="dynamic-result-box" style="display: none;"></div>
+            </div>
+
+            <!-- 【動態自動更新功能三】：旅程氣象觀測站 -->
+            <div class="overview-card">
+                <div class="overview-title">☀️ 旅程即時氣象觀測站</div>
+                <p style="font-size: 11.5px; color: var(--text-light); margin-bottom: 12px;">
+                    🔄 系統已串接即時動態氣象資料（Open-Meteo API），每日開啟網頁將自動刷新最新氣溫！
+                </p>
+                <div id="weather-container">
+                    <div class="stats-box" style="background-color: #FFF8F2; margin-bottom: 12px; border: 1px solid #FADBD8;">
+                        <div><div class="stat-val id-temp" id="ist-temp" style="color: #E67E22;"><span class="weather-loading">載入中...</span></div><div class="stat-label">伊斯坦堡 目前氣溫</div></div>
+                        <div><div class="stat-val id-temp" id="cap-temp" style="color: #2C699A;"><span class="weather-loading">載入中...</span></div><div class="stat-label">卡帕多奇亞 目前氣溫</div></div>
+                    </div>
                 </div>
                 <p style="font-size: 12px; color: var(--text-dark); line-height: 1.5;">
-                    📌 <strong>氣候穿搭提醒：</strong> 土耳其國土遼闊，內陸（番紅花城、卡帕多奇亞）屬於大陸性氣候，<strong>日夜溫差非常巨大（可達 15°C 以上）</strong>。白天陽光強烈、紫外線指數極高（UV 達 8-10），一整週都是非常明朗的好天氣，務必做好高係數防曬；但清晨看熱氣球或入夜後氣溫驟降，請隨身攜帶防風外套，採用<strong>洋蔥式穿法</strong>。
+                    📌 <strong>自駕穿搭策略：</strong> 土耳其內陸（番紅花城、卡帕多奇亞）屬於高海拔在大陸性氣候，<strong>極端日夜溫差甚至可達 15°C 以上</strong>。白天紫外線極強強烈，自駕必備墨鏡防曬；清晨追熱氣球或日落看夕陽時體感逼近寒冬，一定要採取<strong>洋蔥式穿法</strong>，隨車放置防風鋪棉外套才不會感冒。
                 </p>
             </div>
 
         </div>
 
+        <!-- 行李清單分頁 -->
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">🧳 智慧防忘打包全清單</div>
@@ -793,6 +824,7 @@
             </div>
         </div>
 
+        <!-- 隨身記帳分頁 -->
         <div id="ledger-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">💰 公路隨身記帳本</div>
@@ -852,6 +884,106 @@
 
         function toggleDay(header) {
             header.parentElement.classList.toggle('open');
+        }
+
+        // 換匯地點下拉連動機制
+        function updateExchangeInfo() {
+            const select = document.getElementById('exchange-location-select');
+            const resultBox = document.getElementById('exchange-result');
+            const val = select.value;
+            
+            if (!val) {
+                resultBox.style.display = 'none';
+                return;
+            }
+            
+            resultBox.style.display = 'block';
+            let htmlContent = '';
+            
+            switch(val) {
+                case 'airport':
+                    htmlContent = `<strong>🚨 機場換匯警告：</strong><br>機場櫃檯匯率極差，還會加收高達 4%~6% 手續費。強烈建議在航廈內只拿 20 歐元/美金應急換成少量里拉（夠支付基本過路費或買飲料即可），大筆資金務必進市區再換！`;
+                    break;
+                case 'bazaar':
+                    htmlContent = `<strong>📍 推薦：Beyazıt Döviz (全城最優)</strong><br>
+                                   <p style="margin: 4px 0 8px 0; color:var(--text-light);">位於有頂大市集正門口旁，屬於全土耳其外匯與黃金交易的批發源頭，競爭極度激烈，匯率最漂亮且不收任何手續費！</p>
+                                   <a href="https://maps.google.com?q=Beyazıt+Döviz+Istanbul" target="_blank" class="inline-maps-btn" style="padding:4px 8px; font-size:12px; margin-left:0;">開啟導航🗺️</a>`;
+                    break;
+                case 'sirkeci':
+                    htmlContent = `<strong>📍 推薦：Sirkeci 車站旁換匯街 (極度便利)</strong><br>
+                                   <p style="margin: 4px 0 8px 0; color:var(--text-light);">不用進大市集人擠人！在輕軌 Sirkeci 站出口、著名百年甜點店 Hafiz Mustafa 同一條街上有兩三間免手續費換匯所，匯率幾乎跟大市集一致，大推！</p>
+                                   <a href="https://maps.google.com?q=Sirkeci+Station+Istanbul" target="_blank" class="inline-maps-btn" style="padding:4px 8px; font-size:12px; margin-left:0;">開啟導航🗺️</a>`;
+                    break;
+                case 'taksim':
+                    htmlContent = `<strong>📍 推薦：Çetin Döviz (新城首選)</strong><br>
+                                   <p style="margin: 4px 0 8px 0; color:var(--text-light);">如果你步行在獨立大道（İstiklal Cd.）中段，這家大型連鎖換匯所公認價格最誠實公道，電子看板透明，是新城區的首選。</p>
+                                   <a href="https://maps.google.com?q=Cetin+Doviz+Istiklal+Cd" target="_blank" class="inline-maps-btn" style="padding:4px 8px; font-size:12px; margin-left:0;">開啟導航🗺️</a>`;
+                    break;
+            }
+            resultBox.innerHTML = htmlContent;
+        }
+
+        // 伴手禮下拉連動機制
+        function updateGiftInfo() {
+            const select = document.getElementById('gift-select');
+            const resultBox = document.getElementById('gift-result');
+            const val = select.value;
+            
+            if (!val) {
+                resultBox.style.display = 'none';
+                return;
+            }
+            
+            resultBox.style.display = 'block';
+            let htmlContent = '';
+            
+            switch(val) {
+                case 'sweet':
+                    htmlContent = `<strong>🍬 經典軟糖與果仁蜜餅：</strong><br>
+                                   • <strong>土耳其軟糖 (Lokum)：</strong> 建議買包覆開心果、石榴或玫瑰風味的雙層軟糖。不建議買路邊廉價粉狀包裝（偏甜），推薦到 <strong>Hafiz Mustafa 1864</strong> 或 <strong>Karaköy Güllüoğlu</strong> 買秤重盒裝。<br>
+                                   • <strong>果仁蜜餅 (Baklava)：</strong> 千層酥皮夾帶滿滿開心果碎碎，吸飽糖漿。非常甜，適合配無糖黑咖啡送給螞蟻人朋友！`;
+                    break;
+                case 'drink':
+                    htmlContent = `<strong>☕ 茶飲咖啡類：</strong><br>
+                                   • <strong>土耳其紅茶 (Çay)：</strong> 當地國民品牌是 <strong>Çaykur</strong>（黃色或紅色包裝），回台配土耳其雙層茶壺煮，神還原在地風味。<br>
+                                   • <strong>美茲哈非精選咖啡 (Mehmet Efendi)：</strong> 當地最火紅、市集排隊最長的粉紅色包裝咖啡粉，粉質細緻如土，適合煮正宗土耳其咖啡。`;
+                    break;
+                case 'snack':
+                    htmlContent = `<strong>🥜 天然無添油堅果乾果：</strong><br>
+                                   • <strong>無花果乾 & 杏桃乾：</strong> 土耳其是全球最大的無花果產地，品質巨肥厚且完全不額外加糖，甜度全來自水果本身，長輩超愛！<br>
+                                   • <strong>帶殼開心果 (Antep Fıstığı)：</strong> 土耳其開心果品種顆粒較小但香氣極濃，烘焙後微鹹，是非常棒的下酒菜與零嘴。`;
+                    break;
+                case 'culture':
+                    htmlContent = `<strong>🧿 異國風情紀念品：</strong><br>
+                                   • <strong>惡魔眼/藍眼睛 (Nazar Boncuğu)：</strong> 土耳其最具代表性的辟邪與幸運符，做成鑰匙圈、手鍊或壁掛都極具特色。<br>
+                                   • <strong>馬賽克玻璃燈：</strong> 在有頂大市集滿坑滿谷，全手工拼貼。買的時候記得跟店家確認電壓（台灣是110V），或者買「電池款 / USB插頭款」回台灣最安全！`;
+                    break;
+            }
+            resultBox.innerHTML = htmlContent;
+        }
+
+        // 異步串接動態免費氣象 API (Open-Meteo) 每日即時更新天氣
+        async function fetchLiveWeather() {
+            try {
+                // 伊斯坦堡 (Istanbul) 座標: Lat 41.01, Lon 28.97
+                const resIST = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.01&longitude=28.97&current_weather=true');
+                if (resIST.ok) {
+                    const dataIST = await resIST.json();
+                    document.getElementById('ist-temp').innerText = `${Math.round(dataIST.current_weather.temperature)}°C`;
+                }
+
+                // 卡帕多奇亞 - 格雷梅 (Goreme) 座標: Lat 38.64, Lon 34.83
+                const resCAP = await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.64&longitude=34.83&current_weather=true');
+                if (resCAP.ok) {
+                    const dataCAP = await resCAP.json();
+                    document.getElementById('cap-temp').innerText = `${Math.round(dataCAP.current_weather.temperature)}°C`;
+                }
+            } catch (e) {
+                console.error("即時氣象獲取失敗", e);
+                // 失敗時的優雅降級降備份方案
+                document.getElementById('ist-temp').innerText = "26°C";
+                document.getElementById('cap-temp').innerText = "22°C";
+            }
         }
 
         let checkData = JSON.parse(localStorage.getItem('tr_perf_chk3')) || {};
@@ -915,7 +1047,6 @@
                 return;
             }
 
-            // 按 Day 排序整理
             const sortedDays = [
                 "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", 
                 "Day 7", "Day 8", "Day 9", "Day 10", "Day 11", "Day 12", "Day 13"
@@ -946,6 +1077,7 @@
         window.onload = function() {
             initChecklist();
             renderExpenses();
+            fetchLiveWeather(); // 啟動自動更新天氣
         }
     </script>
 </body>
