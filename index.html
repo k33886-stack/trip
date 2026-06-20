@@ -91,7 +91,7 @@
         .overview-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 12px;
             font-size: 13px;
         }
 
@@ -100,6 +100,12 @@
             padding: 12px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
+        }
+
+        .overview-item.full-width {
+            grid-column: span 2;
+            background-color: #F0F4F8;
+            border-left: 4px solid var(--primary);
         }
 
         .overview-item span {
@@ -112,6 +118,16 @@
         .overview-item strong {
             color: var(--text-dark);
             font-weight: 500;
+        }
+
+        .flight-badge {
+            display: inline-block;
+            font-size: 10px;
+            background: #2C699A;
+            color: #FFF;
+            padding: 1px 5px;
+            border-radius: 4px;
+            margin-right: 4px;
         }
 
         /* 天氣觀測站 */
@@ -420,19 +436,29 @@
 
     <div class="hero-banner">
         <h1>跨越星月之國</h1>
-        <p>土耳其經典 13 日公路自駕全紀錄互動指南</p>
+        <p>土耳其經典 13 日自駕全紀錄互動指南</p>
     </div>
 
     <div class="container">
         
         <!-- 行程總覽與即時天氣 -->
         <div class="overview-card">
-            <div class="overview-title">📋 壯遊行程總覽</div>
+            <div class="overview-title">✈️ 航班與行程總覽</div>
             <div class="overview-grid">
-                <div class="overview-item"><span>自駕線路</span><strong>逆時針公路大圓環</strong></div>
-                <div class="overview-item"><span>出發時間</span><strong>07/12 ~ 07/24</strong></div>
+                <div class="overview-item"><span>去程日期</span><strong>07/12 (星期日)</strong></div>
+                <div class="overview-item"><span>回程日期</span><strong>07/23 (星期四)</strong></div>
+                
+                <div class="overview-item full-width">
+                    <span>🛫 去程航班 (台北 TPE ➔ 伊斯坦堡 IST)</span>
+                    <strong><span class="flight-badge">TK125</span> 09:35 ➔ 17:10 <small style="color:var(--text-light); font-weight:300;">(飛行 12h 35m)</small></strong>
+                </div>
+                <div class="overview-item full-width">
+                    <span>🛬 回程航班 (伊斯坦堡 IST ➔ 台北 TPE)</span>
+                    <strong><span class="flight-badge">TK124</span> 15:50 ➔ 08:05 <small style="color:#C0392B; font-weight:500;">(次日抵達 / 飛行 11h 15m)</small></strong>
+                </div>
+
                 <div class="overview-item"><span>行程總天數</span><strong>13 天 12 夜</strong></div>
-                <div class="overview-item"><span>下榻飯店數</span><strong>共計 8 間精選住宿</strong></div>
+                <div class="overview-item"><span>時差備忘</span><strong>土耳其當地為 GMT+3 (臺灣 -5hr)</strong></div>
             </div>
 
             <div class="weather-box">
@@ -474,9 +500,8 @@
                             <a href="https://maps.google.com?q=Isport+Istanbul+AirPort+Hotel" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:00~09:35</span><div class="timeline-activity">臺灣桃園國際機場<a href="https://maps.google.com?q=臺灣桃園國際機場" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc"><strong>（以下皆調整為土耳其當地時間，時差 -5 小時）</strong></div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:35~17:10</span><div class="timeline-activity">飛機跨國飛行 (12時35分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:10~18:30</span><div class="timeline-activity">Istanbul Airport 伊斯坦堡機場<a href="https://maps.google.com?q=Istanbul+Airport" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">順利降落，辦理入境並至機場櫃檯取車</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:35~17:10</span><div class="timeline-activity">土耳其航空 TK125 跨國飛行 (12時35分)</div><div class="timeline-desc">桃園機場(TPE) 出發 ➔ 直飛伊斯坦堡(IST)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:10~18:30</span><div class="timeline-activity">Istanbul Airport 伊斯坦堡機場<a href="https://maps.google.com?q=Istanbul+Airport" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc"><strong>（已切換為土耳其時間，時差 -5 小時）</strong> 順利降落，辦理入境並至機場櫃檯取車</div></div>
                             <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">18:30~19:00</span><div class="timeline-activity">開車前往機場周邊飯店 (30分)</div></div>
                             <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:00~21:00</span><div class="timeline-activity">飯店 Check-in 與周邊覓食休息</div></div>
                         </div>
@@ -737,9 +762,9 @@
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">11:35~12:35</span><div class="timeline-activity">整理行李，自駕開車前往伊斯坦堡國際機場 (1時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">11:35~12:35</span><div class="timeline-activity">整理行李，開車前往伊斯坦堡國際機場 (1時)</div></div>
                             <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:35~14:00</span><div class="timeline-activity">機場櫃檯辦理還車手續、確認車況</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:00~17:10</span><div class="timeline-activity">機場托運行李、Check-in，起飛返台</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:50~</span><div class="timeline-activity">土耳其航空 TK124 起飛返台</div><div class="timeline-desc">伊斯坦堡(IST) 出發 ➔ 直飛台北桃園(TPE)，預計飛行 11h 15m</div></div>
                         </div>
                     </div>
                 </div>
@@ -757,7 +782,7 @@
                 <div class="day-content">
                     <div class="day-inner-padding">
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:05~</span><div class="timeline-activity">臺灣桃園國際機場入境，回到溫暖的家</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">~08:05</span><div class="timeline-activity">臺灣桃園國際機場入境</div><div class="timeline-desc">順利抵達，回到溫暖的家！</div></div>
                         </div>
                     </div>
                 </div>
@@ -815,26 +840,67 @@
             </div>
 
             <div class="checklist-group">
-                <div class="checklist-cat-title">✨ 內行小眾與私藏好物（特色不撞款）</div>
+                <div class="checklist-cat-title">✨ 內行小眾與私藏好物（特色不撞款 10 選）</div>
+                
+                <!-- 1 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">保養私藏</span>
-                    <div class="gift-title">Dalan d'Olive 橄欖油古法皂 / 護手霜</div>
+                    <div class="gift-title">1. Dalan d'Olive 橄欖油古法皂 / 護手霜</div>
                     <div class="gift-desc">愛琴海沿岸盛產橄欖。這個傳承百年的老牌價格親民，其古法純橄欖皂洗完保濕不緊繃，是內行人才懂掃貨的高CP值隱藏神物。</div>
                 </div>
+                <!-- 2 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">純淨美妝</span>
-                    <div class="gift-title">Gulsha 古爾莎大馬士革玫瑰水</div>
+                    <div class="gift-title">2. Gulsha 古爾莎大馬士革玫瑰水</div>
                     <div class="gift-desc">土耳其的 Isparta 是全球大馬士革玫瑰聖地。Gulsha 的玫瑰水成分極度純淨，在當地藥局（Eczane）買價格超划算！</div>
                 </div>
+                <!-- 3 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">手工藝術</span>
-                    <div class="gift-title">卡帕多奇亞手繪陶瓷 / 浮石工藝</div>
-                    <div class="gift-desc">在阿瓦諾斯（Avanos）小鎮擁有陶藝傳統。手工繪製的隔熱墊、杯盤纹路立體，每個都是獨一無二的藝術品。</div>
+                    <div class="gift-title">3. 卡帕多奇亞手繪陶瓷 / 浮石工藝</div>
+                    <div class="gift-desc">阿瓦諾斯（Avanos）小鎮的陶藝傳統。手工繪製的隔熱墊、杯盤纹路立體，每個都是獨一無二的藝術品。</div>
                 </div>
+                <!-- 4 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">實用香氛</span>
-                    <div class="gift-title">土耳其古龍水 (Kolonya)</div>
+                    <div class="gift-title">4. 土耳其古龍水 (Kolonya)</div>
                     <div class="gift-desc">當地傳統待客禮儀。經典的檸檬香氣酒精濃度高達 70%~80%，常用來洗手、消毒兼提神，小瓶隨身攜帶非常實用。</div>
+                </div>
+                <!-- 5 -->
+                <div class="gift-card">
+                    <span class="gift-tag niche">天然蜂蜜</span>
+                    <div class="gift-title">5. Balparmak 松樹蜜 (Pine Honey)</div>
+                    <div class="gift-desc">土耳其是全球最大的松樹蜜產地（主要在愛琴海區）。這種蜜由蜜蜂採集松樹針葉上的蜜露製成，顏色較深，帶有獨特的木質清香，相較花蜜更不易結晶且別具風味。</div>
+                </div>
+                <!-- 6 -->
+                <div class="gift-card">
+                    <span class="gift-tag niche">天然保養</span>
+                    <div class="gift-title">6. Bebak 苦杏仁霜 (Acı Badem Sütü)</div>
+                    <div class="gift-desc">創立於 1895 年的傳統國民品牌，包裝帶有復古的優雅感。其苦杏仁潔面乳和滋潤霜擁有極佳的保濕力，淡淡的杏仁香氣是土耳其好幾代女性的共同記憶。</div>
+                </div>
+                <!-- 7 -->
+                <div class="gift-card">
+                    <span class="gift-tag niche">在地零食</span>
+                    <div class="gift-title">7. Tadım 烘焙南瓜子 (Kabak Çekirdeği)</div>
+                    <div class="gift-desc">除了開心果，土耳其人極度熱愛啃南瓜子。Tadım 是當地的堅果大廠，他們的鹽烤南瓜子顆粒飽滿、香脆無比，是自駕公路上最完美的嘴饞良伴。</div>
+                </div>
+                <!-- 8 -->
+                <div class="gift-card">
+                    <span class="gift-tag niche">果香風味</span>
+                    <div class="gift-title">8. 番紅花城石榴 / 番紅花水果茶包</div>
+                    <div class="gift-desc">在番紅花城（Safranbolu）除了買高檔的番紅花香料外，非常推薦去老街購買在地茶行調配的番紅花紅茶或濃郁的石榴果茶包，香氣層次比普通超市款更豐富。</div>
+                </div>
+                <!-- 9 -->
+                <div class="gift-card">
+                    <span class="gift-tag niche">手作織品</span>
+                    <div class="gift-title">9. 鄂圖曼復古圖騰針織化妝包 / 零錢包</div>
+                    <div class="gift-desc">在伊斯坦堡老城區或市集常見的手工織布小包，佈滿複雜華麗的土耳其地毯幾何圖騰。一個只要銅板價，質感厚實且極具異國情調，是送給姐妹淘的最強不撞款小禮物。</div>
+                </div>
+                <!-- 10 -->
+                <div class="gift-card">
+                    <span class="gift-tag niche">廚房香料</span>
+                    <div class="gift-title">10. Pul Biber (土耳其片狀紅辣椒粉)</div>
+                    <div class="gift-desc">土耳其餐桌上不可或缺的靈魂香料！這種辣椒粉帶有淡淡的橄欖油香氣與煙燻微鹹味，辣度溫和、香氣醇厚，回台後不管是撒在烤肉、披薩還是拌麵上都超級百搭。</div>
                 </div>
             </div>
         </div>
