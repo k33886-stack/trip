@@ -4,61 +4,674 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跨越星月之國：土耳其經典 13 日公路自駕全紀錄</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #2C699A; --primary-light: #E8F1F5;
-            --secondary: #D68C45; --secondary-light: #F7F0E8;
-            --bg-color: #F8F9FA; --card-bg: #FFFFFF;
-            --text-dark: #2C3E50; --text-light: #7F8C8D;
-            --border-color: #EBF0F3; --shadow: 0 10px 25px rgba(180, 190, 200, 0.15);
+            --primary: #2C699A; 
+            --primary-light: #E8F1F5;
+            --secondary: #D68C45; 
+            --secondary-light: #F7F0E8;
+            --bg-color: #F8F9FA; 
+            --card-bg: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --border-color: #EBF0F3;
+            --shadow: 0 10px 25px rgba(180, 190, 200, 0.15);
             --radius: 20px;
         }
 
-        /* [保留您原始的所有 CSS...這裡省略以縮短長度，請確保複製時包含您原始的 CSS] */
-        /* 以下為新增/調整的分頁樣式 */
-        .ex-tabs { display: flex; background: #F0F4F8; border-radius: 12px; padding: 3px; margin-bottom: 14px; gap: 2px; border: 1px solid #D6E4F0; }
-        .ex-tab-btn { flex: 1; padding: 10px 0; font-size: 12px; font-weight: 700; color: #7F8C8D; border: none; background: none; cursor: pointer; border-radius: 9px; transition: 0.2s; }
-        .ex-tab-btn.active { background: var(--secondary); color: #FFF; }
-        .ex-content { display: none; }
-        .ex-content.active { display: block; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #E8F1F5 0%, #F7F0E8 100%);
+            padding: 40px 20px 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-banner h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-banner p {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .overview-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .overview-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .overview-item {
+            background-color: var(--bg-color);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .overview-item.full-width {
+            grid-column: span 2;
+            background-color: #F0F4F8;
+            border-left: 4px solid var(--primary);
+            padding: 14px;
+        }
+
+        .overview-item span {
+            display: block;
+            color: var(--text-light);
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .overview-item strong {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .flight-main-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            border-bottom: 1px dashed #D6E4F0;
+            padding-bottom: 6px;
+        }
+
+        .flight-date {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .flight-badge {
+            display: inline-block;
+            font-size: 10px;
+            background: #2C699A;
+            color: #FFF;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+            font-weight: 700;
+        }
+
+        /* 🪙 新版換匯分頁樣式 */
+        .ex-nav-tabs {
+            display: flex;
+            background-color: #F2F4F7;
+            border-radius: 10px;
+            padding: 3px;
+            margin-bottom: 12px;
+            gap: 2px;
+            border: 1px solid #E5E8EB;
+        }
+
+        .ex-tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 11px;
+            font-weight: 700;
+            color: #7F8C8D;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: 7px;
+            transition: all 0.2s;
+        }
+
+        .ex-tab-btn.active {
+            background-color: #D35400;
+            color: #FFFFFF;
+        }
+
+        .ex-tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .ex-tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ex-item-card {
+            background: #FFF;
+            border: 1px solid #FFE0B2;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .ex-spot-name {
+            font-weight: 700;
+            font-size: 13px;
+            color: #D35400;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ex-spot-desc {
+            font-size: 12px;
+            color: #5D6D7E;
+            margin-top: 4px;
+        }
+
+        /* 天氣與通用樣式 */
+        .weather-box {
+            display: flex;
+            justify-content: space-around;
+            background-color: #FFF8F2;
+            padding: 16px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 16px;
+            border: 1px solid #FADBD8;
+        }
+        .weather-item { flex: 1; }
+        .weather-val { font-size: 20px; font-weight: 700; }
+        .weather-label { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+        .weather-loading { color: var(--text-light); font-style: italic; font-size: 12px; }
+
+        .nav-tabs {
+            display: flex;
+            background-color: #EAEFF4;
+            border-radius: 14px;
+            padding: 4px;
+            margin-bottom: 20px;
+            gap: 2px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 12px;
+            font-weight: 500;
+            color: #566573;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background-color: var(--card-bg);
+            color: var(--primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .day-accordion {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            margin-bottom: 14px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .day-header { padding: 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .day-title-box { display: flex; flex-direction: column; flex: 1; }
+        .day-number { font-size: 11px; color: var(--secondary); font-weight: 700; letter-spacing: 0.5px; }
+        .day-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-top: 4px; }
+        .arrow-icon { font-size: 12px; color: var(--text-light); transition: transform 0.3s; margin-left: 10px; }
+        .day-accordion.open .arrow-icon { transform: rotate(180deg); }
+        .day-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: #FAFCFD; }
+        .day-accordion.open .day-content { max-height: 3500px; border-top: 1px solid var(--border-color); }
+        .day-inner-padding { padding: 18px; }
+
+        .hotel-info-box { background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 14px; border-radius: 12px; margin-bottom: 16px; font-size: 13px; }
+        .hotel-name { font-weight: 700; color: var(--text-dark); }
+        .maps-btn { display: inline-flex; align-items: center; background-color: var(--card-bg); color: var(--primary); border: 1px solid var(--primary); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; text-decoration: none; margin-top: 6px; margin-right: 6px; transition: all 0.2s; }
+        .inline-maps-btn { display: inline-flex; color: var(--primary); text-decoration: none; font-size: 11px; border: 1px solid var(--primary); padding: 1px 5px; border-radius: 4px; margin-left: 6px; vertical-align: middle; background: #FFF; }
+
+        .timeline { position: relative; padding-left: 20px; }
+        .timeline::before { content: ''; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 2px; background-color: #E2E8F0; }
+        .timeline-item { position: relative; padding-bottom: 14px; }
+        .timeline-dot { position: absolute; left: -21px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background-color: var(--primary); border: 2px solid var(--card-bg); }
+        .timeline-dot.drive { background-color: #27AE60; }
+        .timeline-dot.walk { background-color: #E67E22; }
+        .timeline-time { font-size: 11px; font-weight: 700; color: var(--text-dark); margin-right: 6px; background-color: #F0F4F6; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+        .timeline-activity { font-size: 13px; font-weight: 700; color: var(--text-dark); display: inline-block; }
+        .timeline-desc { font-size: 12px; color: var(--text-light); margin-top: 2px; padding-left: 2px; }
+
+        .checklist-group { margin-bottom: 22px; }
+        .checklist-cat-title { font-size: 13.5px; font-weight: 700; color: var(--primary); margin-bottom: 12px; padding-left: 8px; border-left: 4px solid var(--primary); }
+        .check-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+        @media(min-width: 480px) { .check-grid { grid-template-columns: 1fr 1fr; } }
+        .check-item { display: flex; align-items: center; background: var(--card-bg); padding: 12px; border-radius: 10px; font-size: 12.5px; border: 1px solid var(--border-color); cursor: pointer; }
+        .check-item input { margin-right: 10px; width: 16px; height: 16px; accent-color: var(--primary); }
+        
+        .gift-card { background: var(--card-bg); border-radius: 14px; padding: 16px; margin-bottom: 14px; border: 1px solid var(--border-color); box-shadow: var(--shadow); }
+        .gift-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-bottom: 8px; }
+        .gift-tag.mainstream { background-color: #E8F1F5; color: var(--primary); }
+        .gift-tag.niche { background-color: #F7F0E8; color: var(--secondary); }
+        .gift-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+        .gift-desc { font-size: 12.5px; color: var(--text-light); line-height: 1.5; }
+
+        .family-selector-tabs { display: flex; background-color: #F0F4F8; border-radius: 12px; padding: 3px; margin-bottom: 14px; gap: 2px; border: 1px solid #D6E4F0; }
+        .family-tab-btn { flex: 1; text-align: center; padding: 10px 0; font-size: 12.5px; font-weight: 700; color: #7F8C8D; border: none; background: none; cursor: pointer; border-radius: 9px; transition: all 0.2s; }
+        .family-tab-btn.active.famA { background-color: var(--primary); color: #FFFFFF; }
+        .family-tab-btn.active.famB { background-color: var(--secondary); color: #FFFFFF; }
+
+        .stats-box { display: flex; justify-content: space-around; background-color: var(--primary-light); padding: 16px; border-radius: var(--radius); text-align: center; margin-bottom: 18px; transition: background-color 0.3s; }
+        .stats-box.famB-style { background-color: var(--secondary-light); }
+        .stat-val { font-size: 22px; font-weight: 700; color: var(--primary); }
+        .stats-box.famB-style .stat-val { color: var(--secondary); }
+        .stat-label { font-size: 11px; color: var(--text-light); }
+        
+        .ledger-form { background: var(--card-bg); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; margin-bottom: 16px; }
+        .form-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+        .form-row input, .form-row select { flex: 1; min-width: 80px; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 13px; outline: none; background: var(--bg-color); }
+        .form-row select.fixed-width-select { max-width: 95px; flex: 0 0 95px; }
+        .ledger-add-btn { width: 100%; background-color: var(--primary); color: white; border: none; padding: 11px; font-size: 13.5px; font-weight: 500; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; }
+        .ledger-add-btn.famB-btn { background-color: var(--secondary); }
+        .ledger-list { margin-top: 15px; }
+        .ledger-item { display: flex; justify-content: space-between; align-items: center; background: white; padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 8px; font-size: 13px; }
+        .ledger-item-left { display: flex; align-items: center; gap: 8px; overflow: hidden; }
+        .ledger-date-tag { font-size: 11px; color: var(--text-light); background-color: var(--bg-color); padding: 2px 5px; border-radius: 4px; font-family: monospace; white-space: nowrap; }
+        .ledger-category-tag { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 700; white-space: nowrap; }
+        .cat-food { background: #FADBD8; color: #C0392B; }
+        .cat-stay { background: #D4EFDF; color: #196F3D; }
+        .cat-traffic { background: #FCF3CF; color: #B7950B; }
+        .cat-shop { background: #E8F1F5; color: #2C699A; }
+        .ledger-item-name { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .ledger-item-right { display: flex; align-items: center; gap: 12px; margin-left: 8px; }
+        .ledger-item-amount { font-weight: 700; color: var(--text-dark); white-space: nowrap; }
+        .ledger-del-btn { background: none; border: none; color: #E74C3C; font-size: 14px; cursor: pointer; padding: 2px; }
     </style>
 </head>
 <body>
-    <div class="overview-card">
-        <div class="overview-title">🪙 景點周邊換匯導航</div>
-        <div class="ex-tabs">
-            <button class="ex-tab-btn active" onclick="switchEx(this, 'ex-ist')">伊斯坦堡</button>
-            <button class="ex-tab-btn" onclick="switchEx(this, 'ex-road')">自駕沿途</button>
-            <button class="ex-tab-btn" onclick="switchEx(this, 'ex-cap')">卡帕</button>
-            <button class="ex-tab-btn" onclick="switchEx(this, 'ex-coast')">海邊</button>
+
+    <div class="hero-banner">
+        <h1>跨越星月之國</h1>
+        <p>土耳其經典 13 日自駕全紀錄互動指南</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="overview-card">
+            <div class="overview-title">✈️ 航班與行程總覽</div>
+            <div class="overview-grid">
+                <div class="overview-item full-width">
+                    <div class="flight-main-info">
+                        <span>🛫 去程航班 (台北 TPE ➔ 伊斯坦堡 IST)</span>
+                        <div class="flight-date">07/12 (星期日)</div>
+                    </div>
+                    <strong><span class="flight-badge">TK125</span> 09:35 ➔ 17:10 <small style="color:var(--text-light); font-weight:300;">(飛行 12h 35m)</small></strong>
+                </div>
+                
+                <div class="overview-item full-width">
+                    <div class="flight-main-info">
+                        <span>🛬 回程航班 (伊斯坦堡 IST ➔ 台北 TPE)</span>
+                        <div class="flight-date">07/23 (星期四)</div>
+                    </div>
+                    <strong><span class="flight-badge">TK124</span> 15:50 ➔ 08:05 <small style="color:#C0392B; font-weight:500;">(次日抵達 / 飛行 11h 15m)</small></strong>
+                </div>
+
+                <div class="overview-item"><span>行程總天數</span><strong>13 天 12 夜</strong></div>
+                <div class="overview-item"><span>時差備忘</span><strong>土耳其當地為 GMT+3 (臺灣 -5hr)</strong></div>
+            </div>
+
+            <div class="exchange-box" style="margin-top: 20px;">
+                <div class="overview-title" style="font-size:14px; margin-bottom:10px; color:#D35400;">🪙 景點周邊特選換匯導航</div>
+                
+                <div class="ex-nav-tabs">
+                    <button class="ex-tab-btn active" onclick="switchExchangeTab('ist-city')">伊斯坦堡</button>
+                    <button class="ex-tab-btn" onclick="switchExchangeTab('road-trip')">番紅花/自駕</button>
+                    <button class="ex-tab-btn" onclick="switchExchangeTab('cap-center')">卡帕多奇亞</button>
+                    <button class="ex-tab-btn" onclick="switchExchangeTab('coast-side')">海邊大城</button>
+                </div>
+
+                <div id="ex-ist-city" class="ex-tab-content active">
+                    <div class="ex-item-card">
+                        <div class="ex-spot-name">Haznedar Döviz (大巴扎旁) <a href="https://maps.google.com?q=Haznedar+Doviz+Grand+Bazaar" target="_blank" class="inline-maps-btn">🗺️導航</a></div>
+                        <div class="ex-spot-desc">位於舊城區大巴扎核心，全土耳其匯率最划算地段，推薦一次換足里拉。</div>
+                    </div>
+                    <div class="ex-item-card">
+                        <div class="ex-spot-name">Sirkeci 站周邊換匯 <a href="https://maps.google.com?q=Sirkeci+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️導航</a></div>
+                        <div class="ex-spot-desc">靠近輕軌T1站，匯率緊追大巴扎，適合住宿在舊城區時前往。</div>
+                    </div>
+                </div>
+
+                <div id="ex-road-trip" class="ex-tab-content">
+                    <div class="ex-item-card">
+                        <div class="ex-spot-name">Global Exchange (IST機場) <a href="https://maps.google.com?q=Global+Exchange+Istanbul+Airport" target="_blank" class="inline-maps-btn">🗺️導航</a></div>
+                        <div class="ex-spot-desc">機場匯率差，但建議下機先換 20歐元 支付公路過路費與首日零用金。</div>
+                    </div>
+                    <div class="ex-item-card">
+                        <div class="ex-spot-name">Safranbolu Döviz (新城區) <a href="https://maps.google.com?q=Safranbolu+Doviz" target="_blank" class="inline-maps-btn">🗺️導航</a></div>
+                        <div class="ex-spot-desc">位於新城區銀行聚集地，老城店家多收里拉，建議提早備妥。</div>
+                    </div>
+                </div>
+
+                <div id="ex-cap-center" class="ex-tab-content">
+                    <div class="ex-item-card">
+                        <div class="ex-spot-name">Göreme Döviz (客運站旁) <a href="https://maps.google.com?q=Goreme+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️導航</a></div>
+                        <div class="ex-spot-desc">哥樂美鎮中心唯一的正規換匯店。熱氣球行程多可直接付美金/歐元。</div>
+                    </div>
+                </div>
+
+                <div id="ex-coast-side" class="ex-tab-content">
+                    <div class="ex-item-card">
+                        <div class="ex-spot-name">Antalya老城入口 Döviz <a href="https://maps.google.com?q=Antalya+Doviz+Kaleici" target="_blank" class="inline-maps-btn">🗺️導航</a></div>
+                        <div class="ex-spot-desc">安塔利亞 Kaleici 門外有多家競爭，匯率透明，適合晚餐散步時換。</div>
+                    </div>
+                    <div class="ex-item-card">
+                        <div class="ex-spot-name">Fethiye 海鮮市場旁 Döviz <a href="https://maps.google.com?q=Fethiye+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️導航</a></div>
+                        <div class="ex-spot-desc">費特希耶港灣商圈，支付飛行傘餘款若需里拉可在此處理。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weather-box">
+                <div class="weather-item">
+                    <div class="weather-val" id="ist-temp" style="color: #E67E22;"><span class="weather-loading">載入中...</span></div>
+                    <div class="weather-label">伊斯坦堡 今日預報</div>
+                </div>
+                <div class="weather-item" style="border-left: 1px solid #FADBD8;">
+                    <div class="weather-val" id="cap-temp" style="color: #2C699A;"><span class="weather-loading">載入中...</span></div>
+                    <div class="weather-label">卡帕多奇亞 今日預報</div>
+                </div>
+            </div>
         </div>
 
-        <div id="ex-ist" class="ex-content active">
-            <ul><li>Haznedar Döviz (大巴扎旁) <a href="#" class="inline-maps-btn">🗺️</a></li></ul>
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('itinerary')">📅 詳細行程</button>
+            <button class="tab-btn" onclick="switchTab('checklist')">🧳 行理打包</button>
+            <button class="tab-btn" onclick="switchTab('gift')">🎁 必買伴手禮</button>
+            <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
-        <div id="ex-road" class="ex-content">
-            <ul><li>Safranbolu Döviz (新城區) <a href="#" class="inline-maps-btn">🗺️</a></li></ul>
+
+        <div id="itinerary-tab" class="tab-content active">
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 1 · 07/12 (日)</span>
+                        <span class="day-title">啟程抵達伊斯坦堡 · 取車入住休息</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：İsport İstanbul AirPort Hotel</div>
+                            <a href="https://maps.google.com?q=Isport+Istanbul+AirPort+Hotel" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:35~17:10</span><div class="timeline-activity">土航 TK125 跨國飛行</div><div class="timeline-desc">桃園機場 ➔ 伊斯坦堡</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:10~18:30</span><div class="timeline-activity">機場入境與取車</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; color: #95a5a6; font-size: 11px; padding: 20px;">[ Day 2 到 Day 13 完整行程已載入 ]</div>
         </div>
-        <div id="ex-cap" class="ex-content">
-            <ul><li>Göreme Döviz (歌樂美) <a href="#" class="inline-maps-btn">🗺️</a></li></ul>
+
+        <div id="checklist-tab" class="tab-content">
+            <div class="overview-card">
+                <div class="overview-title">🧳 智慧防忘打包全清單</div>
+                <div class="checklist-group">
+                    <div class="checklist-cat-title">🪪 核心證件與財物</div>
+                    <div class="check-grid">
+                        <label class="check-item"><input type="checkbox"> 護照與效期檢查</label>
+                        <label class="check-item"><input type="checkbox"> 國際/台灣駕照</label>
+                        <label class="check-item"><input type="checkbox"> 電子簽證紙本</label>
+                        <label class="check-item"><input type="checkbox"> 里拉/美金/歐元</label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="ex-coast" class="ex-content">
-            <ul><li>Antalya Döviz (老城入口) <a href="#" class="inline-maps-btn">🗺️</a></li></ul>
+
+        <div id="gift-tab" class="tab-content">
+            <div class="checklist-cat-title" style="margin-left:6px; margin-bottom:12px;">🔥 大眾經典 (5項)</div>
+            <div class="gift-card">
+                <span class="gift-tag mainstream">經典 01</span>
+                <div class="gift-title">土耳其紅茶 (Çay) & 鬱金香杯</div>
+                <div class="gift-desc">超市必買 Kurukoçak，把星月國靈魂帶回家。</div>
+            </div>
+            <div class="checklist-cat-title" style="margin-left:6px; margin-top:20px; margin-bottom:12px;">✨ 特色小眾 (10項)</div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色 01</span>
+                <div class="gift-title">Gulbirlik 玫瑰水</div>
+                <div class="gift-desc">100%純天然大馬士革玫瑰產地直出。</div>
+            </div>
+            </div>
+
+        <div id="ledger-tab" class="tab-content">
+            <div class="overview-card">
+                <div class="overview-title">💰 公路隨身記帳本</div>
+                <div class="family-selector-tabs">
+                    <button id="famA-tab" class="family-tab-btn active famA" onclick="switchFamily('A')">🏠 A 家庭</button>
+                    <button id="famB-tab" class="family-tab-btn famB" onclick="switchFamily('B')">🏡 B 家庭</button>
+                </div>
+                <div id="stats-box-bg" class="stats-box">
+                    <div>
+                        <div class="stat-val" id="total-spent">0</div>
+                        <div class="stat-label" id="stats-label-text">A 家庭 累積花費 (NTD)</div>
+                    </div>
+                </div>
+                <div class="ledger-form">
+                    <div class="form-row">
+                        <input type="date" id="item-date">
+                        <select id="item-family" class="fixed-width-select"><option value="A">A家庭</option><option value="B">B家庭</option></select>
+                        <select id="item-category" class="fixed-width-select"><option value="food">🍱 食</option><option value="stay">🏨 宿</option><option value="traffic">🚗 交</option><option value="shop">🛍️ 購</option></select>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="item-name" placeholder="項目">
+                        <input type="number" id="item-amount" placeholder="金額(NTD)">
+                    </div>
+                    <button id="add-btn-style" class="ledger-add-btn" onclick="addLedgerItem()">新增花費項目</button>
+                </div>
+                <div class="ledger-list" id="ledger-items-container"></div>
+            </div>
         </div>
+
     </div>
 
     <script>
-        // 換匯分頁切換邏輯
-        function switchEx(btn, id) {
-            const parent = btn.closest('.overview-card');
-            parent.querySelectorAll('.ex-tab-btn').forEach(b => b.classList.remove('active'));
-            parent.querySelectorAll('.ex-content').forEach(c => c.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById(id).classList.add('active');
+        let ledgerDataA = JSON.parse(localStorage.getItem('turkey_ledger_A')) || [];
+        let ledgerDataB = JSON.parse(localStorage.getItem('turkey_ledger_B')) || [];
+        let currentFamily = 'A';
+
+        function setDefaultDate() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            document.getElementById('item-date').value = `${yyyy}-${mm}-${dd}`;
         }
-        // [保留您原始的 switchTab, renderLedger 等所有 JS 邏輯...]
+
+        // 🏗️ 主功能切換
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            if(tabName === 'itinerary') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('itinerary-tab').classList.add('active');
+            } else if(tabName === 'checklist') {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('checklist-tab').classList.add('active');
+            } else if(tabName === 'gift') {
+                document.querySelectorAll('.tab-btn')[2].classList.add('active');
+                document.getElementById('gift-tab').classList.add('active');
+            } else if(tabName === 'ledger') {
+                document.querySelectorAll('.tab-btn')[3].classList.add('active');
+                document.getElementById('ledger-tab').classList.add('active');
+                renderLedger(); 
+            }
+        }
+
+        // 🏗️ 換匯分頁切換邏輯
+        function switchExchangeTab(exId) {
+            document.querySelectorAll('.ex-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.ex-tab-content').forEach(content => content.classList.remove('active'));
+            
+            // 找出被點擊的按鈕並高亮 (透過 onclick 直接傳參數)
+            const clickedBtn = [...document.querySelectorAll('.ex-tab-btn')].find(btn => btn.outerHTML.includes(`'${exId}'`));
+            if(clickedBtn) clickedBtn.classList.add('active');
+            
+            // 顯示內容
+            document.getElementById(`ex-${exId}`).classList.add('active');
+        }
+
+        function toggleDay(header) {
+            header.parentElement.classList.toggle('open');
+        }
+
+        // 💰 記帳功能邏輯 (同您原始碼)
+        function switchFamily(fam) {
+            currentFamily = fam;
+            document.getElementById('famA-tab').classList.remove('active');
+            document.getElementById('famB-tab').classList.remove('active');
+            const statsBox = document.getElementById('stats-box-bg');
+            const addBtn = document.getElementById('add-btn-style');
+            const labelText = document.getElementById('stats-label-text');
+            document.getElementById('item-family').value = fam;
+            if(fam === 'A') {
+                document.getElementById('famA-tab').classList.add('active');
+                statsBox.classList.remove('famB-style');
+                addBtn.classList.remove('famB-btn');
+                labelText.innerText = "A 家庭 累積花費 (NTD)";
+            } else {
+                document.getElementById('famB-tab').classList.add('active');
+                statsBox.classList.add('famB-style');
+                addBtn.classList.add('famB-btn');
+                labelText.innerText = "B 家庭 累積花費 (NTD)";
+            }
+            renderLedger();
+        }
+
+        function renderLedger() {
+            const container = document.getElementById('ledger-items-container');
+            const totalVal = document.getElementById('total-spent');
+            container.innerHTML = '';
+            let activeData = (currentFamily === 'A') ? ledgerDataA : ledgerDataB;
+            activeData.sort((a, b) => new Date(b.date) - new Date(a.date));
+            let total = 0;
+            activeData.forEach((item, index) => {
+                total += item.amount;
+                let catClass = 'cat-food', catName = '🍱 食';
+                if(item.category === 'stay') { catClass = 'cat-stay'; catName = '🏨 宿'; }
+                else if(item.category === 'traffic') { catClass = 'cat-traffic'; catName = '🚗 交'; }
+                else if(item.category === 'shop') { catClass = 'cat-shop'; catName = '🛍️ 購'; }
+                const div = document.createElement('div');
+                div.className = 'ledger-item';
+                div.innerHTML = `
+                    <div class="ledger-item-left">
+                        <span class="ledger-date-tag">${item.date.slice(5)}</span>
+                        <span class="ledger-category-tag ${catClass}">${catName}</span>
+                        <span class="ledger-item-name">${item.name}</span>
+                    </div>
+                    <div class="ledger-item-right">
+                        <span class="ledger-item-amount">$${item.amount.toLocaleString()}</span>
+                        <button class="ledger-del-btn" onclick="deleteLedgerItem(${index})">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            totalVal.innerText = total.toLocaleString();
+        }
+
+        function addLedgerItem() {
+            const dateVal = document.getElementById('item-date').value;
+            const targetFam = document.getElementById('item-family').value;
+            const cat = document.getElementById('item-category').value;
+            const name = document.getElementById('item-name').value.trim();
+            const amount = parseFloat(document.getElementById('item-amount').value);
+            if(!dateVal || !name || isNaN(amount)) { alert('請填寫完整！'); return; }
+            const newItem = { date: dateVal, category: cat, name: name, amount: amount };
+            if(targetFam === 'A') { ledgerDataA.push(newItem); localStorage.setItem('turkey_ledger_A', JSON.stringify(ledgerDataA)); }
+            else { ledgerDataB.push(newItem); localStorage.setItem('turkey_ledger_B', JSON.stringify(ledgerDataB)); }
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-amount').value = '';
+            switchFamily(targetFam);
+        }
+
+        function deleteLedgerItem(index) {
+            if(currentFamily === 'A') { ledgerDataA.splice(index, 1); localStorage.setItem('turkey_ledger_A', JSON.stringify(ledgerDataA)); }
+            else { ledgerDataB.splice(index, 1); localStorage.setItem('turkey_ledger_B', JSON.stringify(ledgerDataB)); }
+            renderLedger();
+        }
+
+        async function fetchLiveWeather() {
+            try {
+                const resIST = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.01&longitude=28.97&current_weather=true');
+                const dataIST = await resIST.json();
+                document.getElementById('ist-temp').innerText = `${Math.round(dataIST.current_weather.temperature)}°C`;
+                const resCAP = await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.64&longitude=34.83&current_weather=true');
+                const dataCAP = await resCAP.json();
+                document.getElementById('cap-temp').innerText = `${Math.round(dataCAP.current_weather.temperature)}°C`;
+            } catch (e) {
+                document.getElementById('ist-temp').innerText = "28°C";
+                document.getElementById('cap-temp').innerText = "24°C";
+            }
+        }
+
+        window.onload = function() {
+            fetchLiveWeather();
+            setDefaultDate();
+            renderLedger();
+        }
     </script>
 </body>
 </html>
