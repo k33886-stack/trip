@@ -272,7 +272,7 @@
         }
 
         .day-accordion.open .day-content {
-            max-height: 2000px;
+            max-height: 3500px;
             border-top: 1px solid var(--border-color);
         }
 
@@ -601,7 +601,7 @@
                 <div class="overview-item full-width">
                     <div class="flight-main-info">
                         <span>🛬 回程航班 (伊斯坦堡 IST ➔ 台北 TPE)</span>
-                        <div class="flight-date">07/23 (星期死)</div>
+                        <div class="flight-date">07/23 (星期四)</div>
                     </div>
                     <strong><span class="flight-badge">TK124</span> 15:50 ➔ 08:05 <small style="color:#C0392B; font-weight:500;">(次日抵達 / 飛行 11h 15m)</small></strong>
                 </div>
@@ -625,7 +625,7 @@
         <!-- 功能分頁導覽 -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('itinerary')">📅 詳細行程</button>
-            <button class="tab-btn" onclick="switchTab('checklist')">🧳 行李打包</button>
+            <button class="tab-btn" onclick="switchTab('checklist')">🧳 行理打包</button>
             <button class="tab-btn" onclick="switchTab('gift')">🎁 必買伴手禮</button>
             <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
@@ -636,7 +636,7 @@
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">Day 1 · 07/12</span>
+                        <span class="day-number">Day 1 · 07/12 (日)</span>
                         <span class="day-title">啟程抵達伊斯坦堡 · 取車入住休息</span>
                     </div>
                     <div class="arrow-icon">▼</div>
@@ -649,9 +649,9 @@
                         </div>
                         <div class="timeline">
                             <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:35~17:10</span><div class="timeline-activity">土耳其航空 TK125 跨國飛行 (12時35分)</div><div class="timeline-desc">桃園機場(TPE) 出發 ➔ 直飛伊斯坦堡(IST)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:10~18:30</span><div class="timeline-activity">Istanbul Airport 伊斯坦堡機場<a href="https://maps.google.com?q=Istanbul+Airport" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc"><strong>（已切換為土耳其時間，時差 -5 小時）</strong> 順利降落，辦理入境並至機場櫃檯取車</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">18:30~19:00</span><div class="timeline-activity">開車前往機場周邊飯店 (30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:00~21:00</span><div class="timeline-activity">飯店 Check-in 與周邊覓食休息</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:10~18:30</span><div class="timeline-activity">伊斯坦堡機場辦理入境與取車<a href="https://maps.google.com?q=Istanbul+Airport" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc"><strong>（時差 -5 小時）</strong> 順利降落，辦理入境並至預約櫃檯辦理租車手續</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">18:30~19:00</span><div class="timeline-activity">開車前往機場周邊飯店休息 (車程約 30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:00~21:00</span><div class="timeline-activity">飯店 Check-in 與周邊覓食晚餐</div></div>
                         </div>
                     </div>
                 </div>
@@ -661,7 +661,7 @@
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">Day 2 · 07/13</span>
+                        <span class="day-number">Day 2 · 07/13 (一)</span>
                         <span class="day-title">長途征戰黑海 · 阿瑪斯拉海鮮與番紅花城</span>
                     </div>
                     <div class="arrow-icon">▼</div>
@@ -673,13 +673,12 @@
                             <a href="https://maps.google.com?q=Cesmeli+Konak+Kose+Hotel+Safranbolu" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">07:30~08:00</span><div class="timeline-activity">飯店出發</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:00~13:45</span><div class="timeline-activity">開車挑戰黑海線 (5時45分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:45~15:45</span><div class="timeline-activity">Must Mustafa Amca'nın Yeri 餐廳<a href="https://maps.google.com?q=Mustafa+Amca'nın+Yeri+-+Canlı+Balık+Restaurant" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">著名海鮮餐廳</div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:45~17:15</span><div class="timeline-activity">開車翻山前往古城 (1時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:15~17:45</span><div class="timeline-activity">番紅花城舊城區散策<a href="https://maps.google.com?q=Safranbolu+Old+Town" target="_blank" class="inline-maps-btn">地圖</a></div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">17:45~17:55</span><div class="timeline-activity">開車前往飯店 (10分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:55~18:25</span><div class="timeline-activity">飯店 Check-in 休息</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">07:30~08:00</span><div class="timeline-activity">飯店享用早餐後準時出發</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:00~13:45</span><div class="timeline-activity">開車挑戰黑海線 (車程約 5時45分)</div><div class="timeline-desc">沿途欣賞公路風光，中途於服務區短暫休息</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:45~15:45</span><div class="timeline-activity">阿瑪斯拉海鮮午餐 (Mustafa Amca'nın Yeri)<a href="https://maps.google.com?q=Mustafa+Amca'nın+Yeri+-+Canlı+Balık+Restaurant" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">品嚐黑海現撈鮮魚料理與招牌沙拉</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:45~17:15</span><div class="timeline-activity">開車翻山前往世界遺產古城 (車程約 1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">17:15~17:45</span><div class="timeline-activity">番紅花城舊城區散策<a href="https://maps.google.com?q=Safranbolu+Old+Town" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">漫步於鄂圖曼風格老街，感受穿越時空的古老氛圍</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">17:45~17:55</span><div class="timeline-activity">開車前往飯店辦理入住 (10分)</div></div>
                         </div>
                     </div>
                 </div>
@@ -689,7 +688,7 @@
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
-                        <span class="day-number">Day 3 · 07/14</span>
+                        <span class="day-number">Day 3 · 07/14 (二)</span>
                         <span class="day-title">南下國父館 · 夢幻粉紅鹽湖 · 卡帕多奇亞日落</span>
                     </div>
                     <div class="arrow-icon">▼</div>
@@ -701,14 +700,251 @@
                             <a href="https://maps.google.com?q=Tulip+Cave+Suites+Goreme" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:00~12:15</span><div class="timeline-activity">開車前往安卡拉 (2時45分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:55~13:25</span><div class="timeline-activity">凱末爾紀念館<a href="https://maps.google.com?q=Anıtkabir" target="_blank" class="inline-maps-btn">地圖</a></div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:25~14:55</span><div class="timeline-activity">開車前進鹽湖 (1時30分)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:55~15:25</span><div class="timeline-activity">Tuz Gölü 粉紅鹽湖<a href="https://maps.google.com?q=Tuz+Gölü" target="_blank" class="inline-maps-btn">地圖</a></div></div>
-                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:25~17:25</span><div class="timeline-activity">開車前往卡帕多奇亞 (2時)</div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:25~17:45</span><div class="timeline-activity">惡魔眼樹觀景點<a href="https://maps.google.com?q=Evil+Eye+Tree+Uchisar" target="_blank" class="inline-maps-btn">地圖</a></div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:55~18:55</span><div class="timeline-activity">烏奇沙城堡<a href="https://maps.google.com?q=Uchisar+Castle" target="_blank" class="inline-maps-btn">地圖</a></div></div>
-                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:45~20:15</span><div class="timeline-activity">Goreme Sunset Viewpoint 看日落</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:00~12:15</span><div class="timeline-activity">開車前往首都安卡拉 (車程約 2時45分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:15~13:25</span><div class="timeline-activity">凱末爾紀念館 (國父紀念館)<a href="https://maps.google.com?q=Anıtkabir" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">參觀莊嚴的陵寢建築與歷史博物館</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:25~14:55</span><div class="timeline-activity">開車前進鹽湖 (車程約 1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">14:55~15:25</span><div class="timeline-activity">Tuz Gölü 粉紅鹽湖天空之鏡<a href="https://maps.google.com?q=Tuz+Gölü" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">漫步在白色與粉紅交織的鹽地上拍照</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:25~17:25</span><div class="timeline-activity">開車前往卡帕多奇亞 (車程約 2時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:25~17:45</span><div class="timeline-activity">惡魔眼樹觀景點短暫停留<a href="https://maps.google.com?q=Evil+Eye+Tree+Uchisar" target="_blank" class="inline-maps-btn">地圖</a></div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">17:55~18:55</span><div class="timeline-activity">烏奇沙城堡外圍巨岩拍照<a href="https://maps.google.com?q=Uchisar+Castle" target="_blank" class="inline-maps-btn">地圖</a></div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">19:45~20:15</span><div class="timeline-activity">Goreme Sunset Viewpoint 欣賞絕美日落</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 4 · 07/15 (三)</span>
+                        <span class="day-title">夢幻熱氣球 · 露天博物館與地下城探秘</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：Tulip Cave Suites</div>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">04:30~07:30</span><div class="timeline-activity">卡帕多奇亞熱氣球飛行體驗（視天氣）</div><div class="timeline-desc">在高空俯瞰精靈煙囪與晨曦美景</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">09:30~11:30</span><div class="timeline-activity">哥樂美露天博物館<a href="https://maps.google.com?q=Goreme+Open+Air+Museum" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">參觀開鑿在巨岩中的古老岩石教堂與壁畫</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:00~14:30</span><div class="timeline-activity">前往德林庫尤地下城 (車程約 40分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">14:30~16:00</span><div class="timeline-activity">德林庫尤深層地下城探秘<a href="https://maps.google.com?q=Derinkuyu+Underground+City" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">深入地下八層的避難古城，體驗鬼斧神工</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 5 · 07/16 (四)</span>
+                        <span class="day-title">古驛站西行 · 孔亞旋轉舞故鄉 · 安塔利亞</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：Dogan Hotel - Kaleici</div>
+                            <a href="https://maps.google.com?q=Dogan+Hotel+Antalya" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~11:00</span><div class="timeline-activity">沿絲路西行前往孔亞 (車程約 2時30分)</div><div class="timeline-desc">中途停靠蘇丹哈尼古絲路驛站外圍拍照</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">11:00~13:00</span><div class="timeline-activity">梅夫拉那博物館<a href="https://maps.google.com?q=Mevlana+Museum" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">旋轉舞創始人蘇菲教派聖地參觀</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:30~18:00</span><div class="timeline-activity">翻越托羅斯山脈前往地中海 (車程約 4時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">18:30~20:00</span><div class="timeline-activity">安塔利亞老城區 (Kaleici) 散步與晚餐</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 6 · 07/17 (五)</span>
+                        <span class="day-title">地中海古羅馬劇場 · 經典哈德良門巡禮</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：Dogan Hotel - Kaleici</div>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">09:00~10:00</span><div class="timeline-activity">開車前往阿斯pendos (車程約 50分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">10:00~12:00</span><div class="timeline-activity">阿斯朋多斯古羅馬劇場<a href="https://maps.google.com?q=Aspendos+Antik+Tiyatrosu" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">參觀世界上保存最完整的古羅馬大劇場</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">12:00~13:00</span><div class="timeline-activity">返回老城區</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">15:00~17:00</span><div class="timeline-activity">哈德良門與羅馬港灣漫步<a href="https://maps.google.com?q=Hadrian's+Gate" target="_blank" class="inline-maps-btn">地圖</a></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 7 · 07/18 (六)</span>
+                        <span class="day-title">D400 絕美海岸線 · 夢幻卡普塔斯海灘</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：Ece Saray Marina Resort</div>
+                            <a href="https://maps.google.com?q=Ece+Saray+Marina+Resort" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~12:00</span><div class="timeline-activity">馳騁 D400 最美公路海岸線 (車程約 3時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">12:00~13:00</span><div class="timeline-activity">Kaputaş Beach 卡普塔斯海灘<a href="https://maps.google.com?q=Kaputas+Beach" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">峽谷交界處的高顏值果凍色漸層海灘拍照</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">13:30~16:00</span><div class="timeline-activity">前往死海度假勝地費特希耶 (車程約 1時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">16:30~19:00</span><div class="timeline-activity">費特希耶港灣夕陽漫步與海鮮市場晚餐</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 8 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 8 · 07/19 (日)</span>
+                        <span class="day-title">費特希耶飛行傘 · 北上造訪純白棉堡</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：Melrose Viewpoint Hotel</div>
+                            <a href="https://maps.google.com?q=Melrose+Viewpoint+Hotel+Pamukkale" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:00~11:00</span><div class="timeline-activity">厄呂代尼茲滑翔傘體驗 (Paragliding)</div><div class="timeline-desc">翱翔藍天俯瞰夢幻死海蔚藍弧線</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">12:30~15:30</span><div class="timeline-activity">一路北上前往棉堡 (車程約 3時)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">16:00~19:30</span><div class="timeline-activity">帕穆卡麗棉堡 & 希拉波利斯古城<a href="https://maps.google.com?q=Pamukkale" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">赤腳走上白色石灰岩梯田，浸泡溫泉並等待日落</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 9 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 9 · 07/20 (一)</span>
+                        <span class="day-title">聖經名城以弗所 · 唯美小鎮席林傑</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：Charisma De Luxe Hotel</div>
+                            <a href="https://maps.google.com?q=Charisma+De+Luxe+Hotel+Kusadasi" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~11:00</span><div class="timeline-activity">前往古城塞爾丘克 (車程約 2時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">11:00~14:00</span><div class="timeline-activity">以弗所古城 (Ephesus)<a href="https://maps.google.com?q=Ephesus+Archaeological+Site" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">參觀極其震撼的塞爾蘇斯圖書館與大劇場</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">14:00~14:30</span><div class="timeline-activity">前往山城席林傑 (車程約 20分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">14:30~16:30</span><div class="timeline-activity">席林傑山城散策 (Sirince)<a href="https://maps.google.com?q=Sirince" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">品嚐特色水果酒，漫步紅白相間的小希臘村落</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">16:30~17:15</span><div class="timeline-activity">開車前往庫薩達西愛琴海度假飯店 (45分)</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 10 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 10 · 07/21 (二)</span>
+                        <span class="day-title">特洛伊木馬巡禮 · 橫渡達達尼爾海峽</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：MD Barbaros Hotel</div>
+                            <a href="https://maps.google.com?q=MD+Barbaros+Hotel+Canakkale" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:00~13:30</span><div class="timeline-activity">愛琴海公路北上 (車程約 5時)</div><div class="timeline-desc">途中於海邊小鎮享用簡餐與土耳其紅茶</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:30~15:00</span><div class="timeline-activity">特洛伊考古遺址<a href="https://maps.google.com?q=Troy+Archaeological+Site" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">與巨大的特洛伊木馬模型合照，見證史詩戰場</div></div>
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">15:00~15:40</span><div class="timeline-activity">前往嘉那卡麗港口 (車程約 40分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">16:30~17:30</span><div class="timeline-activity">人車搭乘渡輪橫渡達達尼爾海峽</div><div class="timeline-desc">體驗開車上渡輪，在甲板上吹海風餵海鷗</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 11 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 11 · 07/22 (三)</span>
+                        <span class="day-title">重返伊斯坦堡 · 機場還車與舊城夜景</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="hotel-info-box">
+                            <div class="hotel-name">🏨 住宿：Hotel Amira Istanbul</div>
+                            <a href="https://maps.google.com?q=Hotel+Amira+Istanbul" target="_blank" class="maps-btn">🗺️ 飯店地圖</a>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot drive"></div><span class="timeline-time">08:30~13:30</span><div class="timeline-activity">大長征返程伊斯坦堡 (車程約 4時30分)</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">13:30~14:30</span><div class="timeline-activity">伊斯坦堡機場 (IST) 順利還車</div><div class="timeline-desc">檢查車況完成結算，公路自駕大長征完美結束！</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">14:30~15:30</span><div class="timeline-activity">搭乘機場接駁巴士或計程車前往舊城區飯店</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">17:00~20:00</span><div class="timeline-activity">聖索菲亞大教堂外圍散步與景觀餐廳晚餐</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 12 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 12 · 07/23 (四)</span>
+                        <span class="day-title">聖索菲亞大教堂 · 藍色清真寺 · 告別星月國</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">09:00~10:30</span><div class="timeline-activity">聖索菲亞大教堂入內參觀<a href="https://maps.google.com?q=Hagia+Sophia" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">欣賞拜占庭藝術極致的黃金壁畫與巨大圓頂</div></div>
+                            <div class="timeline-item"><div class="timeline-dot walk"></div><span class="timeline-time">10:30~11:45</span><div class="timeline-activity">蘇丹艾哈邁德清真寺 (藍色清真寺)<a href="https://maps.google.com?q=Blue+Mosque" target="_blank" class="inline-maps-btn">地圖</a></div><div class="timeline-desc">感受兩萬片藍色伊茲尼克瓷磚帶來的平靜</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">12:00~13:00</span><div class="timeline-activity">回飯店收拾行李，包車前往伊斯坦堡機場</div></div>
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">15:50~</span><div class="timeline-activity">搭乘土耳其航空 TK124 啟程回台</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 13 -->
+            <div class="day-accordion">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div class="day-title-box">
+                        <span class="day-number">Day 13 · 07/24 (五)</span>
+                        <span class="day-title">返抵台灣 · 結束難忘的驚艷土耳其之行</span>
+                    </div>
+                    <div class="arrow-icon">▼</div>
+                </div>
+                <div class="day-content">
+                    <div class="day-inner-padding">
+                        <div class="timeline">
+                            <div class="timeline-item"><div class="timeline-dot"></div><span class="timeline-time">08:05</span><div class="timeline-activity">返抵桃園國際機場 (TPE)</div><div class="timeline-desc">回到溫暖的家，開始整理滿滿的相片與回憶！</div></div>
                         </div>
                     </div>
                 </div>
@@ -719,13 +955,50 @@
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">🧳 智慧防忘打包全清單</div>
+                
                 <div class="checklist-group">
                     <div class="checklist-cat-title">🪪 核心證件與海外財物</div>
                     <div class="check-grid">
                         <label class="check-item"><input type="checkbox"> 護照正本 (效期>6個月)</label>
-                        <label class="check-item"><input type="checkbox"> 國際駕照 & 台灣駕照正本</label>
-                        <label class="check-item"><input type="checkbox"> 電子簽證紙本列印</label>
-                        <label class="check-item"><input type="checkbox"> 海外刷卡高回饋信用卡</label>
+                        <label class="check-item"><input type="checkbox"> 國際駕照 & 台灣駕照正本 (自駕必備)</label>
+                        <label class="check-item"><input type="checkbox"> 土耳其電子簽證 (紙本列印備用)</label>
+                        <label class="check-item"><input type="checkbox"> 海外刷卡高回饋信用卡 (至少帶2張)</label>
+                        <label class="check-item"><input type="checkbox"> 歐元/美金現金 (到當地換里拉)</label>
+                        <label class="check-item"><input type="checkbox"> 租車訂單確認收據紙本</label>
+                    </div>
+                </div>
+
+                <div class="checklist-group">
+                    <div class="checklist-cat-title">🔌 電子通訊與隨身裝備</div>
+                    <div class="check-grid">
+                        <label class="check-item"><input type="checkbox"> 土耳其網卡/eSIM (自駕導航極重要)</label>
+                        <label class="check-item"><input type="checkbox"> 歐洲規格轉接頭 (雙腳圓頭兩大一小)</label>
+                        <label class="check-item"><input type="checkbox"> 行動電源與各類充電線</label>
+                        <label class="check-item"><input type="checkbox"> 車用手機架 (公路導航神器)</label>
+                        <label class="check-item"><input type="checkbox"> 車用點菸器高速充電頭</label>
+                    </div>
+                </div>
+
+                <div class="checklist-group">
+                    <div class="checklist-cat-title">👕 穿著衣物與高強度防曬</div>
+                    <div class="check-grid">
+                        <label class="check-item"><input type="checkbox"> 薄外套/遮陽防曬極薄外套</label>
+                        <label class="check-item"><input type="checkbox"> 高強度防曬乳 (土耳其夏季極曬)</label>
+                        <label class="check-item"><input type="checkbox"> 太陽眼鏡與遮陽帽</label>
+                        <label class="check-item"><input type="checkbox"> 好走耐磨休閒鞋/運動鞋</label>
+                        <label class="check-item"><input type="checkbox"> 女生清真寺必備頭巾/大絲巾</label>
+                        <label class="check-item"><input type="checkbox"> 泳裝 (棉堡、愛琴海下水用)</label>
+                    </div>
+                </div>
+
+                <div class="checklist-group">
+                    <div class="checklist-cat-title">💊 個人常備藥品與雜項</div>
+                    <div class="check-grid">
+                        <label class="check-item"><input type="checkbox"> 暈車藥/暈船藥 (公路山路多、搭渡輪)</label>
+                        <label class="check-item"><input type="checkbox"> 感冒藥、腸胃藥、止痛藥</label>
+                        <label class="check-item"><input type="checkbox"> 保濕乳液/護唇膏 (當地氣候乾燥)</label>
+                        <label class="check-item"><input type="checkbox"> 抽取式隨身衛生紙/濕紙巾</label>
+                        <label class="check-item"><input type="checkbox"> 摺疊晴雨傘</label>
                     </div>
                 </div>
             </div>
@@ -733,15 +1006,41 @@
 
         <!-- 內容：必買伴手禮 -->
         <div id="gift-tab" class="tab-content">
+            <!-- 伴手禮 1 -->
             <div class="gift-card">
                 <span class="gift-tag mainstream">🔥 大眾經典</span>
                 <div class="gift-title">土耳其紅茶 (Çay) & 鬱金香杯組合</div>
-                <div class="gift-desc">當地人家中必備！推薦購自超市的 Kurukoçak 或 Çaykur 品牌，搭配精緻的玻璃鬱金香杯，把最道地的星月國風情帶回家。</div>
+                <div class="gift-desc">當地人家中每日必喝！推薦在當地超市購買 Kurukoçak 或 Çaykur 品牌的茶葉，搭配一組晶瑩剔透的玻璃鬱金香杯帶回台灣，完美重現土耳其午茶時光。</div>
             </div>
+            <!-- 伴手禮 2 -->
+            <div class="gift-card">
+                <span class="gift-tag mainstream">🔥 大眾經典</span>
+                <div class="gift-title">土耳其軟糖 (Lokum)</div>
+                <div class="gift-desc">歷史悠久的宮廷點心，開心果、開心果石榴、玫瑰等口味最受歡迎。建議在專賣店試吃後再買，或者去超市選購包裝精美的長條禮盒，配無糖茶非常絕配。</div>
+            </div>
+            <!-- 伴手禮 3 -->
+            <div class="gift-card">
+                <span class="gift-tag mainstream">🔥 大眾經典</span>
+                <div class="gift-title">藍眼睛大嘴鳥與各類吊飾 (Nazar Boncuğu)</div>
+                <div class="gift-desc">代表著驅邪與帶來好運的土耳其護身符。不管是玻璃鑰匙圈、壁掛磁鐵、還是手工手鍊，在各大紀念品店都隨處可見，送禮自用兩相宜。</div>
+            </div>
+            <!-- 伴手禮 4 -->
             <div class="gift-card">
                 <span class="gift-tag niche">✨ 特色小眾</span>
-                <div class="gift-title">熱氣球手工陶器</div>
-                <div class="gift-desc">卡帕多奇亞當地的工藝品，手工繪製的彩瓷盤、熱氣球浮雕小夜燈或小模型，擺在桌上回憶滿滿。</div>
+                <div class="gift-title">卡帕多奇亞熱氣球手工陶器</div>
+                <div class="gift-desc">在卡帕多奇亞或阿瓦諾斯（陶藝小鎮）親手挑選的手工繪製彩瓷盤、熱氣球浮雕小夜燈或特色小花瓶，擺在房間桌上質感滿分。</div>
+            </div>
+            <!-- 伴手禮 5 -->
+            <div class="gift-card">
+                <span class="gift-tag niche">✨ 特色小眾</span>
+                <div class="gift-title">dalan 頂級橄欖油護膚護手霜 / 香皂</div>
+                <div class="gift-desc">土耳其盛產橄欖，dalan 是當地擁有 70 多年歷史的國民護膚老牌。其橄欖油香皂和滋潤護手霜價格極度親民，保濕度極高，是辦公室發送發福利的神器。</div>
+            </div>
+            <!-- 伴手禮 6 -->
+            <div class="gift-card">
+                <span class="gift-tag niche">✨ 特色小眾</span>
+                <div class="gift-title">天然大顆無花果乾與堅果</div>
+                <div class="gift-desc">土耳其是全球無花果與開心果的主要產地。在當地超市或市集買到的無花果乾果肉厚實、飽滿多汁且完全不添加人工糖，天然又健康。</div>
             </div>
         </div>
 
