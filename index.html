@@ -97,6 +97,7 @@
             padding: 12px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
+
         }
 
         .overview-item.full-width {
@@ -117,81 +118,64 @@
             color: var(--text-dark);
             font-weight: 500;
         }
+/* 統一卡片容器 */
+.card-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 15px; 
+    margin-bottom: 20px;
+    width: 205%;             /* 關鍵：填滿父容器 */
+}
 
-        .flight-main-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 6px;
-            border-bottom: 1px dashed #D6E4F0;
-            padding-bottom: 6px;
-        }
+.card-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 這裡加上右邊框 */
+    border-right: 1px solid #ccc;
+}
 
-        .flight-date {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--secondary);
-        }
+.card-col:last-child {
+    border-right: none;
+}
 
-        .flight-badge {
-            display: inline-block;
-            font-size: 10px;
-            background: #2C699A;
-            color: #FFF;
-            padding: 1px 6px;
-            border-radius: 4px;
-            margin-right: 6px;
-            font-weight: 700;
-        }
+    .time-card {
+        background-color: #FDF6F0 !important; /* 加上 !important 強制優先 */
+        border: 1px solid #d1dfe6 !important;
+    }
 
-        /* 換匯地點下拉選單區塊 */
-        .exchange-box {
-            background-color: #FFF9E6;
-            border: 1px solid #FFE0B2;
-            border-radius: 14px;
-            padding: 14px;
-            margin-top: 14px;
-            font-size: 12.5px;
-        }
-        .exchange-box-title {
-            font-weight: 700;
-            color: #D35400;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4px;
-        }
-        .exchange-select {
-            padding: 6px 10px;
-            font-size: 12.5px;
-            border: 1px solid #FFE0B2;
-            border-radius: 8px;
-            background-color: #FFF;
-            color: #D35400;
-            font-weight: 700;
-            outline: none;
-            cursor: pointer;
-        }
-        .exchange-content-item {
-            display: none;
-            color: #5D6D7E;
-            line-height: 1.6;
-        }
-        .exchange-content-item.active {
-            display: block;
-        }
-        .exchange-content-item ul {
-            padding-left: 0;
-            list-style: none;
-        }
-        .exchange-content-item li {
-            margin-bottom: 8px;
-            background: rgba(255,255,255,0.6);
-            padding: 8px 10px;
-            border-radius: 8px;
-            border-left: 3px solid #E67E22;
-        }
+
+/* 航班日期樣式 */
+.flight-date {
+    font-size: 15px !important; /* 加大日期字體 */
+    font-weight: 800 !important;
+    color: #935A22 !important; /* 深橘褐色 */
+}
+
+/* 航班主要文字（航班號、時間、資訊） */
+.overview-item strong {
+    display: block !important;
+    font-size: 16px !important; /* 加大航班資訊文字 */
+    color: #1B2631 !important; /* 極深藍灰色，確保清晰 */
+    font-weight: 700 !important;
+    margin-top: 5px !important;
+}
+
+/* 航班標題（去程/回程） */
+.flight-main-info span {
+    font-size: 13px !important;
+    color: #4A6572 !important; /* 稍微加深文字顏色，提高辨識度 */
+    font-weight: 500 !important;
+}
+
+
+       
 
         .weather-box {
             display: flex;
@@ -614,6 +598,8 @@
             cursor: pointer;
             padding: 2px;
         }
+
+
     </style>
 </head>
 <body>
@@ -629,106 +615,45 @@
         <div class="overview-card">
             <div class="overview-title">✈️ 航班與行程總覽</div>
             <div class="overview-grid">
-                
+
+
+<div class="card-box time-card">
+    <div class="card-col">
+        <div style="font-size: 0.8em; color: var(--text-light);">總天數</div>
+        <div style="font-weight: 700;">13 天 12 夜</div>
+    </div>
+    <div class="card-col">
+        <div style="font-size: 0.8em; color: var(--text-light);">🇹🇼 台灣</div>
+        <div id="tw-time" style="font-weight: 700;">--:--:--</div>
+    </div>
+    <div class="card-col">
+        <div style="font-size: 0.8em; color: var(--text-light);">🇹🇷 土耳其</div>
+        <div id="tr-time" style="font-weight: 700;">--:--:--</div>
+    </div>
+</div>
+
+
                 <div class="overview-item full-width">
                     <div class="flight-main-info">
-                        <span>🛫 去程航班 (台北 TPE ➔ 伊斯坦堡 IST)</span>
+                        <span>🛫 去程航班-TK125 (台北 TPE ➔ 伊斯坦堡 IST)</span>
                         <div class="flight-date">07/12 (星期日)</div>
                     </div>
-                    <strong><span class="flight-badge">TK125</span> 09:35 ➔ 17:10 <small style="color:var(--text-light); font-weight:300;">(飛行 12h 35m)</small></strong>
+                    <strong>09:35 ➔ 17:10 <small style="color:var(--text-light); font-weight:300;">(飛行 12h 35m)</small></strong>
                 </div>
                 
                 <div class="overview-item full-width">
                     <div class="flight-main-info">
-                        <span>🛬 回程航班 (伊斯坦堡 IST ➔ 台北 TPE)</span>
+                        <span>🛬 回程航班-TK124 (伊斯坦堡 IST ➔ 台北 TPE)</span>
                         <div class="flight-date">07/23 (星期四)</div>
                     </div>
-                    <strong><span class="flight-badge">TK124</span> 15:50 ➔ 08:05 <small style="color:#C0392B; font-weight:500;">(次日抵達 / 飛行 11h 15m)</small></strong>
+                    <strong>15:50 ➔ 08:05 <small style="color:#C0392B; font-weight:500;">(次日抵達 / 飛行 11h 15m)</small></strong>
                 </div>
 
-                <div class="overview-item"><span>行程總天數</span><strong>13 天 12 夜</strong></div>
-                <div class="overview-item"><span>時差備忘</span><strong>土耳其當地為 GMT+3 (臺灣 -5hr)</strong></div>
+                
             </div>
 
-            <!-- 🪙 換匯地點下拉選單功能升級：精準實體換匯所與導航連結 -->
-            <div class="exchange-box">
-                <div class="exchange-box-title">
-                    <span>🪙 景點周邊特選換匯所導航</span>
-                    <select class="exchange-select" id="exchange-location-selector" onchange="switchExchangeLocation()">
-                        <option value="ist-airport">✈️ 伊斯坦堡機場 (IST)</option>
-                        <option value="grand-bazaar">🕌 舊城區大巴扎周邊</option>
-                        <option value="safranbolu">🏰 番紅花城新城區</option>
-                        <option value="cappadocia">🎈 卡帕多奇亞歌樂美鎮</option>
-                        <option value="med-coast">🌊 三海大城度假線</option>
-                    </select>
-                </div>
-                
-                <!-- 內容1：機場 -->
-                <div class="exchange-content-item active" id="ex-ist-airport">
-                    <ul>
-                        <li>
-                            <strong>Global Exchange (IST 機場店)</strong>
-                            <a href="https://maps.google.com?q=Global+Exchange+Istanbul+Airport" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                            <p style="font-size:11px; color:#E74C3C; margin-top:2px;">⚠️ 注意：機場匯率極差且收手續費，僅在此換 20-50 歐元付首日公路過路費即可！</p>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- 內容2：大巴扎 -->
-                <div class="exchange-content-item" id="ex-grand-bazaar">
-                    <ul>
-                        <li>
-                            <strong>Haznedar Döviz (大巴扎旁首選)</strong>
-                            <a href="https://maps.google.com?q=Haznedar+Doviz+Grand+Bazaar" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                            <p style="font-size:11px; color:var(--text-light); margin-top:2px;">全土耳其匯率最好的一區，極推薦在此將大額外幣一次兌換完畢。</p>
-                        </li>
-                        <li style="margin-top:6px;">
-                            <strong>Nuruosmaniye Döviz (清真寺門外)</strong>
-                            <a href="https://maps.google.com?q=Nuruosmaniye+Doviz+Istanbul" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- 內容3：番紅花城 -->
-                <div class="exchange-content-item" id="ex-safranbolu">
-                    <ul>
-                        <li>
-                            <strong>Safranbolu Döviz (新城 Kıranköy 內)</strong>
-                            <a href="https://maps.google.com?q=Safranbolu+Doviz" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                            <p style="font-size:11px; color:var(--text-light); margin-top:2px;">舊城區老街多為手工藝小攤，若需里拉現金建議開車順路來新城區這家辦理。</p>
-                        </li>
-                    </ul>
-                </div>
 
-                <!-- 內容4：卡帕多奇亞 -->
-                <div class="exchange-content-item" id="ex-cappadocia">
-                    <ul>
-                        <li>
-                            <strong>Göreme Döviz (歌樂美客運站旁)</strong>
-                            <a href="https://maps.google.com?q=Goreme+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                            <p style="font-size:11px; color:var(--text-light); margin-top:2px;">景區中心唯一的實體換匯店，若是大額熱氣球行程直接用美金/歐元現鈔付更划算。</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 內容5：三海公路線 -->
-                <div class="exchange-content-item" id="ex-med-coast">
-                    <ul>
-                        <li>
-                            <strong>Antalya Döviz (安塔利亞老城入口旁)</strong>
-                            <a href="https://maps.google.com?q=Antalya+Doviz+Kaleici" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                        </li>
-                        <li style="margin-top:6px;">
-                            <strong>Fethiye Döviz (費特希耶海鮮市場旁)</strong>
-                            <a href="https://maps.google.com?q=Fethiye+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                        </li>
-                        <li style="margin-top:6px;">
-                            <strong>Kuşadası Döviz (庫薩達西遊輪港口旁)</strong>
-                            <a href="https://maps.google.com?q=Kusadasi+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            
 
             <div class="weather-box">
                 <div class="weather-item">
@@ -738,6 +663,8 @@
                 <div class="weather-item" style="border-left: 1px solid #FADBD8;">
                     <div class="weather-val" id="cap-temp" style="color: #2C699A;"><span class="weather-loading">載入中...</span></div>
                     <div class="weather-label">卡帕多奇亞 今日預報</div>
+
+
                 </div>
             </div>
         </div>
@@ -745,9 +672,11 @@
         <!-- 功能分頁導覽 -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('itinerary')">📅 詳細行程</button>
-            <button class="tab-btn" onclick="switchTab('checklist')">🧳 行理打包</button>
+            <button class="tab-btn" onclick="switchTab('checklist')">🧳 行李打包</button>
+            <button class="tab-btn" onclick="switchTab('exchange')">🪙 換匯導航</button>
             <button class="tab-btn" onclick="switchTab('gift')">🎁 必買伴手禮</button>
             <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
+           
         </div>
 
         <!-- 內容：詳細行程 -->
@@ -1071,6 +1000,10 @@
             </div>
         </div>
 
+
+
+
+
         <!-- 內容：行李打包 -->
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
@@ -1080,7 +1013,7 @@
                     <div class="checklist-cat-title">🪪 核心證件與海外財物</div>
                     <div class="check-grid">
                         <label class="check-item"><input type="checkbox"> 護照正本 (效期>6個月)</label>
-                        <label class="check-item"><input type="checkbox"> 國際駕照 & 台灣駕照正本 (自駕必備)</label>
+                        <label class="check-item"><input type="checkbox"> 國際駕照 & 台灣駕照正本</label>
                         <label class="check-item"><input type="checkbox"> 土耳其電子簽證 (紙本列印備用)</label>
                         <label class="check-item"><input type="checkbox"> 海外刷卡高回饋信用卡 (至少帶2張)</label>
                         <label class="check-item"><input type="checkbox"> 歐元/美金現金 (到當地換里拉)</label>
@@ -1091,11 +1024,10 @@
                 <div class="checklist-group">
                     <div class="checklist-cat-title">🔌 電子通訊與隨身裝備</div>
                     <div class="check-grid">
-                        <label class="check-item"><input type="checkbox"> 土耳其網卡/eSIM (自駕導航極重要)</label>
+                        <label class="check-item"><input type="checkbox"> 土耳其網卡/eSIM</label>
                         <label class="check-item"><input type="checkbox"> 歐洲規格轉接頭 (雙腳圓頭)</label>
-                        <label class="check-item"><input type="checkbox"> 行動電源與各類充電線</label>
-                        <label class="check-item"><input type="checkbox"> 車用手機架 (公路導航神器)</label>
-                        <label class="check-item"><input type="checkbox"> 車用點菸器高速充電頭</label>
+                        <label class="check-item"><input type="checkbox"> 行動電源與各類充電線.充電頭</label>
+                        <label class="check-item"><input type="checkbox"> 吹風機</label>
                     </div>
                 </div>
 
@@ -1114,15 +1046,81 @@
                 <div class="checklist-group">
                     <div class="checklist-cat-title">💊 個人常備藥品與雜項</div>
                     <div class="check-grid">
-                        <label class="check-item"><input type="checkbox"> 暈車藥/暈船藥 (公路山路多、搭渡輪)</label>
+                        <label class="check-item"><input type="checkbox"> 暈車藥/暈船藥</label>
                         <label class="check-item"><input type="checkbox"> 感冒藥、腸胃藥、止痛藥</label>
-                        <label class="check-item"><input type="checkbox"> 保濕乳液/護唇膏 (當地氣候乾燥)</label>
+                        <label class="check-item"><input type="checkbox"> 保濕乳液/護唇膏</label>
                         <label class="check-item"><input type="checkbox"> 抽取式隨身衛生紙/濕紙巾</label>
-                        <label class="check-item"><input type="checkbox"> 摺疊晴雨傘</label>
                     </div>
                 </div>
             </div>
         </div>
+
+
+ <!-- 內容：換匯所導航 -->
+
+<div id="exchange-tab" class="tab-content">
+    <div class="overview-card">
+        <div class="overview-title">🪙 景點周邊特選換匯所導航</div>
+
+        <div class="exchange-section" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <h4 style="font-size: 15px; color: #2C699A; margin-bottom: 8px;">✈️ 伊斯坦堡機場 (IST)</h4>
+            <ul style="list-style: none; padding-left: 5px;">
+                <li>
+                    <strong>Global Exchange (IST 機場店)</strong>
+                    <a href="https://maps.google.com?q=Global+Exchange+Istanbul+Airport" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                    <p style="font-size:11px; color:#E74C3C; margin-top:4px;">⚠️ 注意：機場匯率極差且收手續費，僅在此換 20-50 歐元付首日公路過路費即可！</p>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="exchange-section" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <h4 style="font-size: 15px; color: #2C699A; margin-bottom: 8px;">🕌 舊城區大巴扎周邊</h4>
+            <ul style="list-style: none; padding-left: 5px;">
+                <li>
+                    <strong>Haznedar Döviz (大巴扎旁首選)</strong>
+                    <a href="https://maps.google.com?q=Haznedar+Doviz+Grand+Bazaar" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                    <p style="font-size:11px; color:#7F8C8D; margin-top:4px;">全土耳其匯率最好的一區，極推薦在此將大額外幣一次兌換完畢。</p>
+                </li>
+                <li style="margin-top:8px;">
+                    <strong>Nuruosmaniye Döviz (清真寺門外)</strong>
+                    <a href="https://maps.google.com?q=Nuruosmaniye+Doviz+Istanbul" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="exchange-section" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <h4 style="font-size: 15px; color: #2C699A; margin-bottom: 8px;">🏰 番紅花城新城區</h4>
+            <ul style="list-style: none; padding-left: 5px;">
+                <li>
+                    <strong>Safranbolu Döviz (新城 Kıranköy 內)</strong>
+                    <a href="https://maps.google.com?q=Safranbolu+Doviz" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                    <p style="font-size:11px; color:#7F8C8D; margin-top:4px;">舊城區老街多為手工藝小攤，若需里拉現金建議開車順路來新城區這家辦理。</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="exchange-section" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <h4 style="font-size: 15px; color: #2C699A; margin-bottom: 8px;">🎈 卡帕多奇亞歌樂美鎮</h4>
+            <ul style="list-style: none; padding-left: 5px;">
+                <li>
+                    <strong>Göreme Döviz (歌樂美客運站旁)</strong>
+                    <a href="https://maps.google.com?q=Goreme+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                    <p style="font-size:11px; color:#7F8C8D; margin-top:4px;">景區中心唯一的實體換匯店，若是大額熱氣球行程直接用美金/歐元現鈔付更划算。</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="exchange-section">
+            <h4 style="font-size: 15px; color: #2C699A; margin-bottom: 8px;">🌊 三海大城度假線</h4>
+            <ul style="list-style: none; padding-left: 5px;">
+                <li><strong>Antalya Döviz (安塔利亞老城入口旁)</strong> <a href="https://maps.google.com?q=Antalya+Doviz+Kaleici" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li>
+                <li style="margin-top:8px;"><strong>Fethiye Döviz (費特希耶海鮮市場旁)</strong> <a href="https://maps.google.com?q=Fethiye+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li>
+                <li style="margin-top:8px;"><strong>Kuşadası Döviz (庫薩達西遊輪港口旁)</strong> <a href="https://maps.google.com?q=Kusadasi+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
         <!-- 內容：必買伴手禮 (已移除紅圈部分的贅字說明) -->
         <div id="gift-tab" class="tab-content">
@@ -1208,6 +1206,8 @@
             </div>
         </div>
 
+
+
         <!-- 內容：隨身記帳 -->
         <div id="ledger-tab" class="tab-content">
             <div class="overview-card">
@@ -1252,6 +1252,28 @@
     </div>
 
     <script>
+
+ <!-- 台灣與土耳其時間-->
+function updateClocks() {
+    const now = new Date();
+
+    // 台灣時間 (UTC+8)
+    const twTime = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+    // 土耳其時間 (UTC+3)
+    const trTime = new Date(now.getTime() + (3 * 60 * 60 * 1000));
+
+    // 格式化輸出
+    document.getElementById('tw-time').textContent = twTime.toISOString().substring(11, 19);
+    document.getElementById('tr-time').textContent = trTime.toISOString().substring(11, 19);
+}
+
+// 每秒更新一次
+setInterval(updateClocks, 1000);
+updateClocks(); // 初始化呼叫
+
+
+
+
         let ledgerDataA = JSON.parse(localStorage.getItem('turkey_ledger_A')) || [];
         let ledgerDataB = JSON.parse(localStorage.getItem('turkey_ledger_B')) || [];
         let currentFamily = 'A';
@@ -1274,11 +1296,14 @@
             } else if(tabName === 'checklist') {
                 document.querySelectorAll('.tab-btn')[1].classList.add('active');
                 document.getElementById('checklist-tab').classList.add('active');
-            } else if(tabName === 'gift') {
+            } else if(tabName === 'exchange') {
                 document.querySelectorAll('.tab-btn')[2].classList.add('active');
+                document.getElementById('exchange-tab').classList.add('active');
+            } else if(tabName === 'gift') {
+                document.querySelectorAll('.tab-btn')[3].classList.add('active');
                 document.getElementById('gift-tab').classList.add('active');
             } else if(tabName === 'ledger') {
-                document.querySelectorAll('.tab-btn')[3].classList.add('active');
+                document.querySelectorAll('.tab-btn')[4].classList.add('active');
                 document.getElementById('ledger-tab').classList.add('active');
                 renderLedger(); 
             }
