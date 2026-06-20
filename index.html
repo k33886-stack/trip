@@ -4,53 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跨越星月之國：土耳其經典 13 日公路自駕全紀錄</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2C699A; 
-            --primary-light: #E8F1F5;
-            --secondary: #D68C45; 
-            --secondary-light: #F7F0E8;
-            --bg-color: #F8F9FA; 
-            --card-bg: #FFFFFF;
-            --text-dark: #2C3E50;
-            --text-light: #7F8C8D;
-            --border-color: #EBF0F3;
-            --shadow: 0 10px 25px rgba(180, 190, 200, 0.15);
-            --radius: 20px;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif; -webkit-tap-highlight-color: transparent; }
+        :root { --primary: #2C699A; --secondary: #D68C45; --bg-color: #F8F9FA; --card-bg: #FFFFFF; --text-dark: #2C3E50; --text-light: #7F8C8D; --border-color: #EBF0F3; --shadow: 0 10px 25px rgba(180, 190, 200, 0.15); --radius: 20px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; padding-bottom: 40px; }
-        .hero-banner { background: linear-gradient(135deg, #E8F1F5 0%, #F7F0E8 100%); padding: 40px 20px 30px 20px; text-align: center; border-bottom: 1px solid var(--border-color); }
-        .hero-banner h1 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; letter-spacing: 0.5px; }
-        .hero-banner p { font-size: 13px; color: var(--text-light); font-weight: 300; }
         .container { max-width: 600px; margin: 0 auto; padding: 16px; }
         .overview-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-color); }
         .overview-title { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
         
-        /* 恢復你原本的換匯區塊 */
-        .exchange-box { background-color: #FFF9E6; border: 1px solid #FFE0B2; border-radius: 14px; padding: 14px; margin-top: 14px; font-size: 12.5px; }
-        .exchange-box-title { font-weight: 700; color: #D35400; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 4px; }
-        .exchange-select { padding: 6px 10px; font-size: 12.5px; border: 1px solid #FFE0B2; border-radius: 8px; background-color: #FFF; color: #D35400; font-weight: 700; outline: none; cursor: pointer; }
-        .exchange-content-item { display: none; color: #5D6D7E; line-height: 1.6; }
-        .exchange-content-item.active { display: block; }
-        .exchange-content-item ul { padding-left: 0; list-style: none; }
-        .exchange-content-item li { margin-bottom: 8px; background: rgba(255,255,255,0.6); padding: 8px 10px; border-radius: 8px; border-left: 3px solid #E67E22; }
-
-        /* 其他原有樣式均保持不變 */
-        .nav-tabs { display: flex; background-color: #EAEFF4; border-radius: 14px; padding: 4px; margin-bottom: 20px; gap: 2px; }
-        .tab-btn { flex: 1; text-align: center; padding: 12px 0; font-size: 12px; font-weight: 500; color: #566573; border: none; background: none; cursor: pointer; border-radius: 10px; transition: all 0.2s; white-space: nowrap; }
-        .tab-btn.active { background-color: var(--card-bg); color: var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        
-        /* (為節省長度，保留其餘你原始的 CSS 類別即可，功能完全對應) */
+        /* 換匯分頁樣式 */
+        .exchange-tabs-nav { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; }
+        .ex-btn { flex: 1; padding: 8px 10px; font-size: 12px; border: 1px solid #D6E4F0; background: #FFF; border-radius: 8px; cursor: pointer; white-space: nowrap; }
+        .ex-btn.active { background: var(--secondary); color: white; border-color: var(--secondary); }
+        .ex-content-item { display: none; }
+        .ex-content-item.active { display: block; font-size: 13px; color: #5D6D7E; }
+        .ex-list { list-style: none; padding: 10px; background: #FFF9E6; border-radius: 8px; }
+        .ex-list li { margin-bottom: 8px; border-bottom: 1px solid #FFE0B2; padding-bottom: 4px; }
+        .inline-maps-btn { display: inline-flex; color: var(--primary); text-decoration: none; font-size: 11px; border: 1px solid var(--primary); padding: 1px 5px; border-radius: 4px; margin-left: 6px; }
     </style>
 </head>
 <body>
-    </body>
+
+<div class="container">
+    <div class="overview-card">
+        <div class="overview-title">🪙 景點周邊換匯導航</div>
+        
+        <div class="exchange-tabs-nav">
+            <button class="ex-btn active" onclick="switchEx(this, 'ex1')">✈️ 機場</button>
+            <button class="ex-btn" onclick="switchEx(this, 'ex2')">🕌 大巴扎</button>
+            <button class="ex-btn" onclick="switchEx(this, 'ex3')">🏰 番紅花</button>
+            <button class="ex-btn" onclick="switchEx(this, 'ex4')">🎈 卡帕</button>
+            <button class="ex-btn" onclick="switchEx(this, 'ex5')">🌊 三海</button>
+        </div>
+
+        <div id="ex1" class="ex-content-item active">
+            <ul class="ex-list"><li>Global Exchange (IST機場) <a href="#" class="inline-maps-btn">🗺️</a></li></ul>
+        </div>
+        <div id="ex2" class="ex-content-item">
+            <ul class="ex-list">
+                <li>Haznedar Döviz (大巴扎旁) <a href="#" class="inline-maps-btn">🗺️</a></li>
+                <li>Sirkeci 站/香料市集周邊 <a href="#" class="inline-maps-btn">🗺️</a></li>
+            </ul>
+        </div>
+        <div id="ex3" class="ex-content-item">
+            <ul class="ex-list"><li>Safranbolu Döviz (新城區) <a href="#" class="inline-maps-btn">🗺️</a></li></ul>
+        </div>
+        <div id="ex4" class="ex-content-item">
+            <ul class="ex-list"><li>Göreme Döviz (歌樂美客運站旁) <a href="#" class="inline-maps-btn">🗺️</a></li></ul>
+        </div>
+        <div id="ex5" class="ex-content-item">
+            <ul class="ex-list">
+                <li>Antalya Döviz (老城入口) <a href="#" class="inline-maps-btn">🗺️</a></li>
+                <li>Fethiye Döviz (海鮮市場旁) <a href="#" class="inline-maps-btn">🗺️</a></li>
+                <li>Kuşadası Döviz (遊輪港口旁) <a href="#" class="inline-maps-btn">🗺️</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchEx(btn, id) {
+    document.querySelectorAll('.ex-content-item').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.ex-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+}
+</script>
+
+</body>
 </html>
