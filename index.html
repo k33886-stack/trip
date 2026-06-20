@@ -7,7 +7,7 @@
     <!-- Google Fonts Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -376,7 +376,7 @@
             padding-left: 2px;
         }
 
-        /* 清單、伴手禮、隨身記帳 */
+        /* 清單、伴手禮 */
         .checklist-group { margin-bottom: 22px; }
         .checklist-cat-title { font-size: 13.5px; font-weight: 700; color: var(--primary); margin-bottom: 12px; padding-left: 8px; border-left: 4px solid var(--primary); }
         .check-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
@@ -406,10 +406,137 @@
         .gift-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
         .gift-desc { font-size: 12.5px; color: var(--text-light); line-height: 1.5; }
 
-        .stats-box { display: flex; justify-content: space-around; background-color: var(--primary-light); padding: 16px; border-radius: var(--radius); text-align: center; margin-bottom: 18px; }
-        .stat-val { font-size: 18px; font-weight: 700; color: var(--primary); }
+        /* 記帳頁面樣式 */
+        .family-selector-tabs {
+            display: flex;
+            background-color: #F0F4F8;
+            border-radius: 12px;
+            padding: 3px;
+            margin-bottom: 14px;
+            gap: 2px;
+            border: 1px solid #D6E4F0;
+        }
+        .family-tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #7F8C8D;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: 9px;
+            transition: all 0.2s;
+        }
+        .family-tab-btn.active.famA {
+            background-color: var(--primary);
+            color: #FFFFFF;
+        }
+        .family-tab-btn.active.famB {
+            background-color: var(--secondary);
+            color: #FFFFFF;
+        }
+
+        .stats-box { display: flex; justify-content: space-around; background-color: var(--primary-light); padding: 16px; border-radius: var(--radius); text-align: center; margin-bottom: 18px; transition: background-color 0.3s; }
+        .stats-box.famB-style { background-color: var(--secondary-light); }
+        .stat-val { font-size: 22px; font-weight: 700; color: var(--primary); }
+        .stats-box.famB-style .stat-val { color: var(--secondary); }
         .stat-label { font-size: 11px; color: var(--text-light); }
         
+        .ledger-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+        }
+        .form-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .form-row input, .form-row select {
+            flex: 1;
+            min-width: 80px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 13px;
+            outline: none;
+            background: var(--bg-color);
+        }
+        .form-row select.fixed-width-select {
+            max-width: 95px;
+            flex: 0 0 95px;
+        }
+        .ledger-add-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 11px;
+            font-size: 13.5px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .ledger-add-btn.famB-btn {
+            background-color: var(--secondary);
+        }
+        .ledger-list {
+            margin-top: 15px;
+        }
+        .ledger-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .ledger-item-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ledger-category-tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .cat-food { background: #FADBD8; color: #C0392B; }
+        .cat-stay { background: #D4EFDF; color: #196F3D; }
+        .cat-traffic { background: #FCF3CF; color: #B7950B; }
+        .cat-shop { background: #E8F1F5; color: #2C699A; }
+        
+        .ledger-item-name {
+            font-weight: 500;
+        }
+        .ledger-item-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ledger-item-amount {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .ledger-del-btn {
+            background: none;
+            border: none;
+            color: #E74C3C;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 2px;
+        }
+
         .select-box-style {
             width: 100%;
             padding: 12px;
@@ -755,7 +882,7 @@
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
                         <span class="day-number">Day 12 · 07/23</span>
-                        <span class="day-title">告別星月之國 · 前往機場辦理還車登記</span>
+                        <span class="day-title">告告別星月之國 · 前往機場辦理還車登記</span>
                     </div>
                     <div class="arrow-icon">▼</div>
                 </div>
@@ -895,65 +1022,55 @@
             <div class="checklist-group">
                 <div class="checklist-cat-title">✨ 內行小眾與私藏好物（特色不撞款 10 選）</div>
                 
-                <!-- 1 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">保養私藏</span>
                     <div class="gift-title">1. Dalan d'Olive 橄欖油古法皂 / 護手霜</div>
                     <div class="gift-desc">愛琴海沿岸盛產橄欖。這個傳承百年的老牌價格親民，其古法純橄欖皂洗完保濕不緊繃，是內行人才懂掃貨的高CP值隱藏神物。</div>
                 </div>
-                <!-- 2 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">純淨美妝</span>
                     <div class="gift-title">2. Gulsha 古爾莎大馬士革玫瑰水</div>
                     <div class="gift-desc">土耳其的 Isparta 是全球大馬士革玫瑰聖地。Gulsha 的玫瑰水成分極度純淨，在當地藥局（Eczane）買價格超划算！</div>
                 </div>
-                <!-- 3 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">手工藝術</span>
                     <div class="gift-title">3. 卡帕多奇亞手繪陶瓷 / 浮石工藝</div>
                     <div class="gift-desc">阿瓦諾斯（Avanos）小鎮的陶藝傳統。手工繪製的隔熱墊、杯盤纹路立體，每個都是獨一無二的藝術品。</div>
                 </div>
-                <!-- 4 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">實用香氛</span>
                     <div class="gift-title">4. 土耳其古龍水 (Kolonya)</div>
                     <div class="gift-desc">當地傳統待客禮儀。經典的檸檬香氣酒精濃度高達 70%~80%，常用來洗手、消毒兼提神，小瓶隨身攜帶非常實用。</div>
                 </div>
-                <!-- 5 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">天然蜂蜜</span>
                     <div class="gift-title">5. Balparmak 松樹蜜 (Pine Honey)</div>
-                    <div class="gift-desc">土耳其是全球最大的松樹蜜產地（主要在愛琴海區）。這種蜜由蜜蜂採集松樹針葉上的蜜露製成，顏色較深，帶有獨特的木質清香，相較花蜜更不易結晶且別具風味。</div>
+                    <div class="gift-desc">土耳其是全球最大的松樹蜜產地。這種蜜由蜜蜂採集松樹針葉上的蜜露製成，顏色較深，帶有溫和的木質清香。</div>
                 </div>
-                <!-- 6 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">天然保養</span>
                     <div class="gift-title">6. Bebak 苦杏仁霜 (Acı Badem Sütü)</div>
-                    <div class="gift-desc">創立於 1895 年的傳統國民品牌，包裝帶有復古的優雅感。其苦杏仁潔面乳和滋潤霜擁有極佳的保濕力，淡淡的杏仁香氣是土耳其好幾代女性的共同記憶。</div>
+                    <div class="gift-desc">創立於 1895 年的傳統國民品牌。其苦杏仁滋潤霜擁有極佳的保濕力，淡淡的杏仁香氣非常經典。</div>
                 </div>
-                <!-- 7 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">在地零食</span>
                     <div class="gift-title">7. Tadım 烘焙南瓜子 (Kabak Çekirdeği)</div>
-                    <div class="gift-desc">除了開心果，土耳其人極度熱愛啃南瓜子。Tadım 是當地的堅果大廠，他們的鹽烤南瓜子顆粒飽滿、香脆無比，是自駕公路上最完美的嘴饞良伴。</div>
+                    <div class="gift-desc">Tadım 是當地的堅果大廠，他們的鹽烤南瓜子顆粒飽滿、香脆無比，是自駕公路上最完美的嘴饞良伴。</div>
                 </div>
-                <!-- 8 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">果香風味</span>
                     <div class="gift-title">8. 番紅花城石榴 / 番紅花水果茶包</div>
-                    <div class="gift-desc">在番紅花城（Safranbolu）除了買高檔的番紅花香料外，非常推薦去老街購買在地茶行調配的番紅花紅茶或濃郁的石榴果茶包，香氣層次比普通超市款更豐富。</div>
+                    <div class="gift-desc">在番紅花城（Safranbolu）除了買番紅花香料外，非常推薦去老街購買在地茶行調配的濃郁石榴果茶包。</div>
                 </div>
-                <!-- 9 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">手作織品</span>
                     <div class="gift-title">9. 鄂圖曼復古圖騰針織化妝包 / 零錢包</div>
-                    <div class="gift-desc">在伊斯坦堡老城區或市集常見的手工織布小包，佈滿複雜華麗的土耳其地毯幾何圖騰。一個只要銅板價，質感厚實且極具異國情調，是送給姐妹淘的最強不撞款小禮物。</div>
+                    <div class="gift-desc">佈滿複雜華麗的土耳其地毯幾何圖騰。一個只要銅板價，質感厚實且極具異國情調，送禮自用兩相宜。</div>
                 </div>
-                <!-- 10 -->
                 <div class="gift-card">
                     <span class="gift-tag niche">廚房香料</span>
                     <div class="gift-title">10. Pul Biber (土耳其片狀紅辣椒粉)</div>
-                    <div class="gift-desc">土耳其餐桌上不可或缺的靈魂香料！這種辣椒粉帶有淡淡的橄欖油香氣與煙燻微鹹味，辣度溫和、香氣醇厚，回台後不管是撒在烤肉、披薩還是拌麵上都超級百搭。</div>
+                    <div class="gift-desc">辣椒粉帶有淡淡的橄欖油香氣與煙燻微鹹味，辣度溫和、香氣醇厚，回台後不管是撒在烤肉還是拌麵上都超級百搭。</div>
                 </div>
             </div>
         </div>
@@ -962,8 +1079,44 @@
         <div id="ledger-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">💰 公路隨身記帳本</div>
-                <div class="stats-box">
-                    <div><div class="stat-val" id="total-spent">0</div><div class="stat-label">累積花費 (NTD)</div></div>
+                
+                <!-- 家庭選單切換器 -->
+                <div class="family-selector-tabs">
+                    <button id="famA-tab" class="family-tab-btn active famA" onclick="switchFamily('A')">🏠 A 家庭帳本</button>
+                    <button id="famB-tab" class="family-tab-btn famB" onclick="switchFamily('B')">🏡 B 家庭帳本</button>
+                </div>
+
+                <!-- 累積金額統計箱 -->
+                <div id="stats-box-bg" class="stats-box">
+                    <div>
+                        <div class="stat-val" id="total-spent">0</div>
+                        <div class="stat-label" id="stats-label-text">A 家庭 累積花費 (NTD)</div>
+                    </div>
+                </div>
+
+                <!-- 記帳輸入表單 -->
+                <div class="ledger-form">
+                    <div class="form-row">
+                        <!-- 智慧預設欄：選擇歸屬帳本 -->
+                        <select id="item-family" class="fixed-width-select">
+                            <option value="A">🏠 A家庭</option>
+                            <option value="B">🏡 B家庭</option>
+                        </select>
+                        <select id="item-category" class="fixed-width-select">
+                            <option value="food">🍱 食</option>
+                            <option value="stay">🏨 宿</option>
+                            <option value="traffic">🚗 交</option>
+                            <option value="shop">🛍️ 購</option>
+                        </select>
+                        <input type="text" id="item-name" placeholder="項目 (如：土耳其紅茶)">
+                        <input type="number" id="item-amount" placeholder="金額(NTD)">
+                    </div>
+                    <button id="add-btn-style" class="ledger-add-btn" onclick="addLedgerItem()">新增花費項目</button>
+                </div>
+
+                <!-- 花費歷史列表 -->
+                <div class="ledger-list" id="ledger-items-container">
+                    <!-- 動態產生的分帳明細 -->
                 </div>
             </div>
         </div>
@@ -971,6 +1124,13 @@
     </div>
 
     <script>
+        // 初始化 A、B 兩個家庭的獨立記帳資料庫
+        let ledgerDataA = JSON.parse(localStorage.getItem('turkey_ledger_A')) || [];
+        let ledgerDataB = JSON.parse(localStorage.getItem('turkey_ledger_B')) || [];
+        
+        // 當前正在查看的家庭帳本 (預設為 A)
+        let currentFamily = 'A';
+
         function switchTab(tabName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -987,6 +1147,7 @@
             } else if(tabName === 'ledger') {
                 document.querySelectorAll('.tab-btn')[3].classList.add('active');
                 document.getElementById('ledger-tab').classList.add('active');
+                renderLedger(); // 切換到記帳頁時重新渲染
             }
         }
 
@@ -1012,6 +1173,117 @@
             }
         }
 
+        // 切換目前檢視的家庭帳本
+        function switchFamily(fam) {
+            currentFamily = fam;
+            document.getElementById('famA-tab').classList.remove('active');
+            document.getElementById('famB-tab').classList.remove('active');
+            
+            const statsBox = document.getElementById('stats-box-bg');
+            const addBtn = document.getElementById('add-btn-style');
+            const labelText = document.getElementById('stats-label-text');
+            
+            // 同步變更輸入表單的預設家庭
+            document.getElementById('item-family').value = fam;
+
+            if(fam === 'A') {
+                document.getElementById('famA-tab').classList.add('active');
+                statsBox.classList.remove('famB-style');
+                addBtn.classList.remove('famB-btn');
+                labelText.innerText = "A 家庭 累積花費 (NTD)";
+            } else {
+                document.getElementById('famB-tab').classList.add('active');
+                statsBox.classList.add('famB-style');
+                addBtn.classList.add('famB-btn');
+                labelText.innerText = "B 家庭 累積花費 (NTD)";
+            }
+            renderLedger();
+        }
+
+        // 渲染記帳清單
+        function renderLedger() {
+            const container = document.getElementById('ledger-items-container');
+            const totalVal = document.getElementById('total-spent');
+            container.innerHTML = '';
+            
+            // 根據目前選定的家庭決定資料來源
+            let activeData = (currentFamily === 'A') ? ledgerDataA : ledgerDataB;
+            let total = 0;
+            
+            activeData.forEach((item, index) => {
+                total += item.amount;
+                
+                let catClass = 'cat-food';
+                let catName = '🍱 食';
+                if(item.category === 'stay') { catClass = 'cat-stay'; catName = '🏨 宿'; }
+                else if(item.category === 'traffic') { catClass = 'cat-traffic'; catName = '🚗 交'; }
+                else if(item.category === 'shop') { catClass = 'cat-shop'; catName = '🛍️ 購'; }
+                
+                const div = document.createElement('div');
+                div.className = 'ledger-item';
+                div.innerHTML = `
+                    <div class="ledger-item-left">
+                        <span class="ledger-category-tag ${catClass}">${catName}</span>
+                        <span class="ledger-item-name">${item.name}</span>
+                    </div>
+                    <div class="ledger-item-right">
+                        <span class="ledger-item-amount">$${item.amount.toLocaleString()}</span>
+                        <button class="ledger-del-btn" onclick="deleteLedgerItem(${index})">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            
+            totalVal.innerText = total.toLocaleString();
+        }
+
+        // 新增花費項目
+        function addLedgerItem() {
+            const targetFam = document.getElementById('item-family').value;
+            const cat = document.getElementById('item-category').value;
+            const name = document.getElementById('item-name').value.trim();
+            const amount = parseFloat(document.getElementById('item-amount').value);
+            
+            if(!name || isNaN(amount) || amount <= 0) {
+                alert('請輸入正確的項目名稱與金額！');
+                return;
+            }
+            
+            const newItem = { category: cat, name: name, amount: amount };
+            
+            // 依照選擇的家庭寫入對應的資料庫
+            if(targetFam === 'A') {
+                ledgerDataA.push(newItem);
+                localStorage.setItem('turkey_ledger_A', JSON.stringify(ledgerDataA));
+            } else {
+                ledgerDataB.push(newItem);
+                localStorage.setItem('turkey_ledger_B', JSON.stringify(ledgerDataB));
+            }
+            
+            // 清空輸入欄位
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-amount').value = '';
+            
+            // 如果新增的帳本與目前檢視的家庭相同，就即時重新渲染，若不同則自動幫使用者切換過去查看
+            if(targetFam !== currentFamily) {
+                switchFamily(targetFam);
+            } else {
+                renderLedger();
+            }
+        }
+
+        // 刪除花費項目
+        function deleteLedgerItem(index) {
+            if(currentFamily === 'A') {
+                ledgerDataA.splice(index, 1);
+                localStorage.setItem('turkey_ledger_A', JSON.stringify(ledgerDataA));
+            } else {
+                ledgerDataB.splice(index, 1);
+                localStorage.setItem('turkey_ledger_B', JSON.stringify(ledgerDataB));
+            }
+            renderLedger();
+        }
+
         async function fetchLiveWeather() {
             try {
                 const resIST = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.01&longitude=28.97&current_weather=true');
@@ -1033,6 +1305,7 @@
 
         window.onload = function() {
             fetchLiveWeather();
+            renderLedger();
         }
     </script>
 </body>
