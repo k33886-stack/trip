@@ -5,54 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跨越星月之國 - 土耳其互動指南</title>
     <style>
-        /* 基礎設定 */
         body { font-family: sans-serif; background-color: #F8F9FA; color: #3C4043; margin: 0; padding: 16px; }
         .container { max-width: 600px; margin: 0 auto; }
         .card { background: #FFFFFF; border-radius: 16px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         
-        /* 換匯分頁專用樣式 */
-        .exchange-tabs { display: flex; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid #F1F3F4; padding-bottom: 8px; }
+        /* 換匯分頁樣式 */
+        .exchange-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+        .tab-btn { background: #F1F3F4; border: none; border-radius: 20px; padding: 8px 16px; cursor: pointer; color: #5F6368; }
+        .tab-btn.active { background: #FFF7E6; color: #B06000; border: 1px solid #FCE8B2; font-weight: bold; }
         .exchange-content { display: none; }
         .exchange-content.active { display: block; }
-        .tab-btn { background: #FFF; border: 1px solid #DADCE0; border-radius: 20px; padding: 6px 16px; font-size: 14px; cursor: pointer; color: #3C4043; }
-        .tab-btn.active { background: #FFF7E6; border: 1px solid #FCE8B2; color: #B06000; font-weight: bold; }
+        .list-item { padding: 12px 0; border-bottom: 1px solid #F1F3F4; font-size: 14px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>跨越星月之國</h2>
-    
-    <!-- 換匯導航區塊 -->
+
+    <!-- 這裡放入你原本的航班、行程、氣溫區塊 -->
+    <div class="card">✈️ 航班資訊與行程總覽 (已保留)</div>
+    <div class="card">☀️ 氣溫預報 (已保留)</div>
+
+    <!-- 景點周邊特選換匯導航 (含分頁) -->
     <div class="card" style="background: #FFFDF6; border: 1px solid #FCE8B2;">
-        <h3 style="color: #B06000; font-size: 16px;">🌑 景點周邊特選換匯導航</h3>
+        <h3 style="color: #B06000; margin-top: 0;">🌑 景點周邊特選換匯導航</h3>
         
         <div class="exchange-tabs">
-            <button class="tab-btn active" id="btn-resort" onclick="showExchange('resort')">🌊 三海大城度假線</button>
-            <button class="tab-btn" id="btn-istanbul" onclick="showExchange('istanbul')">🕌 伊斯坦堡市區</button>
+            <button class="tab-btn active" id="btn-resort" onclick="switchEx('resort')">🌊 三海大城度假線</button>
+            <button class="tab-btn" id="btn-istanbul" onclick="switchEx('istanbul')">🕌 伊斯坦堡市區</button>
         </div>
 
         <div id="content-resort" class="exchange-content active">
-            <div style="padding: 10px; border-bottom: 1px solid #eee;">Antalya Döviz (安塔利亞老城入口旁)</div>
-            <div style="padding: 10px; border-bottom: 1px solid #eee;">Fethiye Döviz (費特希耶海鮮市場旁)</div>
-            <div style="padding: 10px;">Kuşadası Döviz (庫薩達西遊輪港口旁)</div>
+            <div class="list-item">Antalya Döviz (安塔利亞老城入口旁)</div>
+            <div class="list-item">Fethiye Döviz (費特希耶海鮮市場旁)</div>
+            <div class="list-item">Kuşadası Döviz (庫薩達西遊輪港口旁)</div>
         </div>
 
         <div id="content-istanbul" class="exchange-content">
-            <div style="padding: 10px; border-bottom: 1px solid #eee;">🤖 有頂大市集內部 (靠近 Mahmutpaşa 門)</div>
-            <div style="padding: 10px; border-bottom: 1px solid #eee;">🚉 Sirkeci 輕軌站與香料市集周邊</div>
-            <div style="padding: 10px;">🗼 獨立大道中段 (近加拉達塔方向)</div>
+            <div class="list-item">🤖 有頂大市集內部 (靠近 Mahmutpaşa 門)</div>
+            <div class="list-item">🚉 Sirkeci 輕軌站與香料市集周邊</div>
+            <div class="list-item">🗼 獨立大道中段 (近加拉達塔方向)</div>
         </div>
     </div>
+
+    <!-- 這裡放入你原本的行李清單、伴手禮、記帳區塊 -->
+    <div class="card">💼 行李清單 (已保留)</div>
+    <div class="card">🎁 伴手禮 (已保留)</div>
+    <div class="card">💰 隨身記帳 (已保留)</div>
 </div>
 
 <script>
-function showExchange(type) {
-    // 切換內容
+function switchEx(type) {
     document.getElementById('content-resort').classList.toggle('active', type === 'resort');
     document.getElementById('content-istanbul').classList.toggle('active', type === 'istanbul');
-    
-    // 切換按鈕狀態
     document.getElementById('btn-resort').classList.toggle('active', type === 'resort');
     document.getElementById('btn-istanbul').classList.toggle('active', type === 'istanbul');
 }
