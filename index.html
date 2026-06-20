@@ -182,10 +182,15 @@
             display: block;
         }
         .exchange-content-item ul {
-            padding-left: 18px;
+            padding-left: 0;
+            list-style: none;
         }
         .exchange-content-item li {
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+            background: rgba(255,255,255,0.6);
+            padding: 8px 10px;
+            border-radius: 8px;
+            border-left: 3px solid #E67E22;
         }
 
         .weather-box {
@@ -645,56 +650,82 @@
                 <div class="overview-item"><span>時差備忘</span><strong>土耳其當地為 GMT+3 (臺灣 -5hr)</strong></div>
             </div>
 
-            <!-- 🪙 換匯地點下拉選單功能升級 -->
+            <!-- 🪙 換匯地點下拉選單功能升級：精準實體換匯所與導航連結 -->
             <div class="exchange-box">
                 <div class="exchange-box-title">
-                    <span>🪙 當地換匯極限攻略</span>
+                    <span>🪙 景點周邊特選換匯所導航</span>
                     <select class="exchange-select" id="exchange-location-selector" onchange="switchExchangeLocation()">
                         <option value="ist-airport">✈️ 伊斯坦堡機場 (IST)</option>
-                        <option value="grand-bazaar">🕌 伊斯坦堡舊城/大巴扎</option>
-                        <option value="safranbolu">歷史古城 (番紅花城)</option>
-                        <option value="cappadocia">奇岩景區 (卡帕多奇亞)</option>
-                        <option value="med-coast">地中/愛琴海 (安塔利亞/費特希耶/庫薩達西)</option>
+                        <option value="grand-bazaar">🕌 舊城區大巴扎周邊</option>
+                        <option value="safranbolu">🏰 番紅花城新城區</option>
+                        <option value="cappadocia">🎈 卡帕多奇亞歌樂美鎮</option>
+                        <option value="med-coast">🌊 三海大城度假線</option>
                     </select>
                 </div>
                 
                 <!-- 內容1：機場 -->
                 <div class="exchange-content-item active" id="ex-ist-airport">
                     <ul>
-                        <li><strong>匯率最差：</strong>全土耳其匯率最差且會收取高額手續費（Commission）。</li>
-                        <li><strong>換小額即可：</strong>下機入境後，僅在此<strong>用歐元/美金兌換小額（如 20-50 歐元）</strong>，足夠支付首日公路過路費、買水、買小點心即可，切勿在此大量兌換。</li>
+                        <li>
+                            <strong>Global Exchange (IST 機場店)</strong>
+                            <a href="https://maps.google.com?q=Global+Exchange+Istanbul+Airport" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                            <p style="font-size:11px; color:#E74C3C; margin-top:2px;">⚠️ 注意：機場匯率極差且收手續費，僅在此換 20-50 歐元付首日公路過路費即可！</p>
+                        </li>
                     </ul>
                 </div>
                 
                 <!-- 內容2：大巴扎 -->
                 <div class="exchange-content-item" id="ex-grand-bazaar">
                     <ul>
-                        <li><strong>匯率最好：</strong>大巴扎（Grand Bazaar）周邊換匯所（Döviz）密度極高，是<strong>全土耳其匯率競爭最激烈、最划算的地點</strong>。</li>
-                        <li><strong>極力推薦：</strong>建議在行程一開始或回程時，在此將大面額的歐元或美金一次兌換足夠的現金。多比較三家外牆的看板數字，不收手續費的再進去。</li>
+                        <li>
+                            <strong>Haznedar Döviz (大巴扎旁首選)</strong>
+                            <a href="https://maps.google.com?q=Haznedar+Doviz+Grand+Bazaar" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                            <p style="font-size:11px; color:var(--text-light); margin-top:2px;">全土耳其匯率最好的一區，極推薦在此將大額外幣一次兌換完畢。</p>
+                        </li>
+                        <li style="margin-top:6px;">
+                            <strong>Nuruosmaniye Döviz (清真寺門外)</strong>
+                            <a href="https://maps.google.com?q=Nuruosmaniye+Doviz+Istanbul" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                        </li>
                     </ul>
                 </div>
                 
                 <!-- 內容3：番紅花城 -->
                 <div class="exchange-content-item" id="ex-safranbolu">
                     <ul>
-                        <li><strong>老街小店：</strong>舊城區換匯所較少，部分傳統手工藝品、番紅花茶小攤只收里拉現金或土耳其在地卡。</li>
-                        <li><strong>備用方案：</strong>若里拉不夠，可前往番紅花城新城區的銀行 ATM 透過跨國提款補充現金，或詢問入住的 Çeşmeli Konak 飯店是否接受歐元找零。</li>
+                        <li>
+                            <strong>Safranbolu Döviz (新城 Kıranköy 內)</strong>
+                            <a href="https://maps.google.com?q=Safranbolu+Doviz" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                            <p style="font-size:11px; color:var(--text-light); margin-top:2px;">舊城區老街多為手工藝小攤，若需里拉現金建議開車順路來新城區這家辦理。</p>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- 內容4：卡帕多奇亞 -->
                 <div class="exchange-content-item" id="ex-cappadocia">
                     <ul>
-                        <li><strong>景區中等匯率：</strong>哥樂美（Goreme）鎮上有幾家換匯所，匯率雖不如伊斯坦堡大巴扎，但仍屬合理。</li>
-                        <li><strong>大額支付：</strong>熱氣球體驗、越野車等大額活動，業者通常**直接報價歐元/美金**，直接付歐美現鈔或刷卡最划算，不需要特地換成里拉支付。</li>
+                        <li>
+                            <strong>Göreme Döviz (歌樂美客運站旁)</strong>
+                            <a href="https://maps.google.com?q=Goreme+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                            <p style="font-size:11px; color:var(--text-light); margin-top:2px;">景區中心唯一的實體換匯店，若是大額熱氣球行程直接用美金/歐元現鈔付更划算。</p>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- 內容5：三海公路線 -->
                 <div class="exchange-content-item" id="ex-med-coast">
                     <ul>
-                        <li><strong>刷卡極度發達：</strong>安塔利亞、費特希耶、庫薩達西等度假大城，不論是加油站、海鮮餐廳、超商還是飛行傘公司，**刷卡普及率接近 100%**。</li>
-                        <li><strong>換匯叮嚀：</strong>若真需現金，市中心購物區的 Döviz 匯率都不錯。海邊度假飯店櫃檯雖可換匯，但匯率通常極差，非緊急請勿使用。</li>
+                        <li>
+                            <strong>Antalya Döviz (安塔利亞老城入口旁)</strong>
+                            <a href="https://maps.google.com?q=Antalya+Doviz+Kaleici" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                        </li>
+                        <li style="margin-top:6px;">
+                            <strong>Fethiye Döviz (費特希耶海鮮市場旁)</strong>
+                            <a href="https://maps.google.com?q=Fethiye+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                        </li>
+                        <li style="margin-top:6px;">
+                            <strong>Kuşadası Döviz (庫薩達西遊輪港口旁)</strong>
+                            <a href="https://maps.google.com?q=Kusadasi+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -719,7 +750,7 @@
             <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
 
-        <!-- 內容：詳細行程 (原汁原味 13 天無遺漏) -->
+        <!-- 內容：詳細行程 -->
         <div id="itinerary-tab" class="tab-content active">
             <!-- Day 1 -->
             <div class="day-accordion">
@@ -1040,7 +1071,7 @@
             </div>
         </div>
 
-        <!-- 內容：行李打包 (無遺漏四大分類) -->
+        <!-- 內容：行李打包 -->
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">🧳 智慧防忘打包全清單</div>
@@ -1093,9 +1124,9 @@
             </div>
         </div>
 
-        <!-- 內容：必買伴手禮 (大眾精準擴充至 5 項！小眾 10 項一條不漏) -->
+        <!-- 內容：必買伴手禮 (已移除紅圈部分的贅字說明) -->
         <div id="gift-tab" class="tab-content">
-            <div class="checklist-cat-title" style="margin-left:6px; margin-bottom:12px;">🔥 大眾經典 (擴充至 5 項)</div>
+            <div class="checklist-cat-title" style="margin-left:6px; margin-bottom:12px;">🔥 大眾經典</div>
             
             <div class="gift-card">
                 <span class="gift-tag mainstream">大眾經典 01</span>
@@ -1123,7 +1154,7 @@
                 <div class="gift-desc">帶有華麗幾何與鬱金香圖騰的土耳其小瓷碗。雖然常見，但放飾品或當鑰匙盒都極具異國風情，便宜好看。</div>
             </div>
 
-            <div class="checklist-cat-title" style="margin-left:6px; margin-top:20px; margin-bottom:12px;">✨ 特色小眾 (10項完全體無遺漏)</div>
+            <div class="checklist-cat-title" style="margin-left:6px; margin-top:20px; margin-bottom:12px;">✨ 特色小眾</div>
 
             <div class="gift-card">
                 <span class="gift-tag niche">特色小眾 01</span>
@@ -1257,7 +1288,6 @@
             header.parentElement.classList.toggle('open');
         }
 
-        /* 換匯地點下拉選單切換邏輯 */
         function switchExchangeLocation() {
             const selectedLoc = document.getElementById('exchange-location-selector').value;
             document.querySelectorAll('.exchange-content-item').forEach(item => item.classList.remove('active'));
