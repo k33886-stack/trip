@@ -4,106 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跨越星月之國：土耳其經典 13 日公路自駕全紀錄</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
     <style>
-        :root { --primary: #2C699A; --primary-light: #E8F1F5; --secondary: #D68C45; --secondary-light: #F7F0E8; --bg-color: #F8F9FA; --card-bg: #FFFFFF; --text-dark: #2C3E50; --text-light: #7F8C8D; --border-color: #EBF0F3; --shadow: 0 10px 25px rgba(180, 190, 200, 0.15); --radius: 20px; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; padding-bottom: 40px; }
-        .hero-banner { background: linear-gradient(135deg, #E8F1F5 0%, #F7F0E8 100%); padding: 40px 20px 30px 20px; text-align: center; border-bottom: 1px solid var(--border-color); }
-        .hero-banner h1 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        :root { --primary: #2C699A; --card-bg: #FFFFFF; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif; }
+        body { background-color: #F8F9FA; padding-bottom: 40px; }
         .container { max-width: 600px; margin: 0 auto; padding: 16px; }
-        .overview-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-color); }
-        .overview-title { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .overview-card { background: var(--card-bg); border-radius: 20px; padding: 24px; margin-bottom: 20px; border: 1px solid #EBF0F3; box-shadow: 0 10px 25px rgba(180, 190, 200, 0.15); }
         
         /* 頁籤通用樣式 */
-        .nav-tabs { display: flex; background-color: #EAEFF4; border-radius: 14px; padding: 4px; margin-bottom: 20px; gap: 2px; }
-        .tab-btn { flex: 1; text-align: center; padding: 12px 0; font-size: 12px; font-weight: 500; color: #566573; border: none; background: none; cursor: pointer; border-radius: 10px; transition: all 0.2s; }
+        .nav-tabs { display: flex; background-color: #EAEFF4; border-radius: 14px; padding: 4px; gap: 2px; }
+        .tab-btn { flex: 1; padding: 12px 0; font-size: 12px; font-weight: 500; color: #566573; border: none; background: none; cursor: pointer; border-radius: 10px; }
         .tab-btn.active { background-color: var(--card-bg); color: var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        /* 換匯內容專用樣式 */
-        .exchange-inner-content { padding: 10px 0; font-size: 13px; color: #5D6D7E; }
-        .inline-maps-btn { display: inline-flex; color: var(--primary); text-decoration: none; font-size: 11px; border: 1px solid var(--primary); padding: 1px 5px; border-radius: 4px; margin-left: 6px; background: #FFF; }
         
-        /* 原本的行程/記帳樣式保持不變 */
-        .day-accordion { background: var(--card-bg); border-radius: var(--radius); margin-bottom: 14px; box-shadow: var(--shadow); border: 1px solid var(--border-color); overflow: hidden; }
-        .day-header { padding: 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .day-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: #FAFCFD; }
-        .day-accordion.open .day-content { max-height: 3500px; border-top: 1px solid var(--border-color); }
-        .hotel-info-box { background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 14px; border-radius: 12px; margin-bottom: 16px; font-size: 13px; }
-        .timeline { position: relative; padding-left: 20px; }
-        .timeline::before { content: ''; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 2px; background-color: #E2E8F0; }
-        .timeline-item { position: relative; padding-bottom: 14px; }
-        .timeline-dot { position: absolute; left: -21px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background-color: var(--primary); }
+        /* 內容隱藏邏輯：預設隱藏，僅 active 顯示 */
+        .tab-content { display: none; }
+        .tab-content.active { display: block !important; }
+        
+        .exchange-inner-content { padding: 15px 0; font-size: 13px; color: #5D6D7E; }
+        .inline-maps-btn { display: inline-flex; color: var(--primary); border: 1px solid var(--primary); padding: 1px 5px; border-radius: 4px; margin-left: 6px; text-decoration: none; font-size: 11px; }
     </style>
 </head>
 <body>
-    <div class="hero-banner"><h1>跨越星月之國</h1><p>土耳其經典 13 日公路自駕全紀錄互動指南</p></div>
-
     <div class="container">
         <div class="overview-card">
-            <div class="overview-title">🪙 景點周邊特選換匯所</div>
+            <div style="font-weight:700; color:var(--primary); margin-bottom:16px;">🪙 景點周邊特選換匯所</div>
             <div class="nav-tabs" style="background: #FFF9E6; border: 1px solid #FFE0B2;">
-                <button class="tab-btn active" onclick="switchSubTab(this, 'ex-ist')">✈️ 機場</button>
-                <button class="tab-btn" onclick="switchSubTab(this, 'ex-baz')">🕌 大巴扎</button>
-                <button class="tab-btn" onclick="switchSubTab(this, 'ex-oth')">🏰 其他</button>
+                <button class="tab-btn active" onclick="switchTabGroup(this, 'ex-ist')">✈️ 機場</button>
+                <button class="tab-btn" onclick="switchTabGroup(this, 'ex-baz')">🕌 大巴扎</button>
+                <button class="tab-btn" onclick="switchTabGroup(this, 'ex-oth')">🏰 其他</button>
             </div>
-            <div id="ex-ist" class="tab-content active" style="display:block;">
+            <div id="ex-ist" class="tab-content active">
                 <div class="exchange-inner-content">
-                    <ul><li><strong>Global Exchange (IST 機場店)</strong> <a href="https://maps.google.com?q=Global+Exchange+Istanbul+Airport" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li></ul>
+                    <ul><li><strong>Global Exchange (IST 機場店)</strong> <a href="#" class="inline-maps-btn">🗺️ 導航</a></li></ul>
                     <p style="font-size:11px; color:#E74C3C; margin-top:4px;">⚠️ 注意：匯率極差，僅換 20-50 歐元支付過路費即可。</p>
                 </div>
             </div>
             <div id="ex-baz" class="tab-content">
                 <div class="exchange-inner-content">
                     <ul>
-                        <li><strong>Haznedar Döviz</strong> <a href="https://maps.google.com?q=Haznedar+Doviz+Grand+Bazaar" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li>
-                        <li><strong>Nuruosmaniye Döviz</strong> <a href="https://maps.google.com?q=Nuruosmaniye+Doviz+Istanbul" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li>
+                        <li><strong>Haznedar Döviz</strong> <a href="#" class="inline-maps-btn">🗺️ 導航</a></li>
+                        <li><strong>Nuruosmaniye Döviz</strong> <a href="#" class="inline-maps-btn">🗺️ 導航</a></li>
                     </ul>
                 </div>
             </div>
             <div id="ex-oth" class="tab-content">
                 <div class="exchange-inner-content">
                     <ul>
-                        <li><strong>番紅花城：Safranbolu Döviz</strong> <a href="https://maps.google.com?q=Safranbolu+Doviz" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li>
-                        <li><strong>卡帕：Göreme Döviz</strong> <a href="https://maps.google.com?q=Goreme+Doviz+Exchange" target="_blank" class="inline-maps-btn">🗺️ 導航</a></li>
+                        <li><strong>番紅花城：Safranbolu Döviz</strong> <a href="#" class="inline-maps-btn">🗺️ 導航</a></li>
+                        <li><strong>卡帕：Göreme Döviz</strong> <a href="#" class="inline-maps-btn">🗺️ 導航</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('itinerary')">📅 詳細行程</button>
-            <button class="tab-btn" onclick="switchTab('checklist')">🧳 行理打包</button>
-            <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
-        </div>
-
-        <div id="itinerary-tab" class="tab-content active">
-            <p>詳細行程內容已載入...</p>
-        </div>
-        <div id="checklist-tab" class="tab-content"><p>打包清單內容...</p></div>
-        <div id="ledger-tab" class="tab-content"><p>記帳內容...</p></div>
     </div>
 
     <script>
-        // 切換換匯區的小型頁籤
-        function switchSubTab(btn, id) {
+        function switchTabGroup(btn, id) {
+            // 找到按鈕所在的父容器，確保只影響當前組別
             const container = btn.closest('.overview-card');
-            container.querySelectorAll('.nav-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            
+            // 移除同組所有按鈕的 active
+            container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            // 移除同組所有內容的 active
             container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // 啟用點擊項目
             btn.classList.add('active');
             document.getElementById(id).classList.add('active');
-        }
-
-        // 切換主頁籤 (行程/記帳)
-        function switchTab(tabName) {
-            document.querySelectorAll('.nav-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            // 此處補上對應邏輯...
         }
     </script>
 </body>
