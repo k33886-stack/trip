@@ -3,167 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跨越星月之國 - 土耳其經典 13 日自駕全紀錄互動指南</title>
+    <title>跨越星月之國 - 土耳其互動指南</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #F8F9FA;
-            color: #3C4043;
-            margin: 0;
-            padding: 16px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        h2 {
-            color: #1A73E8;
-            text-align: center;
-            margin-bottom: 4px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #70757A;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-        .card {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .flight-info-title {
-            font-size: 16px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #F1F3F4;
-            padding-bottom: 12px;
-        }
-        .flight-box {
-            background: #F8F9FA;
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 12px;
-        }
-        .flight-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .flight-route {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 12px;
-        }
-        .time {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .airport {
-            font-size: 12px;
-            color: #70757A;
-            margin-top: 4px;
-        }
-        .duration-line {
-            flex-grow: 1;
-            text-align: center;
-            position: relative;
-            margin: 0 16px;
-            color: #70757A;
-            font-size: 12px;
-        }
-        .duration-line::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            border-top: 1px solid #BDC1C6;
-            z-index: 1;
-        }
-        .duration-text {
-            background: #F8F9FA;
-            padding: 0 8px;
-            position: relative;
-            z-index: 2;
-        }
-        .flight-no {
-            font-size: 11px;
-            color: #9AA0A6;
-            margin-top: 4px;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .info-block {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .info-label {
-            font-size: 12px;
-            color: #70757A;
-            margin-bottom: 4px;
-        }
-        .info-value {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .weather-card {
-            display: flex;
-            justify-content: space-between;
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .weather-item {
-            text-align: center;
-            flex: 1;
-        }
-        .weather-temp {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-        .weather-temp.istanbul { color: #E67E22; }
-        .weather-temp.cappa { color: #2980B9; }
-        .weather-loc {
-            font-size: 12px;
-            color: #70757A;
-        }
-        .nav-tabs {
-            display: flex;
-            background: #E8EAED;
-            border-radius: 12px;
-            padding: 4px;
-            margin-bottom: 16px;
-        }
-        .nav-tab {
-            flex: 1;
-            text-align: center;
-            padding: 8px 0;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 10px;
-            color: #5F6368;
-        }
-        .nav-tab.active {
-            background: #FFFFFF;
-            color: #3C4043;
-            font-weight: bold;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
+        /* 基礎設定 */
+        body { font-family: sans-serif; background-color: #F8F9FA; color: #3C4043; margin: 0; padding: 16px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { background: #FFFFFF; border-radius: 16px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        
+        /* 換匯分頁專用樣式 */
+        .exchange-tabs { display: flex; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid #F1F3F4; padding-bottom: 8px; }
+        .exchange-content { display: none; }
+        .exchange-content.active { display: block; }
+        .tab-btn { background: #FFF; border: 1px solid #DADCE0; border-radius: 20px; padding: 6px 16px; font-size: 14px; cursor: pointer; color: #3C4043; }
+        .tab-btn.active { background: #FFF7E6; border: 1px solid #FCE8B2; color: #B06000; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>跨越星月之國</h2>
+    
+    <!-- 換匯導航區塊 -->
+    <div class="card" style="background: #FFFDF6; border: 1px solid #FCE8B2;">
+        <h3 style="color: #B06000; font-size: 16px;">🌑 景點周邊特選換匯導航</h3>
+        
+        <div class="exchange-tabs">
+            <button class="tab-btn active" id="btn-resort" onclick="showExchange('resort')">🌊 三海大城度假線</button>
+            <button class="tab-btn" id="btn-istanbul" onclick="showExchange('istanbul')">🕌 伊斯坦堡市區</button>
+        </div>
+
+        <div id="content-resort" class="exchange-content active">
+            <div style="padding: 10px; border-bottom: 1px solid #eee;">Antalya Döviz (安塔利亞老城入口旁)</div>
+            <div style="padding: 10px; border-bottom: 1px solid #eee;">Fethiye Döviz (費特希耶海鮮市場旁)</div>
+            <div style="padding: 10px;">Kuşadası Döviz (庫薩達西遊輪港口旁)</div>
+        </div>
+
+        <div id="content-istanbul" class="exchange-content">
+            <div style="padding: 10px; border-bottom: 1px solid #eee;">🤖 有頂大市集內部 (靠近 Mahmutpaşa 門)</div>
+            <div style="padding: 10px; border-bottom: 1px solid #eee;">🚉 Sirkeci 輕軌站與香料市集周邊</div>
+            <div style="padding: 10px;">🗼 獨立大道中段 (近加拉達塔方向)</div>
+        </div>
+    </div>
+</div>
+
+<script>
+function showExchange(type) {
+    // 切換內容
+    document.getElementById('content-resort').classList.toggle('active', type === 'resort');
+    document.getElementById('content-istanbul').classList.toggle('active', type === 'istanbul');
+    
+    // 切換按鈕狀態
+    document.getElementById('btn-resort').classList.toggle('active', type === 'resort');
+    document.getElementById('btn-istanbul').classList.toggle('active', type === 'istanbul');
+}
+</script>
+
+</body>
+</html>
