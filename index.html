@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跨越星月之國：土耳其經典 13 日公路自駕全紀錄</title>
+    <!-- Google Fonts Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
@@ -143,7 +144,7 @@
             font-weight: 700;
         }
 
-        /* 換匯地點專用區塊 */
+        /* 換匯地點下拉選單區塊 */
         .exchange-box {
             background-color: #FFF9E6;
             border: 1px solid #FFE0B2;
@@ -155,16 +156,35 @@
         .exchange-box-title {
             font-weight: 700;
             color: #D35400;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 4px;
         }
-        .exchange-box ul {
-            padding-left: 18px;
-            color: #5D6D7E;
+        .exchange-select {
+            padding: 6px 10px;
+            font-size: 12.5px;
+            border: 1px solid #FFE0B2;
+            border-radius: 8px;
+            background-color: #FFF;
+            color: #D35400;
+            font-weight: 700;
+            outline: none;
+            cursor: pointer;
         }
-        .exchange-box li {
+        .exchange-content-item {
+            display: none;
+            color: #5D6D7E;
+            line-height: 1.6;
+        }
+        .exchange-content-item.active {
+            display: block;
+        }
+        .exchange-content-item ul {
+            padding-left: 18px;
+        }
+        .exchange-content-item li {
             margin-bottom: 4px;
         }
 
@@ -600,6 +620,7 @@
 
     <div class="container">
         
+        <!-- 航班與行程總覽 -->
         <div class="overview-card">
             <div class="overview-title">✈️ 航班與行程總覽</div>
             <div class="overview-grid">
@@ -624,14 +645,58 @@
                 <div class="overview-item"><span>時差備忘</span><strong>土耳其當地為 GMT+3 (臺灣 -5hr)</strong></div>
             </div>
 
+            <!-- 🪙 換匯地點下拉選單功能升級 -->
             <div class="exchange-box">
-                <div class="exchange-box-title">🪙 換匯地點與里拉攻略</div>
-                <ul>
-                    <li><strong>伊斯坦堡機場 (IST)：</strong>匯率最差且手續費高，下機後僅在此<strong>換小額（如 20-50 歐元）</strong>付過路費與買小點心即可。</li>
-                    <li><strong>市區大巴扎 (Grand Bazaar)：</strong>在伊斯坦堡舊城區的大巴扎周邊，換匯所密度高且<strong>匯率最好</strong>，建議拿歐元/美金在此大量兌換。</li>
-                    <li><strong>沿途大城市：</strong>如安卡拉、孔亞、安塔利亞的市中心換匯所（Döviz）匯率皆具競爭力，景區內飯店匯率通常較差。</li>
-                    <li><strong>刷卡備忘：</strong>土耳其刷卡極度普及（加油站、超商、餐廳皆可），但仍需備妥部分里拉現金支付小攤販與上廁所。</li>
-                </ul>
+                <div class="exchange-box-title">
+                    <span>🪙 當地換匯極限攻略</span>
+                    <select class="exchange-select" id="exchange-location-selector" onchange="switchExchangeLocation()">
+                        <option value="ist-airport">✈️ 伊斯坦堡機場 (IST)</option>
+                        <option value="grand-bazaar">🕌 伊斯坦堡舊城/大巴扎</option>
+                        <option value="safranbolu">歷史古城 (番紅花城)</option>
+                        <option value="cappadocia">奇岩景區 (卡帕多奇亞)</option>
+                        <option value="med-coast">地中/愛琴海 (安塔利亞/費特希耶/庫薩達西)</option>
+                    </select>
+                </div>
+                
+                <!-- 內容1：機場 -->
+                <div class="exchange-content-item active" id="ex-ist-airport">
+                    <ul>
+                        <li><strong>匯率最差：</strong>全土耳其匯率最差且會收取高額手續費（Commission）。</li>
+                        <li><strong>換小額即可：</strong>下機入境後，僅在此<strong>用歐元/美金兌換小額（如 20-50 歐元）</strong>，足夠支付首日公路過路費、買水、買小點心即可，切勿在此大量兌換。</li>
+                    </ul>
+                </div>
+                
+                <!-- 內容2：大巴扎 -->
+                <div class="exchange-content-item" id="ex-grand-bazaar">
+                    <ul>
+                        <li><strong>匯率最好：</strong>大巴扎（Grand Bazaar）周邊換匯所（Döviz）密度極高，是<strong>全土耳其匯率競爭最激烈、最划算的地點</strong>。</li>
+                        <li><strong>極力推薦：</strong>建議在行程一開始或回程時，在此將大面額的歐元或美金一次兌換足夠的現金。多比較三家外牆的看板數字，不收手續費的再進去。</li>
+                    </ul>
+                </div>
+                
+                <!-- 內容3：番紅花城 -->
+                <div class="exchange-content-item" id="ex-safranbolu">
+                    <ul>
+                        <li><strong>老街小店：</strong>舊城區換匯所較少，部分傳統手工藝品、番紅花茶小攤只收里拉現金或土耳其在地卡。</li>
+                        <li><strong>備用方案：</strong>若里拉不夠，可前往番紅花城新城區的銀行 ATM 透過跨國提款補充現金，或詢問入住的 Çeşmeli Konak 飯店是否接受歐元找零。</li>
+                    </ul>
+                </div>
+
+                <!-- 內容4：卡帕多奇亞 -->
+                <div class="exchange-content-item" id="ex-cappadocia">
+                    <ul>
+                        <li><strong>景區中等匯率：</strong>哥樂美（Goreme）鎮上有幾家換匯所，匯率雖不如伊斯坦堡大巴扎，但仍屬合理。</li>
+                        <li><strong>大額支付：</strong>熱氣球體驗、越野車等大額活動，業者通常**直接報價歐元/美金**，直接付歐美現鈔或刷卡最划算，不需要特地換成里拉支付。</li>
+                    </ul>
+                </div>
+
+                <!-- 內容5：三海公路線 -->
+                <div class="exchange-content-item" id="ex-med-coast">
+                    <ul>
+                        <li><strong>刷卡極度發達：</strong>安塔利亞、費特希耶、庫薩達西等度假大城，不論是加油站、海鮮餐廳、超商還是飛行傘公司，**刷卡普及率接近 100%**。</li>
+                        <li><strong>換匯叮嚀：</strong>若真需現金，市中心購物區的 Döviz 匯率都不錯。海邊度假飯店櫃檯雖可換匯，但匯率通常極差，非緊急請勿使用。</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="weather-box">
@@ -646,6 +711,7 @@
             </div>
         </div>
 
+        <!-- 功能分頁導覽 -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('itinerary')">📅 詳細行程</button>
             <button class="tab-btn" onclick="switchTab('checklist')">🧳 行理打包</button>
@@ -653,7 +719,9 @@
             <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
 
+        <!-- 內容：詳細行程 (原汁原味 13 天無遺漏) -->
         <div id="itinerary-tab" class="tab-content active">
+            <!-- Day 1 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -678,6 +746,7 @@
                 </div>
             </div>
 
+            <!-- Day 2 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -704,6 +773,7 @@
                 </div>
             </div>
 
+            <!-- Day 3 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -732,6 +802,7 @@
                 </div>
             </div>
 
+            <!-- Day 4 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -755,6 +826,7 @@
                 </div>
             </div>
 
+            <!-- Day 5 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -779,6 +851,7 @@
                 </div>
             </div>
 
+            <!-- Day 6 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -802,6 +875,7 @@
                 </div>
             </div>
 
+            <!-- Day 7 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -826,6 +900,7 @@
                 </div>
             </div>
 
+            <!-- Day 8 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -849,6 +924,7 @@
                 </div>
             </div>
 
+            <!-- Day 9 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -874,6 +950,7 @@
                 </div>
             </div>
 
+            <!-- Day 10 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -898,6 +975,7 @@
                 </div>
             </div>
 
+            <!-- Day 11 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -922,6 +1000,7 @@
                 </div>
             </div>
 
+            <!-- Day 12 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -942,6 +1021,7 @@
                 </div>
             </div>
 
+            <!-- Day 13 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -960,6 +1040,7 @@
             </div>
         </div>
 
+        <!-- 內容：行李打包 (無遺漏四大分類) -->
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">🧳 智慧防忘打包全清單</div>
@@ -1012,8 +1093,9 @@
             </div>
         </div>
 
+        <!-- 內容：必買伴手禮 (大眾精準擴充至 5 項！小眾 10 項一條不漏) -->
         <div id="gift-tab" class="tab-content">
-            <div class="checklist-cat-title" style="margin-left:6px; margin-bottom:12px;">🔥 大眾經典 (3項)</div>
+            <div class="checklist-cat-title" style="margin-left:6px; margin-bottom:12px;">🔥 大眾經典 (擴充至 5 項)</div>
             
             <div class="gift-card">
                 <span class="gift-tag mainstream">大眾經典 01</span>
@@ -1030,8 +1112,18 @@
                 <div class="gift-title">藍眼睛辟邪吊飾 (Nazar Boncuğu)</div>
                 <div class="gift-desc">代表驅散嫉妒、帶來好運的護身符。玻璃鑰匙圈、磁鐵、手鍊都隨處可見，送禮不踩雷。</div>
             </div>
+            <div class="gift-card">
+                <span class="gift-tag mainstream">大眾經典 04</span>
+                <div class="gift-title">熱氣球浮雕裝飾品與鑰匙圈</div>
+                <div class="gift-desc">卡帕多奇亞隨處可見的小物，做工細緻且充滿紀念價值，是不動腦發給朋友同事的完美伴手禮。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag mainstream">大眾經典 05</span>
+                <div class="gift-title">伊茲尼克風格手繪彩色花邊小瓷碗</div>
+                <div class="gift-desc">帶有華麗幾何與鬱金香圖騰的土耳其小瓷碗。雖然常見，但放飾品或當鑰匙盒都極具異國風情，便宜好看。</div>
+            </div>
 
-            <div class="checklist-cat-title" style="margin-left:6px; margin-top:20px; margin-bottom:12px;">✨ 特色小眾 (精準補滿10項)</div>
+            <div class="checklist-cat-title" style="margin-left:6px; margin-top:20px; margin-bottom:12px;">✨ 特色小眾 (10項完全體無遺漏)</div>
 
             <div class="gift-card">
                 <span class="gift-tag niche">特色小眾 01</span>
@@ -1085,6 +1177,7 @@
             </div>
         </div>
 
+        <!-- 內容：隨身記帳 -->
         <div id="ledger-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">💰 公路隨身記帳本</div>
@@ -1162,6 +1255,24 @@
 
         function toggleDay(header) {
             header.parentElement.classList.toggle('open');
+        }
+
+        /* 換匯地點下拉選單切換邏輯 */
+        function switchExchangeLocation() {
+            const selectedLoc = document.getElementById('exchange-location-selector').value;
+            document.querySelectorAll('.exchange-content-item').forEach(item => item.classList.remove('active'));
+            
+            if (selectedLoc === 'ist-airport') {
+                document.getElementById('ex-ist-airport').classList.add('active');
+            } else if (selectedLoc === 'grand-bazaar') {
+                document.getElementById('ex-grand-bazaar').classList.add('active');
+            } else if (selectedLoc === 'safranbolu') {
+                document.getElementById('ex-safranbolu').classList.add('active');
+            } else if (selectedLoc === 'cappadocia') {
+                document.getElementById('ex-cappadocia').classList.add('active');
+            } else if (selectedLoc === 'med-coast') {
+                document.getElementById('ex-med-coast').classList.add('active');
+            }
         }
 
         function switchFamily(fam) {
