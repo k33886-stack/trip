@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跨越星月之國：土耳其經典 13 日公路自駕全紀錄</title>
-    <!-- Google Fonts Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
@@ -39,7 +38,6 @@
             padding-bottom: 40px;
         }
 
-        /* 頂部橫幅 */
         .hero-banner {
             background: linear-gradient(135deg, #E8F1F5 0%, #F7F0E8 100%);
             padding: 40px 20px 30px 20px;
@@ -61,14 +59,12 @@
             font-weight: 300;
         }
 
-        /* 主容器 */
         .container {
             max-width: 600px;
             margin: 0 auto;
             padding: 16px;
         }
 
-        /* 行程總覽卡片 */
         .overview-card {
             background: var(--card-bg);
             border-radius: var(--radius);
@@ -147,7 +143,31 @@
             font-weight: 700;
         }
 
-        /* 天氣觀測站 */
+        /* 換匯地點專用區塊 */
+        .exchange-box {
+            background-color: #FFF9E6;
+            border: 1px solid #FFE0B2;
+            border-radius: 14px;
+            padding: 14px;
+            margin-top: 14px;
+            font-size: 12.5px;
+        }
+        .exchange-box-title {
+            font-weight: 700;
+            color: #D35400;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .exchange-box ul {
+            padding-left: 18px;
+            color: #5D6D7E;
+        }
+        .exchange-box li {
+            margin-bottom: 4px;
+        }
+
         .weather-box {
             display: flex;
             justify-content: space-around;
@@ -280,7 +300,6 @@
             padding: 18px;
         }
 
-        /* 住宿與地圖區塊 */
         .hotel-info-box {
             background-color: #F8FAFC;
             border: 1px solid #E2E8F0;
@@ -328,7 +347,6 @@
             background: #FFF;
         }
 
-        /* 時間軸 */
         .timeline {
             position: relative;
             padding-left: 20px;
@@ -393,7 +411,6 @@
             padding-left: 2px;
         }
 
-        /* 清單、伴手禮 */
         .checklist-group { margin-bottom: 22px; }
         .checklist-cat-title { font-size: 13.5px; font-weight: 700; color: var(--primary); margin-bottom: 12px; padding-left: 8px; border-left: 4px solid var(--primary); }
         .check-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
@@ -423,7 +440,6 @@
         .gift-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
         .gift-desc { font-size: 12.5px; color: var(--text-light); line-height: 1.5; }
 
-        /* 記帳頁面樣式 */
         .family-selector-tabs {
             display: flex;
             background-color: #F0F4F8;
@@ -584,12 +600,10 @@
 
     <div class="container">
         
-        <!-- 航班與行程總覽 -->
         <div class="overview-card">
             <div class="overview-title">✈️ 航班與行程總覽</div>
             <div class="overview-grid">
                 
-                <!-- 已整合日期與航班明細 -->
                 <div class="overview-item full-width">
                     <div class="flight-main-info">
                         <span>🛫 去程航班 (台北 TPE ➔ 伊斯坦堡 IST)</span>
@@ -610,6 +624,16 @@
                 <div class="overview-item"><span>時差備忘</span><strong>土耳其當地為 GMT+3 (臺灣 -5hr)</strong></div>
             </div>
 
+            <div class="exchange-box">
+                <div class="exchange-box-title">🪙 換匯地點與里拉攻略</div>
+                <ul>
+                    <li><strong>伊斯坦堡機場 (IST)：</strong>匯率最差且手續費高，下機後僅在此<strong>換小額（如 20-50 歐元）</strong>付過路費與買小點心即可。</li>
+                    <li><strong>市區大巴扎 (Grand Bazaar)：</strong>在伊斯坦堡舊城區的大巴扎周邊，換匯所密度高且<strong>匯率最好</strong>，建議拿歐元/美金在此大量兌換。</li>
+                    <li><strong>沿途大城市：</strong>如安卡拉、孔亞、安塔利亞的市中心換匯所（Döviz）匯率皆具競爭力，景區內飯店匯率通常較差。</li>
+                    <li><strong>刷卡備忘：</strong>土耳其刷卡極度普及（加油站、超商、餐廳皆可），但仍需備妥部分里拉現金支付小攤販與上廁所。</li>
+                </ul>
+            </div>
+
             <div class="weather-box">
                 <div class="weather-item">
                     <div class="weather-val" id="ist-temp" style="color: #E67E22;"><span class="weather-loading">載入中...</span></div>
@@ -622,7 +646,6 @@
             </div>
         </div>
 
-        <!-- 功能分頁導覽 -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('itinerary')">📅 詳細行程</button>
             <button class="tab-btn" onclick="switchTab('checklist')">🧳 行理打包</button>
@@ -630,9 +653,7 @@
             <button class="tab-btn" onclick="switchTab('ledger')">💰 隨身記帳</button>
         </div>
 
-        <!-- 內容：詳細行程 -->
         <div id="itinerary-tab" class="tab-content active">
-            <!-- Day 1 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -657,7 +678,6 @@
                 </div>
             </div>
 
-            <!-- Day 2 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -684,7 +704,6 @@
                 </div>
             </div>
 
-            <!-- Day 3 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -713,7 +732,6 @@
                 </div>
             </div>
 
-            <!-- Day 4 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -737,7 +755,6 @@
                 </div>
             </div>
 
-            <!-- Day 5 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -762,7 +779,6 @@
                 </div>
             </div>
 
-            <!-- Day 6 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -786,7 +802,6 @@
                 </div>
             </div>
 
-            <!-- Day 7 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -811,7 +826,6 @@
                 </div>
             </div>
 
-            <!-- Day 8 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -835,7 +849,6 @@
                 </div>
             </div>
 
-            <!-- Day 9 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -861,7 +874,6 @@
                 </div>
             </div>
 
-            <!-- Day 10 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -886,7 +898,6 @@
                 </div>
             </div>
 
-            <!-- Day 11 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -911,7 +922,6 @@
                 </div>
             </div>
 
-            <!-- Day 12 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -932,7 +942,6 @@
                 </div>
             </div>
 
-            <!-- Day 13 -->
             <div class="day-accordion">
                 <div class="day-header" onclick="toggleDay(this)">
                     <div class="day-title-box">
@@ -951,7 +960,6 @@
             </div>
         </div>
 
-        <!-- 內容：行李打包 -->
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">🧳 智慧防忘打包全清單</div>
@@ -972,7 +980,7 @@
                     <div class="checklist-cat-title">🔌 電子通訊與隨身裝備</div>
                     <div class="check-grid">
                         <label class="check-item"><input type="checkbox"> 土耳其網卡/eSIM (自駕導航極重要)</label>
-                        <label class="check-item"><input type="checkbox"> 歐洲規格轉接頭 (雙腳圓頭兩大一小)</label>
+                        <label class="check-item"><input type="checkbox"> 歐洲規格轉接頭 (雙腳圓頭)</label>
                         <label class="check-item"><input type="checkbox"> 行動電源與各類充電線</label>
                         <label class="check-item"><input type="checkbox"> 車用手機架 (公路導航神器)</label>
                         <label class="check-item"><input type="checkbox"> 車用點菸器高速充電頭</label>
@@ -1004,47 +1012,79 @@
             </div>
         </div>
 
-        <!-- 內容：必買伴手禮 -->
         <div id="gift-tab" class="tab-content">
-            <!-- 伴手禮 1 -->
+            <div class="checklist-cat-title" style="margin-left:6px; margin-bottom:12px;">🔥 大眾經典 (3項)</div>
+            
             <div class="gift-card">
-                <span class="gift-tag mainstream">🔥 大眾經典</span>
-                <div class="gift-title">土耳其紅茶 (Çay) & 鬱金香杯組合</div>
-                <div class="gift-desc">當地人家中每日必喝！推薦在當地超市購買 Kurukoçak 或 Çaykur 品牌的茶葉，搭配一組晶瑩剔透的玻璃鬱金香杯帶回台灣，完美重現土耳其午茶時光。</div>
+                <span class="gift-tag mainstream">大眾經典 01</span>
+                <div class="gift-title">土耳其紅茶 (Çay) & 鬱金香杯</div>
+                <div class="gift-desc">超市必買 Kurukoçak 或 Çaykur 品牌，搭配剔透的玻璃鬱金香杯，把星月國的靈魂茶香帶回家。</div>
             </div>
-            <!-- 伴手禮 2 -->
             <div class="gift-card">
-                <span class="gift-tag mainstream">🔥 大眾經典</span>
-                <div class="gift-title">土耳其軟糖 (Lokum)</div>
-                <div class="gift-desc">歷史悠久的宮廷點心，開心果、開心果石榴、玫瑰等口味最受歡迎。建議在專賣店試吃後再買，或者去超市選購包裝精美的長條禮盒，配無糖茶非常絕配。</div>
+                <span class="gift-tag mainstream">大眾經典 02</span>
+                <div class="gift-title">土耳其傳統軟糖 (Lokum)</div>
+                <div class="gift-desc">首選開心果、石榴或玫瑰口味。口感扎實，是配無糖手沖咖啡或紅茶的絕佳宮廷點心。</div>
             </div>
-            <!-- 伴手禮 3 -->
             <div class="gift-card">
-                <span class="gift-tag mainstream">🔥 大眾經典</span>
-                <div class="gift-title">藍眼睛大嘴鳥與各類吊飾 (Nazar Boncuğu)</div>
-                <div class="gift-desc">代表著驅邪與帶來好運的土耳其護身符。不管是玻璃鑰匙圈、壁掛磁鐵、還是手工手鍊，在各大紀念品店都隨處可見，送禮自用兩相宜。</div>
+                <span class="gift-tag mainstream">大眾經典 03</span>
+                <div class="gift-title">藍眼睛辟邪吊飾 (Nazar Boncuğu)</div>
+                <div class="gift-desc">代表驅散嫉妒、帶來好運的護身符。玻璃鑰匙圈、磁鐵、手鍊都隨處可見，送禮不踩雷。</div>
             </div>
-            <!-- 伴手禮 4 -->
+
+            <div class="checklist-cat-title" style="margin-left:6px; margin-top:20px; margin-bottom:12px;">✨ 特色小眾 (精準補滿10項)</div>
+
             <div class="gift-card">
-                <span class="gift-tag niche">✨ 特色小眾</span>
-                <div class="gift-title">卡帕多奇亞熱氣球手工陶器</div>
-                <div class="gift-desc">在卡帕多奇亞或阿瓦諾斯（陶藝小鎮）親手挑選的手工繪製彩瓷盤、熱氣球浮雕小夜燈或特色小花瓶，擺在房間桌上質感滿分。</div>
+                <span class="gift-tag niche">特色小眾 01</span>
+                <div class="gift-title">Gulbirlik 100% 大馬士革純天然玫瑰水</div>
+                <div class="gift-desc">全球知名的大馬士革玫瑰產地就在土耳其伊斯帕爾塔！這款保濕度極高、香氣純正，價格更是歐洲的1/3。</div>
             </div>
-            <!-- 伴手禮 5 -->
             <div class="gift-card">
-                <span class="gift-tag niche">✨ 特色小眾</span>
-                <div class="gift-title">dalan 頂級橄欖油護膚護手霜 / 香皂</div>
-                <div class="gift-desc">土耳其盛產橄欖，dalan 是當地擁有 70 多年歷史的國民護膚老牌。其橄欖油香皂和滋潤護手霜價格極度親民，保濕度極高，是辦公室發送發福利的神器。</div>
+                <span class="gift-tag niche">特色小眾 02</span>
+                <div class="gift-title">dalan d'Olive 頂級橄欖油護手霜 / 護膚皂</div>
+                <div class="gift-desc">擁有70多年歷史的國民護膚老牌。富含愛琴海橄欖精華，滋潤不油膩、價格極親民，發送給辦公室同事的神器。</div>
             </div>
-            <!-- 伴手禮 6 -->
             <div class="gift-card">
-                <span class="gift-tag niche">✨ 特色小眾</span>
-                <div class="gift-title">天然大顆無花果乾與堅果</div>
-                <div class="gift-desc">土耳其是全球無花果與開心果的主要產地。在當地超市或市集買到的無花果乾果肉厚實、飽滿多汁且完全不添加人工糖，天然又健康。</div>
+                <span class="gift-tag niche">特色小眾 03</span>
+                <div class="gift-title">天然巨無霸無花果乾與開心果</div>
+                <div class="gift-desc">土耳其是全球最大的無花果產地。超市買到的果乾顆粒碩大、果肉飽滿多汁且絕不添加人工糖，天然又健康。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色小眾 04</span>
+                <div class="gift-title">Mehmet Efendi 百年老牌土耳其咖啡粉</div>
+                <div class="gift-desc">創立於1871年的百年名店。粉末極細、香氣濃郁，用傳統小銅鍋現煮，能倒出濃郁泡沫，極具儀式感。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色小眾 05</span>
+                <div class="gift-title">卡帕多奇亞精緻手工彩繪陶器</div>
+                <div class="gift-desc">在陶藝小鎮阿瓦諾斯（Avanos）親手挑選的手繪彩瓷盤或熱氣球浮雕小夜燈，擺在房間桌上質感滿分。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色小眾 06</span>
+                <div class="gift-title">席林傑山城特色水果酒 (Şirince Şarabı)</div>
+                <div class="gift-desc">Day 9 造訪的小希臘村落特產！由石榴、黑莓、哈密瓜等天然水果釀造，酒精濃度低，帶有甜美的少女感。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色小眾 07</span>
+                <div class="gift-title">土耳其香料之王：香紅花與乾辣椒片 (Pul Biber)</div>
+                <div class="gift-desc">香番紅花（Saffron）與特產乾辣椒片是土耳其料理的靈魂。在大巴扎或番紅花城購買，回家做料理香氣層次十足。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色小眾 08</span>
+                <div class="gift-title">鄂圖曼風復古幾何編織地毯滑鼠墊</div>
+                <div class="gift-desc">大巴扎地攤藏著的手工寶藏！縮小版的土耳其傳統編織地毯做成滑鼠墊或杯墊，邊緣還有流蘇，辦公桌顏值秒提升。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色小眾 09</span>
+                <div class="gift-title">Tariş 頂級初榨冷壓橄欖油</div>
+                <div class="gift-desc">地中海與愛琴海肥沃土壤孕育的頂級橄欖。酸度極低、香氣清新，帶回家做沙拉油或直接生飲都是貴婦級享受。</div>
+            </div>
+            <div class="gift-card">
+                <span class="gift-tag niche">特色小眾 10</span>
+                <div class="gift-title">土耳其蜂巢蜜 (Karakovan Balı)</div>
+                <div class="gift-desc">土耳其人早餐的精髓！直接切一塊帶有完整蜂巢的天然蜂蜜，抹在熱騰騰的麵包或加進優格裡，濃郁死甜卻完全不膩。</div>
             </div>
         </div>
 
-        <!-- 內容：隨身記帳 -->
         <div id="ledger-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">💰 公路隨身記帳本</div>
@@ -1256,8 +1296,8 @@
                 }
             } catch (e) {
                 console.error("即時氣象獲取失敗", e);
-                document.getElementById('ist-temp').innerText = "26°C";
-                document.getElementById('cap-temp').innerText = "22°C";
+                document.getElementById('ist-temp').innerText = "28°C";
+                document.getElementById('cap-temp').innerText = "24°C";
             }
         }
 
