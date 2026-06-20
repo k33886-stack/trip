@@ -114,7 +114,7 @@
             font-weight: 500;
         }
 
-        /* 天氣觀測站樣式 */
+        /* 天氣觀測站 */
         .weather-box {
             display: flex;
             justify-content: space-around;
@@ -239,7 +239,7 @@
         }
 
         .day-accordion.open .day-content {
-            max-height: 4500px;
+            max-height: 2000px;
             border-top: 1px solid var(--border-color);
         }
 
@@ -360,7 +360,7 @@
             padding-left: 2px;
         }
 
-        /* 行李、記帳與伴手禮樣式 */
+        /* 清單、伴手禮、隨身記帳 */
         .checklist-group { margin-bottom: 22px; }
         .checklist-cat-title { font-size: 13.5px; font-weight: 700; color: var(--primary); margin-bottom: 12px; padding-left: 8px; border-left: 4px solid var(--primary); }
         .check-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
@@ -394,7 +394,6 @@
         .stat-val { font-size: 18px; font-weight: 700; color: var(--primary); }
         .stat-label { font-size: 11px; color: var(--text-light); }
         
-        /* 下拉選單與結果框 */
         .select-box-style {
             width: 100%;
             padding: 12px;
@@ -426,7 +425,7 @@
 
     <div class="container">
         
-        <!-- 行程總覽與即時天氣預報 -->
+        <!-- 行程總覽與即時天氣 -->
         <div class="overview-card">
             <div class="overview-title">📋 壯遊行程總覽</div>
             <div class="overview-grid">
@@ -436,7 +435,6 @@
                 <div class="overview-item"><span>下榻飯店數</span><strong>共計 8 間精選住宿</strong></div>
             </div>
 
-            <!-- 天氣預報區塊 (已移至總覽下方) -->
             <div class="weather-box">
                 <div class="weather-item">
                     <div class="weather-val" id="ist-temp" style="color: #E67E22;"><span class="weather-loading">載入中...</span></div>
@@ -779,7 +777,7 @@
             </div>
         </div>
 
-        <!-- 內容：行李打包分頁 -->
+        <!-- 內容：行李打包 -->
         <div id="checklist-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">🧳 智慧防忘打包全清單</div>
@@ -795,7 +793,7 @@
             </div>
         </div>
 
-        <!-- 內容：必買伴手禮分頁 -->
+        <!-- 內容：必買伴手禮 -->
         <div id="gift-tab" class="tab-content">
             <div class="checklist-group">
                 <div class="checklist-cat-title">🔥 經典主流款（大家都買這些）</div>
@@ -841,7 +839,7 @@
             </div>
         </div>
 
-        <!-- 內容：隨身記帳分頁 -->
+        <!-- 內容：隨身記帳 -->
         <div id="ledger-tab" class="tab-content">
             <div class="overview-card">
                 <div class="overview-title">💰 公路隨身記帳本</div>
@@ -867,7 +865,7 @@
             } else if(tabName === 'gift') {
                 document.querySelectorAll('.tab-btn')[2].classList.add('active');
                 document.getElementById('gift-tab').classList.add('active');
-            } else {
+            } else if(tabName === 'ledger') {
                 document.querySelectorAll('.tab-btn')[3].classList.add('active');
                 document.getElementById('ledger-tab').classList.add('active');
             }
@@ -891,7 +889,7 @@
             } else if(val === 'cappadocia') {
                 resultBox.innerHTML = `<strong>🎈 卡帕多奇亞換匯：</strong>格雷梅（Göreme）主街上有多家換匯所與 ATM。熱氣球或一日遊行程常直接收歐元，不需全部換成里拉。`;
             } else if(val === 'bazaar') {
-                resultBox.innerHTML = ` = `<strong>📍 老城推薦：Beyazıt Döviz</strong><br>位於有頂大市集旁，全城匯率最漂亮且免手續費！`;
+                resultBox.innerHTML = `<strong>📍 老城推薦：Beyazıt Döviz</strong><br>位於有頂大市集旁，全城匯率最漂亮且免手續費！`;
             }
         }
 
